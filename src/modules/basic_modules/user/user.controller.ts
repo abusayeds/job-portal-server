@@ -11,9 +11,7 @@ import { emitNotification } from "../../../utils/socket";
 import { IUser } from "./user.interface";
 import { UserModel } from "./user.model";
 import {
-  generateToken,
   getStoredOTP,
-
   userService,
 } from "./user.service";
 const registerUser = catchAsync(async (req, res) => {
@@ -38,8 +36,9 @@ const registerUser = catchAsync(async (req, res) => {
   });
 });
 const verifyOTP = catchAsync(async (req, res) => {
+
   const { otp } = req.body;
-  const { decoded, }: any = await tokenDecoded(req, res)
+  const { decoded }: any = await tokenDecoded(req, res)
   const email = decoded.email;
   const storedOTP = await getStoredOTP(email);
   if (!storedOTP || storedOTP !== otp) {
@@ -47,7 +46,8 @@ const verifyOTP = catchAsync(async (req, res) => {
       "Invalid or expired OTP",
     );
   }
-  const result = await userService.verifyOtpDB(email)
+  const result: any = await userService.verifyOtpDB(email)
+
 
   await emitNotification({
     userId: result._id as string,
@@ -56,7 +56,7 @@ const verifyOTP = catchAsync(async (req, res) => {
   });
 
   sendResponse(res, {
-    statusCode: httpStatus.CREATED,
+    statusCode: httpStatus.OK,
     success: true,
     message: "Registration successful.",
     data: result,
@@ -66,15 +66,11 @@ const verifyOTP = catchAsync(async (req, res) => {
 const loginUser = catchAsync(async (req, res) => {
   const { email, password } = req.body;
   const user = await userService.loginDB(email, password)
-  const token = generateToken({ user: user });
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "Login complete!",
-    data: {
-      user,
-      token,
-    },
+    data: user
   });
 });
 

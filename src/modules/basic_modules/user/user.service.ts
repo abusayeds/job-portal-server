@@ -68,6 +68,7 @@ const createUserDB = async (payload: IUser) => {
 
 const verifyOtpDB = async (email: string) => {
   const user = await UserModel.findOne({ email: email })
+
   if (user.isVerify) {
     throw new AppError(httpStatus.BAD_REQUEST, "Alredy verified")
   }
@@ -76,12 +77,11 @@ const verifyOtpDB = async (email: string) => {
     { isVerify: true },
     { new: true }
   );
+
+
   console.log(result);
 
-  return {
-    _id: result._id,
-    email: result.email
-  }
+  return result
 }
 
 const loginDB = async (email: string, password: string) => {
