@@ -45,7 +45,7 @@ const UserSchema = new Schema<IUser>(
     facebook: { type: String, trim: true },
     twitter: { type: String, trim: true },
     youtube: { type: String, trim: true },
-    //***** employers stpe4 *******//
+    //***** employers stpe4 *bbbbbbbb******//
     address: { type: String, trim: true, },
     phone: { type: String, trim: true, },
     contactEmail: { type: String, trim: true },
