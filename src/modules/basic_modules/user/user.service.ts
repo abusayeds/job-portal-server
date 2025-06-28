@@ -104,7 +104,7 @@ const verifyOtpDB = async (email: string) => {
 
 const loginDB = async (email: string, password: string) => {
   const user: IUser | null = await UserModel.findOne({ email: email })
-    .select("-password -createdAt -updatedAt -__v -isDeleted")
+    .select("+password -createdAt -updatedAt -__v -isDeleted")
     .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" });
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND,
@@ -173,7 +173,6 @@ const verifyForgotPasswordOtpDB = async (otp: string, email: string) => {
       "User not found!",
     );
   }
-
   const currentTime = new Date();
   if (otpRecord.expiresAt < currentTime) {
     throw new AppError(httpStatus.BAD_REQUEST,

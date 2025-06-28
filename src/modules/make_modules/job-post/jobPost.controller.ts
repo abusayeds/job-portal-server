@@ -8,7 +8,6 @@ import sendResponse from "../../../utils/sendResponse";
 import { IUser } from "../../basic_modules/user/user.interface";
 import { UserModel } from "../../basic_modules/user/user.model";
 import { subscriptionHandle } from "./jobPost-constant";
-import { jobService } from "./jobPost.service";
 
 const createJob = catchAsync(async (req, res) => {
     const { decoded, }: any = await tokenDecoded(req, res)
@@ -30,14 +29,14 @@ const createJob = catchAsync(async (req, res) => {
     }
 
     //** subscription logic validation hendle **//
-    await subscriptionHandle(user)
+    await subscriptionHandle(user, req.body)
 
-    const result = await jobService.crateJobDB(userId, req.body)
+    // const result = await jobService.crateJobDB(userId, req.body)
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
         success: true,
         message: 'Job post  created successfully',
-        data: result
+        data: ''
     });
 })
 
