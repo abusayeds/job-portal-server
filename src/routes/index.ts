@@ -5,8 +5,9 @@ import { NotificationRoutes } from "../modules/basic_modules/notifications/notif
 import { PrivacyRoutes } from "../modules/basic_modules/privacy/Privacy.route";
 import { TermsRoutes } from "../modules/basic_modules/Terms/Terms.route";
 import { UserRoutes } from "../modules/basic_modules/user/user.route";
-import { SubscriptionRoute } from "../modules/make_modules/subscription/subscription.route";
+import { jobRoute } from "../modules/make_modules/job-post/jobPost.route";
 import { purchaseRoute } from "../modules/make_modules/purchasePlan/purchasePlan.route";
+import { SubscriptionRoute } from "../modules/make_modules/subscription/subscription.route";
 
 
 const router = express.Router();
@@ -22,5 +23,9 @@ router.use('/api/v1/uploded', uploadRouter)
 router.use('/api/v1/subscription', SubscriptionRoute);
 
 router.use("/api/v1/plan", purchaseRoute);
+
+router.use("/api/v1/job", jobRoute);
+
+
 
 export default router;

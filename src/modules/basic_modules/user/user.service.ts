@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
 import queryBuilder from "../../../builder/queryBuilder";
 import { JWT_SECRET_KEY, } from "../../../config";
 import AppError from "../../../errors/AppError";
-import { sendEmail, sendRegistationOtpEmail, } from "./sendEmail";
+import { forgotOtpEmail, resendOtpEmail, sendRegistationOtpEmail } from "./sendEmail";
 import { IUser, } from "./user.interface";
 import { OTPModel, UserModel } from "./user.model";
 export const generateToken = (payload: any): string => {
@@ -50,7 +50,6 @@ const createUserDB = async (payload: IUser) => {
   if (password !== confirmPassword) {
     throw new AppError(httpStatus.BAD_REQUEST, 'Passwords do not match');
   }
-
   await UserModel.create(payload);
   const email = payload.email;
   const otp = generateOTP();
@@ -67,25 +66,46 @@ const createUserDB = async (payload: IUser) => {
 
 
 const verifyOtpDB = async (email: string) => {
-  const user = await UserModel.findOne({ email: email })
-
+  const user: IUser | null = await UserModel.findOne({ email: email })
+    .select("-password -createdAt -updatedAt -__v -isDeleted")
+    .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" });
+  if (!user) {
+    throw new AppError(httpStatus.NOT_FOUND, "User not found")
+  }
   if (user.isVerify) {
     throw new AppError(httpStatus.BAD_REQUEST, "Alredy verified")
   }
-  const result = await UserModel.findOneAndUpdate(
+  await UserModel.findOneAndUpdate(
     { email: email },
     { isVerify: true },
     { new: true }
   );
+  const userObj = (user as any).toObject ? (user as any).toObject() : user;
+  const { password: userPassword, ...existuser } = userObj;
+  const userSafe = {
+    _id: user._id,
+    email: user.email,
+    role: user.role,
+    isCompleted: user.isCompleted,
+    isActive: user.isActive,
+    isVerify: user.isVerify,
+    isApprove: user.isApprove
+  }
+
+  const token = generateToken({ user: userSafe });
+
+  return {
+    user: existuser,
+    token
+  }
 
 
-  console.log(result);
-
-  return result
 }
 
 const loginDB = async (email: string, password: string) => {
-  const user: IUser | null = await findUserByEmail(email);
+  const user: IUser | null = await UserModel.findOne({ email: email })
+    .select("-password -createdAt -updatedAt -__v -isDeleted")
+    .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" });
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND,
       "This account does not exist.",
@@ -134,7 +154,7 @@ const loginDB = async (email: string, password: string) => {
 }
 
 const forgotPasswordDB = async (email: string) => {
-  const user = await UserModel.findOne({ email: email, isVerify: true });
+  const user = await UserModel.findOne({ email: email });
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND,
       "This account does not exist.",
@@ -142,7 +162,9 @@ const forgotPasswordDB = async (email: string) => {
   }
   const otp = generateOTP();
   await saveOTP(email, otp);
-  await sendEmail(otp, email)
+  await forgotOtpEmail(otp, email)
+  const token = jwt.sign({ email, forgot: 'forgot', otp: otp }, JWT_SECRET_KEY as string, { expiresIn: "7d", });
+  return token
 }
 const verifyForgotPasswordOtpDB = async (otp: string, email: string) => {
   const otpRecord = await OTPModel.findOne({ email });
@@ -158,7 +180,6 @@ const verifyForgotPasswordOtpDB = async (otp: string, email: string) => {
       "OTP has expired",
     );
   }
-
   if (otpRecord.otp !== otp) {
     throw new AppError(httpStatus.BAD_REQUEST,
       "Wrong OTP",
@@ -170,7 +191,9 @@ const verifyForgotPasswordOtpDB = async (otp: string, email: string) => {
 const resendOtpDB = async (email: string) => {
   const newOTP = generateOTP();
   await saveOTP(email, newOTP);
-  await sendEmail(newOTP, email,);
+  await resendOtpEmail(newOTP, email,);
+  const token = jwt.sign({ email, forgot: 'forgot', otp: newOTP }, JWT_SECRET_KEY as string, { expiresIn: "7d", });
+  return token
 }
 
 const resetPasswordDB = async (payload: any, email: string) => {
@@ -240,7 +263,9 @@ const updateUserDB = async (payload: IUser, file: any, userId: string) => {
 }
 
 const myProfileDB = async (userId: string) => {
-  const user = await UserModel.findById(userId).populate("purchasePlan").select('-password -isVerify');
+  const user: IUser | null = await UserModel.findById(userId)
+    .select("-password -createdAt -updatedAt -__v -isDeleted")
+    .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" });
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND,
       "User not found.",
