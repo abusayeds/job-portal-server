@@ -8,6 +8,7 @@ import sendResponse from "../../../utils/sendResponse";
 import { IUser } from "../../basic_modules/user/user.interface";
 import { UserModel } from "../../basic_modules/user/user.model";
 import { subscriptionHandle } from "./jobPost-constant";
+import { jobService } from "./jobPost.service";
 
 const createJob = catchAsync(async (req, res) => {
     const { decoded, }: any = await tokenDecoded(req, res)
@@ -18,6 +19,7 @@ const createJob = catchAsync(async (req, res) => {
     if (!user) {
         throw new AppError(httpStatus.NOT_FOUND, "User not Found ")
     }
+
     if (!user.isApprove) {
         throw new AppError(httpStatus.UNAUTHORIZED, "Please wait for admin approval ")
     }
@@ -31,12 +33,12 @@ const createJob = catchAsync(async (req, res) => {
     //** subscription logic validation hendle **//
     await subscriptionHandle(user, req.body)
 
-    // const result = await jobService.crateJobDB(userId, req.body)
+    const result = await jobService.crateJobDB(userId, user.purchasePlan.subscriptionId, user.purchasePlan._id, req.body)
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
         success: true,
         message: 'Job post  created successfully',
-        data: ''
+        data: result
     });
 })
 

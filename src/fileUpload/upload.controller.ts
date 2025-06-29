@@ -8,6 +8,7 @@ export const uploadFile = catchAsync(async (req, res) => {
         throw new AppError(httpStatus.BAD_REQUEST, 'No uploded file ')
     }
     const file = req.file
+    console.log(file);
 
 
     sendResponse(res, {

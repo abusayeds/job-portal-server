@@ -1,8 +1,8 @@
 import express from "express";
 
-import { purchasePlanController } from "./purchasePlan.controller";
 import { authMiddleware } from "../../../middlewares/auth";
 import { role } from "../../../utils/role";
+import { purchasePlanController } from "./purchasePlan.controller";
 
 const router = express.Router();
 router.post("/purchase/:productId", authMiddleware(role.employer), purchasePlanController.purchasePlan);

@@ -34,15 +34,18 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, UPLOAD_PATH);
   },
+
+
   filename: function (
     req: Request,
     file: Express.Multer.File,
     cb: (error: Error | null, filename: string) => void,
   ) {
-
-    const fileName = uuidv4() + path.extname(file.originalname);
+    const shortUuid = uuidv4().replace(/-/g, "").slice(0, 15);
+    const fileName = shortUuid + '-' + file.originalname.replace(/\s+/g, "");
     cb(null, fileName);
   },
+
 });
 
 const fileFilter = (

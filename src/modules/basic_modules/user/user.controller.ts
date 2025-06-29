@@ -370,10 +370,12 @@ const verifyOTP = catchAsync(async (req, res) => {
 
   const tokenOtp = decoded.otp
   const storedOTP = await getStoredOTP(email);
+
+
   if (tokenOtp !== storedOTP) {
     throw new AppError(httpStatus.FORBIDDEN, "Invalid token ")
   }
-  console.log(tokenOtp);
+
 
   if (!storedOTP || storedOTP !== otp) {
     throw new AppError(httpStatus.BAD_REQUEST,
