@@ -1,11 +1,5 @@
 node_modules
-<<<<<<< HEAD
 /dist
 /public
 /logs.env
 .env
-=======
-
-/public
-/logs
->>>>>>> 6d4e0d5f9fe9f26b2f99cf600958c653171bcf62
