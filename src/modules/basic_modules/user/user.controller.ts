@@ -594,14 +594,21 @@ const IdentityVerification = catchAsync(async (req, res) => {
   }
   if (step === '4') {
     req.body.isCompleted = true
+    req.body.step = step
   }
-  const result = await userService.IdentityVerificationDB(userId, req.body, step as string)
+  const result: IUser = await userService.IdentityVerificationDB(userId, req.body, step as string)
+  if (!result.isCompleted) {
+    await UserModel.findByIdAndUpdate(userId, { step: step }, { new: true })
+  }
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: `Step ${step} Verified`,
     data: result
   });
+
+
+
 
 }
 )

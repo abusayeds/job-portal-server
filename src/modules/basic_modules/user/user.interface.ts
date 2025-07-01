@@ -29,9 +29,13 @@ export type IUser = {
   teamSize: number
   companyWebsite: string
   companyVision: string
+
   facebook: string
   twitter: string
   youtube: string
+  instagram: string
+  linkedin: string
+
   address: string;
   phone: string;
   contactEmail: string
@@ -41,6 +45,8 @@ export type IUser = {
   isVerify: boolean
   isApprove: boolean
   purchasePlan: Types.ObjectId
+
+  step: number
 } & Document;
 
 export type IOTP = {
