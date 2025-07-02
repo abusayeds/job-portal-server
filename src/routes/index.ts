@@ -8,6 +8,7 @@ import { UserRoutes } from "../modules/basic_modules/user/user.route";
 import { jobRoute } from "../modules/make_modules/job-post/jobPost.route";
 import { purchaseRoute } from "../modules/make_modules/purchasePlan/purchasePlan.route";
 import { SubscriptionRoute } from "../modules/make_modules/subscription/subscription.route";
+import { categoryRoute } from "../modules/make_modules/category/category.route";
 
 
 const router = express.Router();
@@ -25,6 +26,10 @@ router.use('/api/v1/subscription', SubscriptionRoute);
 router.use("/api/v1/plan", purchaseRoute);
 
 router.use("/api/v1/job", jobRoute);
+
+router.use("/api/v1/category", categoryRoute);
+
+
 
 
 

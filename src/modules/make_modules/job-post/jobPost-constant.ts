@@ -2,10 +2,11 @@
 import httpStatus from "http-status";
 import AppError from "../../../errors/AppError";
 import { IUser } from "../../basic_modules/user/user.interface";
+import { TPurchasePlan } from "../purchasePlan/purchasePlan.interface";
 import { TJobPost } from "./jobPost.interface";
 
 export const subscriptionHandle = async (user: IUser | any, payload: TJobPost) => {
-    const subscription = user?.purchasePlan
+    const subscription: TPurchasePlan = user?.purchasePlan
     if (payload.maxSalary < payload.minSalary) {
         throw new AppError(httpStatus.BAD_REQUEST, "Max salary cannot be less than min salary.");
     }
@@ -18,7 +19,9 @@ export const subscriptionHandle = async (user: IUser | any, payload: TJobPost) =
             throw new AppError(httpStatus.BAD_REQUEST, "Expiration date cannot be in the past.");
         }
     }
-    if (payload.tags.length > 1 && !subscription.tegs) {
+    console.log(subscription);
+
+    if (payload.tags.length > 1 && !subscription.multi_categories) {
         throw new AppError(httpStatus.BAD_REQUEST, `You cannot give more than one tag with the ${subscription?.planName} subscription.`)
     }
     if (!subscription.schedule_dates && payload.scheduleDate) {
@@ -34,12 +37,5 @@ export const subscriptionHandle = async (user: IUser | any, payload: TJobPost) =
         }
     }
 
-    // if (subscription.planName === "basic plan") {
-    //     console.log("basic plan subscription = >>>> ", user);
-    // } else if (subscription.planName === "standard plan") {
-    //     console.log("standard plan subscription = >>>> ", user);
-    // } else if (subscription.planName === "unlimited plan") {
-    //     console.log("unlimited plan subscription = >>>> ", user);
-    // }
 }
 

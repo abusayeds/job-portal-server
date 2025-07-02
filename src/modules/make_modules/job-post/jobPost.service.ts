@@ -6,8 +6,12 @@ import { TJobPost } from "./jobPost.interface";
 import { JobPostModel } from "./jobPost.model";
 
 const crateJobDB = async (userId: string, subscriptionId: string, palan: string, payload: TJobPost) => {
+
+
+
     const subs_palan: TPurchasePlan | null = await purchasePlanModel.findOne({ _id: palan, subscriptionId: subscriptionId });
     const jobs = await JobPostModel.find({ subscriptionId: subscriptionId })
+
 
 
     if (subs_palan && jobs.length > 0 && subs_palan.planName !== "unlimited plan") {
@@ -16,6 +20,8 @@ const crateJobDB = async (userId: string, subscriptionId: string, palan: string,
             throw new AppError(httpStatus.BAD_REQUEST, "This subscription limit has ended.");
         }
     }
+
+
     if (!subs_palan) {
         throw new AppError(httpStatus.NOT_FOUND, "Subscription not found ! ")
     }

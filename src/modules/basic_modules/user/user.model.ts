@@ -20,7 +20,8 @@ const UserSchema = new Schema<IUser>(
     role: {
       type: String,
       enum: ["admin", "candidate", "employer", "employe"],
-      required: true
+      required: true,
+      trim: true
     },
     adminErnings: { type: Number, },
     //***** employers stpe1 *******//
@@ -66,7 +67,7 @@ const UserSchema = new Schema<IUser>(
     },
 
     step: {
-      type: Number
+      type: Number, default: 0
     }
   },
   { timestamps: true }

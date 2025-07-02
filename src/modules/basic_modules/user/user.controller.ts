@@ -592,18 +592,34 @@ const IdentityVerification = catchAsync(async (req, res) => {
   if (!step) {
     throw new AppError(httpStatus.BAD_REQUEST, "Please provide the 'step' query parameter for identity verification.");
   }
-  if (step === '4') {
-    req.body.isCompleted = true
-    req.body.step = step
-  }
+
   const result: IUser = await userService.IdentityVerificationDB(userId, req.body, step as string)
   if (!result.isCompleted) {
     await UserModel.findByIdAndUpdate(userId, { step: step }, { new: true })
   }
+  let message
+  if (result.isCompleted) {
+    message = "Profile updated successfully";
+  } else if (step === "4") {
+    message = "Profile completed, please wait for admin approval";
+    const result = await UserModel.findByIdAndUpdate(userId, {
+      isCompleted: true,
+      step: step
+    })
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: message,
+      data: result
+    });
+    return
+  } else {
+    message = `Step ${step} Verified`;
+  }
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: `Step ${step} Verified`,
+    message: message,
     data: result
   });
 
@@ -652,6 +668,8 @@ const userDeactive = catchAsync(async (req, res) => {
     data: ""
   });
 });
+
+
 
 export const userController = {
   registerUser,
