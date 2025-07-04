@@ -56,7 +56,7 @@ const webhook = async (req: Request, res: Response) => {
                 await adminAccount.save();
 
             } else {
-                console.log(" Subscription ID not found in invoice.");
+
                 throw new AppError(httpStatus.NOT_FOUND, "Subscription ID not found in invoice.")
             }
         }

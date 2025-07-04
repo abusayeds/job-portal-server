@@ -7,7 +7,9 @@ import catchAsync from "../../../utils/catchAsync";
 import sendResponse from "../../../utils/sendResponse";
 import { IUser } from "../../basic_modules/user/user.interface";
 import { UserModel } from "../../basic_modules/user/user.model";
+import { categoryModel } from "../category/category.model";
 import { subscriptionHandle } from "./jobPost-constant";
+import { TJobPost } from "./jobPost.interface";
 import { jobService } from "./jobPost.service";
 
 const createJob = catchAsync(async (req, res) => {
@@ -19,7 +21,6 @@ const createJob = catchAsync(async (req, res) => {
     if (!user) {
         throw new AppError(httpStatus.NOT_FOUND, "User not Found ")
     }
-
     if (!user.isApprove) {
         throw new AppError(httpStatus.UNAUTHORIZED, "Please wait for admin approval ")
     }
@@ -29,11 +30,28 @@ const createJob = catchAsync(async (req, res) => {
     if (!user.isVerify) {
         throw new AppError(httpStatus.UNAUTHORIZED, "This Account is not verify")
     }
-
-    //** subscription logic validation hendle **//
+    if (req.body.tags && req.body.tags.length > 0) {
+        for (const tag of req.body.tags) {
+            const foundTag = await categoryModel.findOne({ catagoryType: tag });
+            if (!foundTag) {
+                throw new AppError(httpStatus.NOT_FOUND, `Category not found for tag: ${tag}`);
+            }
+        }
+    } else {
+        throw new AppError(httpStatus.NOT_FOUND, "No tags provided or tags are empty");
+    }
     await subscriptionHandle(user, req.body)
-
-    const result = await jobService.crateJobDB(userId, user.purchasePlan.subscriptionId, user.purchasePlan._id, req.body)
+    const result: TJobPost = await jobService.crateJobDB(userId, user.purchasePlan.subscriptionId, user.purchasePlan._id, req.body)
+    for (const tag of result.tags) {
+        const foundTag = await categoryModel.findOneAndUpdate(
+            { catagoryType: tag },
+            { $inc: { jobPostCount: 1 } },
+            { new: true }
+        );
+        if (!foundTag) {
+            throw new AppError(httpStatus.NOT_FOUND, `Category not found for tag: ${tag}`);
+        }
+    }
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
         success: true,
