@@ -21,11 +21,13 @@ const jobPostSchema = new Schema<TJobPost>(
                     return /^(\d+(\.\d{1,2})?)?$/.test(value);
                 },
                 message: 'minSalary must be a valid number with up to two decimal places.'
-            }
+            },
+            trim: true
         },
         maxSalary: {
             type: Number,
             required: true,
+            trim: true,
             validate: {
                 validator: function (value) {
                     return /^(\d+(\.\d{1,2})?)?$/.test(value);
@@ -33,7 +35,7 @@ const jobPostSchema = new Schema<TJobPost>(
                 message: 'maxSalary must be a valid number with up to two decimal places.'
             }
         },
-        salaryType: { type: String, required: true },
+        salaryType: { type: String, required: true, trim: true, },
         education: { type: String, required: true },
         experience: {
             type: String,
@@ -46,6 +48,7 @@ const jobPostSchema = new Schema<TJobPost>(
                 '10 - 15 Years',
                 '15 + Years',
             ],
+            trim: true,
             required: true,
         },
         jobType: {
@@ -62,6 +65,7 @@ const jobPostSchema = new Schema<TJobPost>(
                 'Apprenticeship',
                 'Remote',
             ],
+            trim: true,
             required: true,
         },
         organizationTyper: {
@@ -76,6 +80,7 @@ const jobPostSchema = new Schema<TJobPost>(
                 'Master Degree',
                 'Phd',
             ],
+            trim: true,
             required: true,
         },
         expirationDate: {
@@ -106,6 +111,7 @@ const jobPostSchema = new Schema<TJobPost>(
         },
         jobLavel: {
             type: String,
+            trim: true,
             enum: ['Entry Level', 'Mid Level', 'Expert Level'],
             required: true,
         },

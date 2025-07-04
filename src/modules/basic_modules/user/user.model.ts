@@ -20,7 +20,8 @@ const UserSchema = new Schema<IUser>(
     role: {
       type: String,
       enum: ["admin", "candidate", "employer", "employe"],
-      required: true
+      required: true,
+      trim: true
     },
     adminErnings: { type: Number, },
     //***** employers stpe1 *******//
@@ -45,6 +46,11 @@ const UserSchema = new Schema<IUser>(
     facebook: { type: String, trim: true },
     twitter: { type: String, trim: true },
     youtube: { type: String, trim: true },
+    instagram: { type: String, trim: true },
+    linkedin: { type: String, trim: true },
+
+
+
     //***** employers stpe4 *bbbbbbbb******//
     address: { type: String, trim: true, },
     phone: { type: String, trim: true, },
@@ -58,6 +64,10 @@ const UserSchema = new Schema<IUser>(
     purchasePlan: {
       type: Schema.Types.ObjectId,
       ref: "PurchasePlanModel"
+    },
+
+    step: {
+      type: Number, default: 0
     }
   },
   { timestamps: true }
