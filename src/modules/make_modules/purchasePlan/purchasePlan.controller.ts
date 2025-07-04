@@ -25,6 +25,9 @@ const purchasePlan = catchAsync(async (req, res) => {
     if (decoded.user.isVerify === false) {
         throw new AppError(httpStatus.UNAUTHORIZED, "You are not verified.")
     }
+    if (decoded.user.isApprove === false) {
+        throw new AppError(httpStatus.UNAUTHORIZED, "Please wait for admin approval")
+    }
     const user: IUser | any = await UserModel.findById(userId)
     if (user.isCompleted === false) {
         throw new AppError(httpStatus.NOT_FOUND,

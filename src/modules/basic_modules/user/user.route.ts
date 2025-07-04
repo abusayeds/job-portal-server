@@ -22,4 +22,7 @@ router.post("/deactive/:userId", authMiddleware(role.admin), userController.user
 
 router.post("/identity-verification", authMiddleware(role.employer), conditionalStepValidation, userController.IdentityVerification)
 
+router.get('/top-companies',)
+
+
 export const UserRoutes = router;
