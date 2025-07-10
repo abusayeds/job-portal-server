@@ -46,11 +46,15 @@ const createUserDB = async (payload: IUser) => {
   if (isUserRegistered) {
     throw new AppError(httpStatus.CONFLICT, "Already have an account");
   }
-  const { password, confirmPassword } = payload;
+  const { password, confirmPassword, role } = payload;
   if (password !== confirmPassword) {
     throw new AppError(httpStatus.BAD_REQUEST, 'Passwords do not match');
   }
-  await UserModel.create(payload);
+  if (role === "candidate") {
+    await UserModel.create({ ...payload, isApprove: true });
+  } else {
+    await UserModel.create(payload);
+  }
   const email = payload.email;
   const otp = generateOTP();
   await saveOTP(email, otp);
@@ -75,21 +79,21 @@ const verifyOtpDB = async (email: string) => {
   if (user.isVerify) {
     throw new AppError(httpStatus.BAD_REQUEST, "Alredy verified")
   }
-  await UserModel.findOneAndUpdate(
+  const verifiedUser = await UserModel.findOneAndUpdate(
     { email: email },
     { isVerify: true },
     { new: true }
   );
-  const userObj = (user as any).toObject ? (user as any).toObject() : user;
+  const userObj = (verifiedUser as any).toObject ? (verifiedUser as any).toObject() : verifiedUser;
   const { password: userPassword, ...existuser } = userObj;
   const userSafe = {
-    _id: user._id,
-    email: user.email,
-    role: user.role,
-    isCompleted: user.isCompleted,
-    isActive: user.isActive,
-    isVerify: user.isVerify,
-    isApprove: user.isApprove
+    _id: verifiedUser._id,
+    email: verifiedUser.email,
+    role: verifiedUser.role,
+    isCompleted: verifiedUser.isCompleted,
+    isActive: verifiedUser.isActive,
+    isVerify: verifiedUser.isVerify,
+    isApprove: verifiedUser.isApprove
   }
 
   const token = generateToken({ user: userSafe });
@@ -236,29 +240,21 @@ const changePasswordDB = async (payload: any, email: string) => {
   await UserModel.findOneAndUpdate({ email: email }, { password: newPassword }, { new: true });
 }
 
-const updateUserDB = async (payload: IUser, file: any, userId: string) => {
+const updateUserDB = async (payload: IUser, userId: string) => {
 
-  const user = await findUserById(userId);
+  const user = await UserModel.findById(userId);
+  console.log(user);
+
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND,
       "User not found.",
     );
   }
-  const updateData: any = {};
-  if (file) {
-    const imagePath = `public\\images\\${file.filename}`;
-    const publicFileURL = `/images/${file.filename}`;
-    updateData.image = {
-      path: imagePath,
-      publicFileURL: publicFileURL,
-    };
-  }
-  const result = await UserModel.findByIdAndUpdate(userId, { ...payload, ...updateData }, { new: true });
-  const updateUser = { ...result.toObject ? result.toObject() : result };
-  delete updateUser.password;
-  delete updateUser.isVerify;
 
-  return updateUser;
+
+  const result = await UserModel.findByIdAndUpdate(userId, payload, { new: true });
+
+  return result;
 }
 
 const myProfileDB = async (userId: string) => {
@@ -272,10 +268,10 @@ const myProfileDB = async (userId: string) => {
   }
   return user
 }
-const allUserDB = async (query: Record<string, unknown>,) => {
-  const userQuery = new queryBuilder(UserModel.find({ role: "user" }).select('-password -isVerify'), query).sort()
-  const { totalData } = await userQuery.paginate(UserModel.find({ role: "user" }))
-  const user = await userQuery.modelQuery.exec()
+const allUserDB = async (query: Record<string, unknown>, role: string) => {
+  const userQuery = new queryBuilder(UserModel.find({ role: role, }).select('-password -isVerify'), query).fields().filter().sort()
+  const { totalData } = await userQuery.paginate(UserModel.find({ role: role, }))
+  const user: any = await userQuery.modelQuery.exec()
   const currentPage = Number(query?.page) || 1;
   const limit = Number(query.limit) || 10;
   const pagination = userQuery.calculatePagination({
@@ -283,7 +279,35 @@ const allUserDB = async (query: Record<string, unknown>,) => {
     currentPage,
     limit,
   });
-  return { pagination, user, };
+  const processedUsers = user.map((user: IUser) => {
+    const userObj = user.toObject();
+    if (userObj.companyName) {
+      return {
+        _id: userObj._id,
+        address: userObj.address,
+        email: userObj.email,
+        fullName: userObj.fullName,
+        createdAt: userObj.createdAt,
+        companyName: userObj.companyName,
+        isActive: userObj.isActive
+      }
+    } else {
+      return {
+        _id: userObj._id,
+        address: userObj.address || "N/A",
+        email: userObj.email,
+        fullName: userObj.fullName,
+        phone: userObj.phone || "N/A",
+        companyWebsite: userObj.companyWebsite || "N/A",
+        createdAt: userObj.createdAt,
+        isActive: userObj.isActive,
+        dathOfBirth: userObj.DathOfBirth || "N/A",
+        nationality: userObj.nationality || "N/A"
+      }
+    }
+  });
+
+  return { pagination, user: processedUsers }
 }
 
 const IdentityVerificationDB = async (id: string, payload: IUser, step: string) => {
@@ -307,6 +331,64 @@ const IdentityVerificationDB = async (id: string, payload: IUser, step: string) 
   return result;
 }
 
+const employerAccountManagementDB = async (query: Record<string, unknown>) => {
+  const userQuery = new queryBuilder(UserModel.find({ isApprove: false, isCompleted: true, role: "employer" }).select('-password -isVerify'), query).fields().filter().sort()
+  const { totalData } = await userQuery.paginate(UserModel.find({ isApprove: false, isCompleted: true, role: "employer" }))
+  const user: any = await userQuery.modelQuery.exec()
+  const currentPage = Number(query?.page) || 1;
+  const limit = Number(query.limit) || 10;
+  const pagination = userQuery.calculatePagination({
+    totalData,
+    currentPage,
+    limit,
+  });
+  const employer = user.map((acc: IUser) => {
+    return {
+      _id: acc._id,
+      fullName: acc?.fullName,
+      email: acc?.email,
+      logo: acc?.logo,
+      role: acc?.role,
+      address: acc?.address,
+      isApprove: acc?.isApprove,
+      createdAt: acc?.createdAt,
+    }
+  })
+  return {
+    pagination, employer
+  }
+
+}
+const approveEmployerDB = async (query: Record<string, unknown>) => {
+  const userQuery = new queryBuilder(UserModel.find({ isActive: true, isApprove: true, isCompleted: true, role: "employer" }).select('-password -isVerify'), query).fields().filter().sort()
+  const { totalData } = await userQuery.paginate(UserModel.find({ isActive: true, isApprove: false, isCompleted: true, role: "employer" }))
+  const user: any = await userQuery.modelQuery.exec()
+  const currentPage = Number(query?.page) || 1;
+  const limit = Number(query.limit) || 10;
+  const pagination = userQuery.calculatePagination({
+    totalData,
+    currentPage,
+    limit,
+  });
+  const employer = user.map((acc: IUser) => {
+    return {
+      _id: acc._id,
+      fullName: acc?.fullName,
+      email: acc?.email,
+      logo: acc?.logo,
+      address: acc?.address,
+      role: acc?.role,
+      isApprove: acc?.isApprove,
+      createdAt: acc?.createdAt,
+
+    }
+  })
+  return {
+    pagination, employer
+  }
+
+}
+
 
 export const userService = {
   createUserDB,
@@ -320,7 +402,9 @@ export const userService = {
   updateUserDB,
   myProfileDB,
   allUserDB,
-  IdentityVerificationDB
+  IdentityVerificationDB,
+  employerAccountManagementDB,
+  approveEmployerDB
 }
 
 

@@ -3,7 +3,7 @@ import AppError from "../../../errors/AppError";
 import { TSubscription } from "./subscription.iterface";
 
 export const unlimitedPlan = async (payload: TSubscription) => {
-    if (payload.planName === "unlimited plan") {
+    if (payload.planName === "unlimited_plan") {
         if (!payload.numberOfEmployees || payload.numberOfEmployees.length < 3) {
             throw new AppError(httpStatus.BAD_REQUEST, "At least 3 numberOfEmployees objects are required.");
         }
@@ -66,7 +66,7 @@ export const unlimitedPlan = async (payload: TSubscription) => {
 
 
 export const standardPlan = async (payload: TSubscription) => {
-    if (payload.planName === "standard plan") {
+    if (payload.planName === "standard_plan") {
         if (
             payload.planPrice === undefined ||
             payload.planPrice === null ||
@@ -107,12 +107,12 @@ export const standardPlan = async (payload: TSubscription) => {
 }
 
 export const basicPlan = async (payload: TSubscription) => {
-    if (payload.planName === "basic plan") {
+    if (payload.planName === "basic_plan") {
         if (!payload.planPrice) {
             throw new AppError(httpStatus.BAD_REQUEST, "Plan price is required for basic plan.");
         }
-        if (payload.discount === "discount") {
-            throw new AppError(httpStatus.BAD_REQUEST, "Discount is required for basic plan.");
+        if (payload.discount) {
+            throw new AppError(httpStatus.BAD_REQUEST, "Discount is not applicable for basic plan");
         }
         if (payload.numberOfEmployees && payload.numberOfEmployees.length > 0) {
             throw new AppError(httpStatus.BAD_REQUEST, "numberOfEmployees is not applicable for basic plan.");

@@ -6,7 +6,7 @@ const purchasePlanSchema: Schema = new Schema<TPurchasePlan>(
     {
         userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
         subscriptionId: { type: String, required: true, unique: true },
-        planName: { type: String, enum: ["unlimited plan", "standard plan", "basic plan"], required: true },
+        planName: { type: String, enum: ["unlimited_plan", "standard_plan", "basic_plan"], required: true },
         planPrice: { type: Number, required: false },
         discount: { type: Number, required: false },
         expiryDate: { type: Number, required: false },
@@ -32,6 +32,7 @@ const purchasePlanSchema: Schema = new Schema<TPurchasePlan>(
         expiryDateTimestamp: { type: Date, default: null },
         isVisible: { type: Boolean, default: true },
 
+        unlimitedPlanIndex: { type: Number, required: false },
 
     },
     { timestamps: true }

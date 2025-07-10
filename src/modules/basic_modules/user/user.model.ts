@@ -42,6 +42,8 @@ const UserSchema = new Schema<IUser>(
     teamSize: { type: Number },
     companyWebsite: { type: String, trim: true },
     companyVision: { type: String, trim: true },
+    benefits: { type: [String], required: true },
+
     //***** employers stpe3 *******//
     facebook: { type: String, trim: true },
     twitter: { type: String, trim: true },

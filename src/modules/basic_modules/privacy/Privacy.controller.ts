@@ -1,17 +1,17 @@
-import jwt from "jsonwebtoken";
+import { Request, Response } from "express";
 import httpStatus from "http-status";
+import jwt from "jsonwebtoken";
+import sanitizeHtml from "sanitize-html";
+import { JWT_SECRET_KEY } from "../../../config";
+import AppError from "../../../errors/AppError";
+import catchAsync from "../../../utils/catchAsync";
+import sendResponse from "../../../utils/sendResponse";
+import { findUserById } from "../user/user.service";
 import {
   createPrivacyInDB,
   getAllPrivacyFromDB,
   updatePrivacyInDB,
 } from "./Privacy.service";
-import { findUserById } from "../user/user.service";
-import sanitizeHtml from "sanitize-html";
-import { Request, Response } from "express";
-import catchAsync from "../../../utils/catchAsync";
-import AppError from "../../../errors/AppError";
-import { JWT_SECRET_KEY } from "../../../config";
-import sendResponse from "../../../utils/sendResponse";
 
 
 const sanitizeOptions = {
@@ -47,7 +47,7 @@ const sanitizeOptions = {
 export const createPrivacy = catchAsync(async (req: Request, res: Response) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-     throw new AppError ( httpStatus.UNAUTHORIZED, 
+    throw new AppError(httpStatus.UNAUTHORIZED,
       "No token provided or invalid format."
     );
   }
@@ -59,23 +59,23 @@ export const createPrivacy = catchAsync(async (req: Request, res: Response) => {
   // Find the user by userId
   const user = await findUserById(userId);
   if (!user) {
-     throw new AppError ( httpStatus.NOT_FOUND, 
-       "User not found.",
+    throw new AppError(httpStatus.NOT_FOUND,
+      "User not found.",
     );
   }
 
   // Check if the user is an admin
   if (user.role !== "admin") {
-     throw new AppError ( httpStatus.FORBIDDEN, 
-     "Only admins can create terms.",
+    throw new AppError(httpStatus.FORBIDDEN,
+      "Only admins can create terms.",
     );
   }
 
   const { description } = req.body;
   const sanitizedContent = sanitizeHtml(description, sanitizeOptions);
   if (!description) {
-     throw new AppError ( httpStatus.BAD_REQUEST, 
-    "Description is required!",
+    throw new AppError(httpStatus.BAD_REQUEST,
+      "Description is required!",
     );
   }
 
@@ -103,28 +103,8 @@ export const getAllPrivacy = catchAsync(async (req: Request, res: Response) => {
 export const updatePrivacy = catchAsync(async (req: Request, res: Response) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-     throw new AppError ( httpStatus.UNAUTHORIZED, 
-       "No token provided or invalid format.",
-    );
-  }
-
-  const token = authHeader.split(" ")[1];
-  const decoded = jwt.verify(token, JWT_SECRET_KEY as string) as { id: string };
-
-  const userId = decoded.id;
-
-  // Find the user by userId
-  const user = await findUserById(userId);
-  if (!user) {
-     throw new AppError ( httpStatus.NOT_FOUND, 
-      "User not found.",
-    );
-  }
-
-  // Check if the user is an admin
-  if (user.role !== "admin") {
-     throw new AppError ( httpStatus.FORBIDDEN, 
-     "Only admins can update privacy.",
+    throw new AppError(httpStatus.UNAUTHORIZED,
+      "No token provided or invalid format.",
     );
   }
 
@@ -132,8 +112,8 @@ export const updatePrivacy = catchAsync(async (req: Request, res: Response) => {
   const { description } = req.body;
 
   if (!description) {
-     throw new AppError ( httpStatus.BAD_REQUEST, 
-     "Description is required.",
+    throw new AppError(httpStatus.BAD_REQUEST,
+      "Description is required.",
     );
   }
 
@@ -143,8 +123,8 @@ export const updatePrivacy = catchAsync(async (req: Request, res: Response) => {
   const result = await updatePrivacyInDB(sanitizedDescription);
 
   if (!result) {
-     throw new AppError ( httpStatus.INTERNAL_SERVER_ERROR, 
-       "Failed to update privacy.",
+    throw new AppError(httpStatus.INTERNAL_SERVER_ERROR,
+      "Failed to update privacy.",
     );
   }
 

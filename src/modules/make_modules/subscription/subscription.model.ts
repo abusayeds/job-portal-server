@@ -13,18 +13,18 @@ const NumberOfEmployeesSchema = new Schema(
 
 const SubscriptionSchema: Schema = new Schema<TSubscription>(
     {
-        planName: { type: String, enum: ["unlimited plan", "standard plan", "basic plan"], required: true },
+        planName: { type: String, enum: ["unlimited_plan", "standard_plan", "basic_plan"], required: true },
         planPrice: {
             type: Number, required: false,
             validate: {
                 validator: function (value) {
                     return Number.isInteger(value) && value !== 0;
                 },
-                message: 'discount must be a non-zero integer',
+                message: 'planPrice must be a non-zero integer',
             },
         },
         discount: {
-            type: String, required: false,
+            type: Number, required: false,
             validate: {
                 validator: function (value) {
                     return Number.isInteger(value) && value !== 0;
@@ -35,6 +35,7 @@ const SubscriptionSchema: Schema = new Schema<TSubscription>(
         expiryDate: { type: Number, required: false },
         jobpost: { type: Schema.Types.Mixed, required: false },
         numberOfEmployees: { type: [NumberOfEmployeesSchema], required: false },
+
         unlimited_text: { type: Boolean, required: true },
         add_logo_images: { type: Boolean, required: true },
         avg_viewed_1000: { type: Boolean, required: true },

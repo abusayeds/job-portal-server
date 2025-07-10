@@ -317,6 +317,7 @@ import catchAsync from "../../../utils/catchAsync";
 import sendResponse from "../../../utils/sendResponse";
 import { emitNotification } from "../../../utils/socket";
 
+import { JobPostModel } from "../../make_modules/job-post/jobPost.model";
 import { sendRegistationOtpEmail } from "./sendEmail";
 import { IUser } from "./user.interface";
 import { UserModel } from "./user.model";
@@ -551,7 +552,7 @@ const changePassword = catchAsync(async (req, res) => {
 const updateUser = catchAsync(async (req, res) => {
   const { decoded, }: any = await tokenDecoded(req, res)
   const userId = decoded.user._id;
-  const result = await userService.updateUserDB(req.body, req.file, userId)
+  const result = await userService.updateUserDB(req.body, userId)
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -573,12 +574,33 @@ const myProfile = catchAsync(async (req, res) => {
 });
 
 const getAllUsers = catchAsync(async (req, res) => {
-  const result = await userService.allUserDB(req.query,)
+  const { role } = req.query
+  if (!role) {
+    throw new AppError(httpStatus.BAD_REQUEST, `please provide role "employer" or "candidate" `)
+  }
+  const result = await userService.allUserDB(req.query, role as string)
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "User list retrieved successfully",
     data: result
+  });
+});
+const singleUser = catchAsync(async (req, res) => {
+  const { id } = req.params
+  const result = await UserModel.findOne({ _id: id, }).select('-password -isVerify')
+  const myJobs = await JobPostModel.find({
+    userId: id,
+    expirationDate: { $exists: true }
+  })
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Get single user retrieved successfully",
+    data: {
+      ...result?.toObject(),
+      totalJobs: myJobs.length,
+    }
   });
 });
 const IdentityVerification = catchAsync(async (req, res) => {
@@ -671,6 +693,25 @@ const userDeactive = catchAsync(async (req, res) => {
 
 
 
+const employerAccountManagement = catchAsync(async (req, res) => {
+  const employerAccManagement = await userService.employerAccountManagementDB(req.query)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Employer list  retrieved successfully",
+    data: employerAccManagement
+  });
+});
+const approveEmployer = catchAsync(async (req, res) => {
+  const employerAccManagement = await userService.approveEmployerDB(req.query)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Employer list  retrieved successfully",
+    data: employerAccManagement
+  });
+});
+
 export const userController = {
   registerUser,
   loginUser,
@@ -685,7 +726,10 @@ export const userController = {
   verifyOTP,
   IdentityVerification,
   userActive,
-  userDeactive
+  userDeactive,
+  singleUser,
+  employerAccountManagement,
+  approveEmployer
 }
 
 
