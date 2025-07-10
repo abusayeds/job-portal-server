@@ -19,7 +19,7 @@ export const subscriptionHandle = async (user: IUser | any, payload: TJobPost) =
             throw new AppError(httpStatus.BAD_REQUEST, "Expiration date cannot be in the past.");
         }
     }
-    console.log(subscription);
+
 
     if (payload.tags.length > 1 && !subscription.multi_categories) {
         throw new AppError(httpStatus.BAD_REQUEST, `You cannot give more than one tag with the ${subscription?.planName} subscription.`)

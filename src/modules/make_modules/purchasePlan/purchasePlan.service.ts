@@ -1,7 +1,14 @@
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from "http-status";
+import queryBuilder from "../../../builder/queryBuilder";
 import AppError from "../../../errors/AppError";
+import { UserModel } from '../../basic_modules/user/user.model';
+import { JobPostModel } from '../job-post/jobPost.model';
+import { TSubscription } from "../subscription/subscription.iterface";
+import { subscriptionModel } from '../subscription/subscription.model';
 import { stripe } from "./purchasePlan.controller";
+import { TPurchasePlan } from './purchasePlan.interface';
 import { purchasePlanModel } from "./purchasePlan.model";
 
 const makeAutoRenewalDB = async (userId: string, subscriptionId: string, payload: any) => {
@@ -39,11 +46,73 @@ const makeAutoRenewalDB = async (userId: string, subscriptionId: string, payload
     }
 
 
-    console.log('Subscription details:', updatedSubscription.cancel_at_period_end);
+
     return updatedSubscriptionDB;
 }
 
 
-export const autoRenewalService = {
-    makeAutoRenewalDB
+const latestInvoiceDB = async (userId: string, query: Record<string, unknown>,) => {
+    const subs_query = new queryBuilder(purchasePlanModel.find({ userId: userId }), query)
+
+    const { totalData } = await subs_query.paginate(purchasePlanModel.find({ userId: userId }))
+    const subs: any = await subs_query.modelQuery.exec()
+    const currentPage = Number(query?.page) || 1;
+    const limit = Number(query.limit) || 10;
+    const pagination = subs_query.calculatePagination({
+        totalData,
+        currentPage,
+        limit,
+    });
+
+
+    return {
+        pagination, latest_invoice: subs
+    }
+}
+
+const myPlanDB = async (userId: string) => {
+    const user = await UserModel.findById(userId).populate("purchasePlan")
+
+    const subs_palan: TPurchasePlan | null = await purchasePlanModel.findOne({ _id: user.purchasePlan._id, subscriptionId: user.purchasePlan.subscriptionId })
+
+    if (!subs_palan) {
+        throw new AppError(404, "Subscription plan not found ")
+    }
+    const jobs = (await JobPostModel.find({ subscriptionId: user.purchasePlan.subscriptionId }))
+    const remaining = Math.max(Number(subs_palan?.jobpost) - jobs.length, 0) || "Unlimited"
+
+    const expiryDate = new Date(subs_palan.expiryDateTimestamp);
+
+
+    const nextInvoiceDate = new Date(expiryDate);
+    nextInvoiceDate.setDate(expiryDate.getDate() + 1);
+
+    const nextInvoiceFormatted = nextInvoiceDate.toLocaleDateString('en-GB');
+
+    const subscription: TSubscription | null = await subscriptionModel.findOne({ planName: subs_palan?.planName })
+    if (!subscription) {
+        throw new AppError(httpStatus.NOT_FOUND, "subscription not found ")
+    }
+    const myPlan: any = {
+        myPlan: subs_palan,
+        remaining,
+        nextInvoice: {
+            _id: subscription._id,
+            planName: subscription?.planName,
+            planPrice: subscription?.planPrice || subscription?.numberOfEmployees[subs_palan?.unlimitedPlanIndex].price,
+            nextStartDate: nextInvoiceFormatted,
+            autoRenewal: subs_palan.autoRenewal
+        }
+    }
+
+
+
+
+    return myPlan
+}
+
+export const purchasePlanService = {
+    makeAutoRenewalDB,
+    latestInvoiceDB,
+    myPlanDB
 };

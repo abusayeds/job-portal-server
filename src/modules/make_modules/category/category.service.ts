@@ -5,6 +5,7 @@ import { categoryModel } from "./category.model";
 
 const createCategoryDB = async (payload: TCategory) => {
     const category = payload.catagoryType.trim();
+
     const isExist = await categoryModel.findOne({ catagoryType: category })
     if (isExist) {
         throw new AppError(httpStatus.BAD_REQUEST, "This catagory alredy exist ")

@@ -60,7 +60,30 @@ const createJob = catchAsync(async (req, res) => {
     });
 })
 
+const myJobs = catchAsync(async (req, res,) => {
+    const { decoded, }: any = await tokenDecoded(req, res)
+    const userId = decoded.user._id
+    const user: IUser | null = await UserModel.findById(userId)
+    if (!user) {
+        throw new AppError(httpStatus.NOT_FOUND, "  User not found ")
+    }
+    if (!user.isActive) {
+        throw new AppError(httpStatus.NOT_FOUND, "Your account is inactive.");
+    }
+
+    if (user.isDeleted) {
+        throw new AppError(httpStatus.NOT_FOUND, "Your account has been deleted by admin ");
+    }
+    const result = await jobService.myJobsDB(userId, req.query)
+    sendResponse(res, {
+        statusCode: httpStatus.CREATED,
+        success: true,
+        message: "My Jobs fetched successfully !",
+        data: result
+    });
+})
 
 export const jobController = {
-    createJob
+    createJob,
+    myJobs
 }

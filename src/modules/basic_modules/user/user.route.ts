@@ -16,11 +16,16 @@ router.post("/update", userController.updateUser);
 router.get("/my-profile",
   authMiddleware(role.admin, role.candidate, role.employer, role.employe),
   userController.myProfile);
+
+
 router.get("/all-user", authMiddleware(role.admin), userController.getAllUsers);
 router.post("/active/:userId", authMiddleware(role.admin), userController.userActive);
 router.post("/deactive/:userId", authMiddleware(role.admin), userController.userDeactive);
-
+router.get("/single-user/:id", authMiddleware(role.admin), userController.singleUser);
 router.post("/identity-verification", authMiddleware(role.employer), conditionalStepValidation, userController.IdentityVerification)
+
+router.get("/account-management", authMiddleware(role.admin), userController.employerAccountManagement)
+router.get("/approve-employer", authMiddleware(role.admin), userController.approveEmployer)
 
 router.get('/top-companies',)
 

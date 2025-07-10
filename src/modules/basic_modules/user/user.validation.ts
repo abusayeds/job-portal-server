@@ -52,7 +52,7 @@ const employerStep2Schema = z.object({
       industries,
       "Industry is invalid. Please select a valid option."
     ).refine(val => val.length > 0, { message: "Industry is required" }),
-    foundIn: z.string().trim().nonempty({ message: "Found in field is required" }),
+    foundIn: z.string({ required_error: "Found in field is required" }).trim().nonempty({ message: "Found in field is required" }),
     teamSize: z
       .number({ required_error: "Team size is required", invalid_type_error: "Team size must be a number" })
       .int({ message: "Team size must be an integer" }),
@@ -60,43 +60,43 @@ const employerStep2Schema = z.object({
       .url({ message: "Company Website URL must be valid" })
       .optional(),
     companyVision: z.string({ required_error: "Company vision is required" }),
+    benefits: z.array(z.string()).min(1, { message: "At least one benefit is required" })
   }),
 });
 
 const employerStep3Schema = z.object({
   body: z.object({
-    facebook: z.string()
-      .url({ message: "Facebook URL must be valid" })
-      .optional()
-      .refine(url => url ? /^https:\/\/(www\.)?facebook\.com\//.test(url) : true, {
-        message: "Facebook URL must be a valid Facebook page URL",
-      }),
-    twitter: z.string()
-      .url({ message: "Twitter URL must be valid" })
-      .optional()
-      .refine(url => url ? /^https:\/\/(www\.)?twitter\.com\//.test(url) : true, {
-        message: "Twitter URL must be a valid Twitter page URL",
-      }),
-    youtube: z.string()
-      .url({ message: "YouTube URL must be valid" })
-      .optional()
-      .refine(url => url ? /^https:\/\/(www\.)?youtube\.com\//.test(url) : true, {
-        message: "YouTube URL must be a valid YouTube page URL",
-      }),
-    instagram: z.string()
-      .url({ message: "Instagram URL must be valid" })
-      .optional()
-      .refine(url => url ? /^https:\/\/(www\.)?instagram\.com\//.test(url) : true, {
-        message: "Instagram URL must be a valid Instagram page URL",
-      }),
-    linkedin: z.string()
-      .url({ message: "LinkedIn URL must be valid" })
-      .optional()
-      .refine(url => url ? /^https:\/\/(www\.)?linkedin\.com\//.test(url) : true, {
-        message: "LinkedIn URL must be a valid LinkedIn page URL",
-      }),
-  })
+    facebook: z
+      .string()
+      .trim()
+      .url({ message: "Please enter a valid URL in the Facebook field." })
+      .optional(),
+
+    twitter: z
+      .string()
+      .trim()
+      .url({ message: "Please enter a valid URL in the Twitter field." })
+      .optional(),
+
+    youtube: z
+      .string()
+      .trim()
+      .url({ message: "Please enter a valid URL in the YouTube field." })
+      .optional(),
+
+    instagram: z
+      .string().trim()
+      .url({ message: "Please enter a valid URL in the Instagram field." })
+      .optional(),
+
+    linkedin: z
+      .string()
+      .trim()
+      .url({ message: "Please enter a valid URL in the LinkedIn field." })
+      .optional(),
+  }),
 });
+
 
 
 

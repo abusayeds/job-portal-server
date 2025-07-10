@@ -9,4 +9,6 @@ router.post("/update/:subs_id", authMiddleware(role.admin), subscriptionControll
 router.get("/", authMiddleware(role.admin, role.employer), subscriptionController.allSubscription);
 
 
-export const SubscriptionRoute = router;
+
+
+export const SubscriptionRoute = router; 
