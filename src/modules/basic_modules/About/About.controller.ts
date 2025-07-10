@@ -105,37 +105,20 @@ export const updateAbout = catchAsync(async (req: Request, res: Response) => {
 
   }
 
-  const token = authHeader.split(" ")[1];
-  const decoded = jwt.verify(token, JWT_SECRET_KEY as string) as { id: string };
-
-  const userId = decoded.id;
-
-  // Find the user by userId
-  const user = await findUserById(userId);
-  if (!user) {
-    throw new AppError(httpStatus.NOT_FOUND, 'User not found.');
-  }
-  // Check if the user is an admin
-  if (user.role !== "admin") {
-    throw new AppError(httpStatus.FORBIDDEN, 'Only admins can update terms.');
-  }
-
-  // Sanitize the description field
   const { description } = req.body;
 
   if (!description) {
     throw new AppError(httpStatus.BAD_REQUEST, 'Description is required..');
-   
+
   }
 
   const sanitizedDescription = sanitizeHtml(description, sanitizeOptions);
 
-  // Assume you're updating the terms based on the sanitized description
   const result = await updateAboutInDB(sanitizedDescription);
 
   if (!result) {
     throw new AppError(httpStatus.INTERNAL_SERVER_ERROR, 'Failed to update terms.');
-   
+
   }
 
   sendResponse(res, {

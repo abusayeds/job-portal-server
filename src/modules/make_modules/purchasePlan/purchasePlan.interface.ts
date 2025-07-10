@@ -3,7 +3,7 @@ import { Types } from "mongoose";
 export type TPurchasePlan = {
     userId: Types.ObjectId;
     subscriptionId: string
-    planName: 'unlimited plan' | 'standard plan' | 'basic plan';
+    planName: 'unlimited_plan' | 'standard_plan' | 'basic_plan';
     planPrice: number;
     discount: number;
     expiryDate: number;
@@ -30,4 +30,6 @@ export type TPurchasePlan = {
     autoRenewal: boolean;
     expiryDateTimestamp: Date;
     isVisible: boolean;
+
+    unlimitedPlanIndex: number
 };

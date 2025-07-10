@@ -29,6 +29,7 @@ export type IUser = {
   teamSize: number
   companyWebsite: string
   companyVision: string
+  benefits: string[]
 
   facebook: string
   twitter: string
@@ -47,6 +48,7 @@ export type IUser = {
   purchasePlan: Types.ObjectId
 
   step: number
+  createdAt?: string
 } & Document;
 
 export type IOTP = {

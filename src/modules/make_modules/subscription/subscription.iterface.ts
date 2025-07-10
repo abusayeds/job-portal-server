@@ -1,7 +1,10 @@
+import { Types } from "mongoose";
+
 export type TSubscription = {
-    planName: 'unlimited plan' | 'standard plan' | 'basic plan';
+    _id?: Types.ObjectId
+    planName: 'unlimited_plan' | 'standard_plan' | 'basic_plan';
     planPrice: number;
-    discount: string;
+    discount: number;
     expiryDate: number;
     jobpost: number | string;
     numberOfEmployees: Array<{
@@ -24,4 +27,6 @@ export type TSubscription = {
     no_time_limit: boolean;
 
     isVisible: boolean;
+
+    createdAt?: string
 };
