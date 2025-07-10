@@ -5,7 +5,6 @@ import AppError from "../../../errors/AppError";
 import httpStatus from "http-status";
 export const conditionalStepValidation = (req: Request, res: Response, next: NextFunction) => {
     const step = req.query.step;
-
     let schema;
     switch (step) {
         case "1":

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prod": "cross-env PORT=7000 node ./dist/server.js",
-    "dev": "cross-env PORT=7001 nodemon src/server.ts",
+    "dev": "cross-env PORT=7000 nodemon src/server.ts",
     "build": "tsc",
     "lint": "eslint src --ignore-path .eslintignore --ext .ts",
     "lint:fix": "npx eslint src --fix",

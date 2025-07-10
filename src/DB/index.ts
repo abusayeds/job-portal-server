@@ -4,7 +4,7 @@ import { UserModel } from "../modules/basic_modules/user/user.model";
 export const admin = {
   fullName: "MD Admin",
   email: "admin@gmail.com",
-  password: "1qazxsw2",
+  password: "1qazxsw21qaz",
   role: "admin",
   address: "dhaka",
   phone: "017",

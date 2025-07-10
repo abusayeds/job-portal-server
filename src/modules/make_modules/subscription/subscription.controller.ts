@@ -19,12 +19,26 @@ const updateSubscription = catchAsync(async (req, res) => {
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
         success: true,
-        message: "Subscription created.",
+        message: "Subscription updated successfully",
         data: subscription
     });
 });
 const allSubscription = catchAsync(async (req, res) => {
     const subscription = await subscriptionModel.aggregate([
+        {
+            $addFields: {
+                sortOrder: {
+                    $switch: {
+                        branches: [
+                            { case: { $eq: ["$planName", "basic_plan"] }, then: 1 },
+                            { case: { $eq: ["$planName", "standard_plan"] }, then: 2 },
+                            { case: { $eq: ["$planName", "unlimited_plan"] }, then: 3 }
+                        ],
+                        default: 99
+                    }
+                }
+            }
+        },
         {
             $project: {
                 _id: 1,
@@ -32,6 +46,7 @@ const allSubscription = catchAsync(async (req, res) => {
                 planPrice: 1,
                 expiryDate: 1,
                 jobpost: 1,
+                discount: 1,
                 unlimited_text: 1,
                 add_logo_images: 1,
                 avg_viewed_1000: 1,
@@ -39,7 +54,7 @@ const allSubscription = catchAsync(async (req, res) => {
                 isVisible: 1,
                 numberOfEmployees: {
                     $cond: {
-                        if: { $or: [{ $eq: ["$planName", "basic plan"] }, { $eq: ["$planName", "standard plan"] }] },
+                        if: { $or: [{ $eq: ["$planName", "basic_plan"] }, { $eq: ["$planName", "standard_plan"] }] },
                         then: "$$REMOVE",
                         else: "$numberOfEmployees"
                     }
@@ -53,9 +68,12 @@ const allSubscription = catchAsync(async (req, res) => {
                 cost_effective: 1,
                 no_time_limit: 1,
                 updatedAt: 1,
+                sortOrder: 1
             }
-        }
+        },
+        { $sort: { sortOrder: 1 } }
     ]);
+
 
     sendResponse(res, {
         statusCode: httpStatus.CREATED,

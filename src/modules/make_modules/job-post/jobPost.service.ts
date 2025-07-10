@@ -1,4 +1,5 @@
 import httpStatus from "http-status";
+import queryBuilder from "../../../builder/queryBuilder";
 import AppError from "../../../errors/AppError";
 import { TPurchasePlan } from "../purchasePlan/purchasePlan.interface";
 import { purchasePlanModel } from "../purchasePlan/purchasePlan.model";
@@ -8,19 +9,15 @@ import { JobPostModel } from "./jobPost.model";
 const crateJobDB = async (userId: string, subscriptionId: string, palan: string, payload: TJobPost) => {
 
 
-
     const subs_palan: TPurchasePlan | null = await purchasePlanModel.findOne({ _id: palan, subscriptionId: subscriptionId });
     const jobs = await JobPostModel.find({ subscriptionId: subscriptionId })
 
-
-
-    if (subs_palan && jobs.length > 0 && subs_palan.planName !== "unlimited plan") {
+    if (subs_palan && jobs.length > 0 && subs_palan.planName !== "unlimited_plan") {
         const jobpostCount = Number(subs_palan.jobpost);
         if (jobpostCount <= jobs.length) {
             throw new AppError(httpStatus.BAD_REQUEST, "This subscription limit has ended.");
         }
     }
-
 
     if (!subs_palan) {
         throw new AppError(httpStatus.NOT_FOUND, "Subscription not found ! ")
@@ -42,7 +39,31 @@ const crateJobDB = async (userId: string, subscriptionId: string, palan: string,
     return result
 
 }
+const myJobsDB = async (userId: string, query: Record<string, unknown>) => {
+    const myJobsQuery = new queryBuilder(JobPostModel.find({ userId, expirationDate: { $exists: true } }), query).sort()
+    const { totalData } = await myJobsQuery.paginate(JobPostModel.find({ userId, expirationDate: { $exists: true } }))
+    const jobs = await myJobsQuery.modelQuery.exec()
+    const currentPage = Number(query?.page) || 1;
+    const limit = Number(query.limit) || 10;
+    const pagination = myJobsQuery.calculatePagination({
+        totalData,
+        currentPage,
+        limit,
+    });
+
+    const myJobs = jobs.map((job: TJobPost) => {
+        return {
+            jobTitle: job?.jobTitle,
+            jobType: job?.jobType,
+            expirationDate: job?.expirationDate,
+            allApplication: 0
+        }
+    })
+    return { pagination, myJobs }
+}
+
 
 export const jobService = {
-    crateJobDB
+    crateJobDB,
+    myJobsDB
 }

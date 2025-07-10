@@ -1,18 +1,15 @@
-import jwt from "jsonwebtoken";
 import httpStatus from "http-status";
 
+import { Request, Response } from "express";
+import sanitizeHtml from "sanitize-html";
+import AppError from "../../../errors/AppError";
+import catchAsync from "../../../utils/catchAsync";
+import sendResponse from "../../../utils/sendResponse";
 import {
   createTermsInDB,
   getAllTermsFromDB,
   updateTermsInDB,
 } from "./Terms.service";
-import { findUserById } from "../user/user.service";
-import sanitizeHtml from "sanitize-html";
-import { Request, Response } from "express";
-import catchAsync from "../../../utils/catchAsync";
-import AppError from "../../../errors/AppError";
-import { JWT_SECRET_KEY } from "../../../config";
-import sendResponse from "../../../utils/sendResponse";
 
 const sanitizeOptions = {
   allowedTags: [
@@ -52,25 +49,6 @@ export const createTerms = catchAsync(async (req: Request, res: Response) => {
     );
   }
 
-  const token = authHeader.split(" ")[1];
-  const decoded = jwt.verify(token, JWT_SECRET_KEY as string) as { id: string };
-  const userId = decoded.id; // Assuming the token contains the userId
-
-  // Find the user by userId
-  const user = await findUserById(userId);
-  if (!user) {
-    throw new AppError(httpStatus.NOT_FOUND,
-      "User not found.",
-    );
-  }
-
-  // Check if the user is an admin
-  if (user.role !== "admin") {
-    throw new AppError(httpStatus.FORBIDDEN,
-      "Only admins can create terms.",
-    );
-  }
-
   const { description } = req.body;
   const sanitizedContent = sanitizeHtml(description, sanitizeOptions);
   if (!description) {
@@ -105,26 +83,6 @@ export const updateTerms = catchAsync(async (req: Request, res: Response) => {
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     throw new AppError(httpStatus.UNAUTHORIZED,
       "No token provided or invalid format.",
-    );
-  }
-
-  const token = authHeader.split(" ")[1];
-  const decoded = jwt.verify(token, JWT_SECRET_KEY as string) as { id: string };
-
-  const userId = decoded.id;
-
-  // Find the user by userId
-  const user = await findUserById(userId);
-  if (!user) {
-    throw new AppError(httpStatus.NOT_FOUND,
-      "User not found.",
-    );
-  }
-
-  // Check if the user is an admin
-  if (user.role !== "admin") {
-    throw new AppError(httpStatus.FORBIDDEN,
-      "Only admins can update terms.",
     );
   }
 
