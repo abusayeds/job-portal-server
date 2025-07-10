@@ -683,3 +683,4 @@
 {"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[34m304\u001b[39m \u001b[35m/api/v1/user/all-user?role=employer\u001b[39m \u001b[93m161 ms\u001b[39m","size":0,"timestamp":"2025-07-09 23:03:40"}
 {"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[34m304\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m160 ms\u001b[39m","size":0,"timestamp":"2025-07-09 23:03:43"}
 {"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[31m404\u001b[39m \u001b[35m/images/1976dc6b-de5e-4834-abee-efb1eb841b62.jpg\u001b[39m \u001b[93m2 ms\u001b[39m","size":"1566","timestamp":"2025-07-09 23:03:43"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[31m404\u001b[39m \u001b[35m/images/1976dc6b-de5e-4834-abee-efb1eb841b62.jpg\u001b[39m \u001b[93m2 ms\u001b[39m","size":"1566","timestamp":"2025-07-09 23:34:39"}
