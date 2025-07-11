@@ -2,22 +2,22 @@ import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
 import AppError from "../../../errors/AppError";
 import zodValidation from "../../../middlewares/zodValidationHandler";
-import { userValidation } from "./user.validation";
-export const conditionalStepValidation = (req: Request, res: Response, next: NextFunction) => {
+import { candidateValidation } from "./candidate.validation";
+export const candidateStepValidation = (req: Request, res: Response, next: NextFunction) => {
     const step = req.query.step;
     let schema;
     switch (step) {
         case "1":
-            schema = userValidation.employerStep1Schema;
+            schema = candidateValidation.candidateStep1validation
             break;
         case "2":
-            schema = userValidation.employerStep2Schema;
+            schema = candidateValidation.candidateStep2validation;
             break;
         case "3":
-            schema = userValidation.employerStep3Schema;
+            schema = candidateValidation.candidateStep3validation
             break;
         case "4":
-            schema = userValidation.employerStep4Schema;
+            schema = candidateValidation.candidateStep4validation;
             break;
         default:
             throw new AppError(httpStatus.BAD_REQUEST, "Invalid or missing step parameter")

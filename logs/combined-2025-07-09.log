@@ -684,3 +684,48 @@
 {"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[34m304\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m160 ms\u001b[39m","size":0,"timestamp":"2025-07-09 23:03:43"}
 {"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[31m404\u001b[39m \u001b[35m/images/1976dc6b-de5e-4834-abee-efb1eb841b62.jpg\u001b[39m \u001b[93m2 ms\u001b[39m","size":"1566","timestamp":"2025-07-09 23:03:43"}
 {"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[31m404\u001b[39m \u001b[35m/images/1976dc6b-de5e-4834-abee-efb1eb841b62.jpg\u001b[39m \u001b[93m2 ms\u001b[39m","size":"1566","timestamp":"2025-07-09 23:34:39"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/deactive/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m188 ms\u001b[39m","size":"80","timestamp":"2025-07-09 23:46:27"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m162 ms\u001b[39m","size":"1053","timestamp":"2025-07-09 23:46:28"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/active/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m161 ms\u001b[39m","size":"78","timestamp":"2025-07-09 23:46:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m158 ms\u001b[39m","size":"1051","timestamp":"2025-07-09 23:46:34"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/deactive/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m163 ms\u001b[39m","size":"80","timestamp":"2025-07-09 23:46:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m158 ms\u001b[39m","size":"1053","timestamp":"2025-07-09 23:46:35"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/active/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m163 ms\u001b[39m","size":"78","timestamp":"2025-07-09 23:47:42"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m159 ms\u001b[39m","size":"1051","timestamp":"2025-07-09 23:47:42"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/deactive/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m162 ms\u001b[39m","size":"80","timestamp":"2025-07-09 23:47:57"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m160 ms\u001b[39m","size":"1053","timestamp":"2025-07-09 23:47:58"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/active/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m173 ms\u001b[39m","size":"78","timestamp":"2025-07-09 23:50:01"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m162 ms\u001b[39m","size":"1051","timestamp":"2025-07-09 23:50:01"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/deactive/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m167 ms\u001b[39m","size":"80","timestamp":"2025-07-09 23:50:18"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m161 ms\u001b[39m","size":"1053","timestamp":"2025-07-09 23:50:18"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/active/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m163 ms\u001b[39m","size":"78","timestamp":"2025-07-09 23:50:52"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m158 ms\u001b[39m","size":"1051","timestamp":"2025-07-09 23:50:53"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/deactive/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m161 ms\u001b[39m","size":"80","timestamp":"2025-07-09 23:50:54"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m159 ms\u001b[39m","size":"1053","timestamp":"2025-07-09 23:50:54"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[34m304\u001b[39m \u001b[35m/api/v1/user/all-user?role=candidate\u001b[39m \u001b[93m157 ms\u001b[39m","size":0,"timestamp":"2025-07-09 23:51:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/all-user?role=employer\u001b[39m \u001b[93m159 ms\u001b[39m","size":"834","timestamp":"2025-07-09 23:51:40"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[31m404\u001b[39m \u001b[35m/images/1976dc6b-de5e-4834-abee-efb1eb841b62.jpg\u001b[39m \u001b[93m1 ms\u001b[39m","size":"1566","timestamp":"2025-07-09 23:51:42"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/active/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m171 ms\u001b[39m","size":"78","timestamp":"2025-07-09 23:53:46"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m155 ms\u001b[39m","size":"1051","timestamp":"2025-07-09 23:53:47"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/deactive/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m161 ms\u001b[39m","size":"80","timestamp":"2025-07-09 23:55:46"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m160 ms\u001b[39m","size":"1053","timestamp":"2025-07-09 23:55:47"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[31m400\u001b[39m \u001b[35m/api/v1/user/deactive/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m82 ms\u001b[39m","size":"528","timestamp":"2025-07-09 23:55:47"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[34m304\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m159 ms\u001b[39m","size":0,"timestamp":"2025-07-09 23:55:47"}
+{"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/active/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m172 ms\u001b[39m","size":"78","timestamp":"2025-07-09 23:55:49"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/api/v1/user/single-user/686d02ba0e898ec8b82034c8\u001b[39m \u001b[93m161 ms\u001b[39m","size":"1051","timestamp":"2025-07-09 23:55:50"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-09 23:56:28"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m3 ms\u001b[39m","size":"109","timestamp":"2025-07-09 23:56:28"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-09 23:56:58"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-09 23:56:58"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-09 23:57:28"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-09 23:57:28"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-09 23:57:58"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-09 23:57:58"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-09 23:58:28"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-09 23:58:28"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-09 23:58:58"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-09 23:58:58"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-09 23:59:28"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-09 23:59:28"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-09 23:59:58"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-09 23:59:58"}

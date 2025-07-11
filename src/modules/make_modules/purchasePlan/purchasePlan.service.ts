@@ -79,7 +79,6 @@ const myPlanDB = async (userId: string) => {
         throw new AppError(404, "Subscription plan not found ")
     }
     const jobs = (await JobPostModel.find({ subscriptionId: user.purchasePlan.subscriptionId }))
-    const remaining = Math.max(Number(subs_palan?.jobpost) - jobs.length, 0) || "Unlimited"
 
     const expiryDate = new Date(subs_palan.expiryDateTimestamp);
 
@@ -93,6 +92,10 @@ const myPlanDB = async (userId: string) => {
     if (!subscription) {
         throw new AppError(httpStatus.NOT_FOUND, "subscription not found ")
     }
+    // const remaining = Math.max(Number(subs_palan?.jobpost) - jobs.length) || "Unlimited"
+    const remaining = `${subs_palan?.planName !== "unlimited_plan" ? Math.max(Number(subs_palan?.jobpost) - jobs.length) : "Unlimited"}`
+    console.log(subs_palan?.planName);
+
     const myPlan: any = {
         myPlan: subs_palan,
         remaining,
