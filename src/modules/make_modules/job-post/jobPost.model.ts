@@ -103,17 +103,11 @@ const jobPostSchema = new Schema<TJobPost>(
             }
         },
         scheduleDate: {
-            type: Date, required: false, validate: {
-                validator: function (value: string) {
-                    const inputDate = new Date(value);
-                    const now = new Date();
-                    inputDate.setHours(0, 0, 0, 0);
-                    now.setHours(0, 0, 0, 0);
-                    return inputDate > now;
-                },
-                message: 'expirationDate must be a future date.'
-            }
+            type: Date,
+            required: false,
+            default: () => new Date(),
         },
+
         jobLavel: {
             type: String,
             trim: true,
@@ -123,9 +117,8 @@ const jobPostSchema = new Schema<TJobPost>(
         jobBenefits: {
             type: [String],
             required: true,
-            validate: [(arr: string[]) => arr.length >= 1, 'At least one job benefit is required.']
         },
-        discription: { type: String, required: true, minlength: 1 },
+        description: { type: String, required: true, minlength: 1 },
         responsibilities: { type: String, required: true, minlength: 1 },
     },
 

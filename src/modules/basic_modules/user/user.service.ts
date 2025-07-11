@@ -11,6 +11,7 @@ import AppError from "../../../errors/AppError";
 import { forgotOtpEmail, resendOtpEmail, sendRegistationOtpEmail } from "./sendEmail";
 import { IUser, } from "./user.interface";
 import { OTPModel, UserModel } from "./user.model";
+import { candidateModel } from "../candidate/candidate.model";
 export const generateToken = (payload: any): string => {
   return jwt.sign(payload, JWT_SECRET_KEY as string, { expiresIn: "7d" });
 };
@@ -52,6 +53,7 @@ const createUserDB = async (payload: IUser) => {
   }
   if (role === "candidate") {
     await UserModel.create({ ...payload, isApprove: true });
+    await candidateModel.create(payload)
   } else {
     await UserModel.create(payload);
   }
@@ -259,7 +261,10 @@ const updateUserDB = async (payload: IUser, userId: string) => {
 const myProfileDB = async (userId: string) => {
   const user: IUser | null = await UserModel.findById(userId)
     .select("-password -createdAt -updatedAt -__v -isDeleted")
-    .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" });
+    .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" }).populate({
+      path: "candidateInfo",
+      select: "title parsonalWebsite image experience cv educations  maritalStatus gender dateOfBrith biography  nationality  address facebook twitter instagram youtube linkedin  phone jobLevel jobType contactEmail  "
+    });
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, "user not found ")
   }

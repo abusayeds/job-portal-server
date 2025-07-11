@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import { TCandidate } from "./candidate.interface";
 
 const candidateSchema = new Schema<TCandidate>({
+    email: { type: String, required: false },
     image: { type: String, required: false },
     title: { type: String, required: false },
     experience: {
@@ -23,7 +24,6 @@ const candidateSchema = new Schema<TCandidate>({
         ],
         required: true,
         trim: true,
-        validate: [(arr: string[]) => arr.length >= 1, 'At least one education is required.'],
     },
     parsonalWebsite: { type: String, required: false },
     cv: { type: [String], required: false },
@@ -43,8 +43,29 @@ const candidateSchema = new Schema<TCandidate>({
     address: { type: String, required: false },
     phone: { type: String, required: false },
     contactEmail: { type: String, required: false },
-    jobType: { type: String, required: false },
-    jobLevel: { type: String, required: false }
+    jobType: {
+        type: [String],
+        enum: [
+            'All',
+            'Full-Time',
+            'Part-Time',
+            'Internship',
+            'Contract',
+            'Soft-Skill',
+            'Freelance',
+            'Vocational',
+            'Apprenticeship',
+            'Remote',
+        ],
+        trim: true,
+        required: false,
+    },
+    jobLevel: {
+        type: [String],
+        trim: true,
+        enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],
+        required: true,
+    },
 });
 
 
