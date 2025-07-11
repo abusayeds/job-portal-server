@@ -21,8 +21,8 @@ const createJob = catchAsync(async (req, res) => {
     if (!user) {
         throw new AppError(httpStatus.NOT_FOUND, "User not Found ")
     }
-    if (!user.isApprove) {
-        throw new AppError(httpStatus.UNAUTHORIZED, "Please wait for admin approval ")
+    if (!user.isActive) {
+        throw new AppError(httpStatus.UNAUTHORIZED, "The admin has blocked you.")
     }
     if (!user.purchasePlan) {
         throw new AppError(httpStatus.FORBIDDEN, "Please purchase subscription plan  ")

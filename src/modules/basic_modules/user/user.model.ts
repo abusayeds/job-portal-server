@@ -43,7 +43,7 @@ const UserSchema = new Schema<IUser>(
     teamSize: { type: Number },
     companyWebsite: { type: String, trim: true },
     companyVision: { type: String, trim: true },
-    benefits: { type: [String], trim: true, validate: [(arr: string[]) => arr.length >= 4, 'At least one benefits is required.'] },
+    benefits: { type: [String], trim: true, },
 
     //***** employers stpe3 *******//
     facebook: { type: String, trim: true },

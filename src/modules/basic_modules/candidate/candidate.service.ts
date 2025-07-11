@@ -3,9 +3,11 @@ import AppError from "../../../errors/AppError";
 import { TCandidate } from "./candidate.interface";
 import { candidateModel } from "./candidate.model";
 
-const candidateIdentityVerificationDB = async (id: string, payload: TCandidate, step: string) => {
+const candidateIdentityVerificationDB = async (email: string, payload: TCandidate, step: string) => {
+    console.log(payload);
+
     if (payload.image && !payload.image.startsWith('/images/')) {
-        throw new AppError(httpStatus.BAD_REQUEST, "Invalid logo path");
+        throw new AppError(httpStatus.BAD_REQUEST, "Invalid image path");
     }
     if (payload.cv && Array.isArray(payload.cv)) {
         payload.cv.forEach((cvItem) => {
@@ -21,7 +23,9 @@ const candidateIdentityVerificationDB = async (id: string, payload: TCandidate, 
         case '2':
         case '3':
         case '4':
-            result = await candidateModel.findByIdAndUpdate(id, { ...payload }, { new: true });
+            result = await candidateModel.findOneAndUpdate({ email: email }, { $set: { ...payload } }, { new: true });
+            console.log(result);
+
             break;
         default:
             throw new AppError(httpStatus.BAD_REQUEST, "Invalid step");

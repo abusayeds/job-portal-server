@@ -63,7 +63,7 @@ const adminEarningDB = async (year: any) => {
 const earningListDB = async (query: Record<string, unknown>) => {
     const earningQuery = new queryBuilder(adminEarningModel.find().populate({
         path: "userId",
-        select: ' fullName email , address'
+        select: ' fullName email  address companyName'
     }).populate({
         path: "subscriptionId",
         select: " planName planPrice"
@@ -83,6 +83,7 @@ const earningListDB = async (query: Record<string, unknown>) => {
         return {
             _id: earning?._id,
             fullName: earning?.userId?.fullName,
+            company: earning?.userId?.companyName,
             email: earning?.userId?.email,
             planName: earning?.subscriptionId?.planName,
             planPrice: earning?.subscriptionId?.planPrice,
@@ -113,6 +114,8 @@ const showEarningDB = async () => {
     };
     return earning
 }
+
+
 export const adminEarningService = {
     adminEarningDB,
     earningListDB,

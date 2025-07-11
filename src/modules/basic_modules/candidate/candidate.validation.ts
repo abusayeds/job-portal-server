@@ -60,7 +60,8 @@ const candidateStep4validation = z.object({
             .string({ required_error: "Contact email is required" })
             .trim()
             .email({ message: "Contact email must be valid" }),
-        biography: z.string({ required_error: "Biography is required" }),
+        jobType: z.array(z.string()).min(1, { message: "At least one job Type is required" }),
+        jobLevel: z.array(z.string()).min(1, { message: "At least one job Level is required" }),
     }),
 });
 

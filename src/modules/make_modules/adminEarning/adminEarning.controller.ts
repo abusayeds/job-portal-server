@@ -31,8 +31,10 @@ const showEarning = catchAsync(async (req, res) => {
         data: result
     });
 })
+
 export const adminEarningController = {
     adminEarning,
     earningList,
-    showEarning
+    showEarning,
+
 }

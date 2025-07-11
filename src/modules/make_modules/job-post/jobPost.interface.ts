@@ -19,6 +19,6 @@ export type TJobPost = {
     scheduleDate: Date
     expirationDate: Date
     jobLavel: "Entry Level" | "Mid Level" | "Expert Level"
-    discription: string
+    description: string
     responsibilities: string
 }

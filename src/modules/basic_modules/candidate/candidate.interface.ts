@@ -1,6 +1,7 @@
 export type TCandidate = {
     // step 1
     image: string
+    email: string
     title: string
     experience: "Freshers" | "1-2" | "2-4" | "4-6" | "8-10" | "10-15" | "15 +"
     educations: {
@@ -34,6 +35,6 @@ export type TCandidate = {
     address: string
     phone: string
     contactEmail: string
-    jobType: string
-    jobLevel: string
+    jobType: string[]
+    jobLevel: string[]
 }
