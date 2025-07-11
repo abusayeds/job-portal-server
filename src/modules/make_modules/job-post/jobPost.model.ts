@@ -11,8 +11,8 @@ const jobPostSchema = new Schema<TJobPost>(
         palan: { type: Schema.Types.ObjectId, required: true, ref: 'PurchasePlanModel' },
         logo: { type: String, required: true },
         banner: { type: String, required: true },
-        jobTitle: { type: String, required: true },
-        tags: { type: [String], required: true },
+        jobTitle: { type: String, required: true, minlength: 1 },
+        tags: { type: [String], required: true, validate: [(arr: string[]) => arr.length >= 1, 'At least one tag is required.'] },
         minSalary: {
             type: Number,
             required: true,
@@ -35,7 +35,12 @@ const jobPostSchema = new Schema<TJobPost>(
                 message: 'maxSalary must be a valid number with up to two decimal places.'
             }
         },
-        salaryType: { type: String, required: true, trim: true, },
+        currency: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        salaryType: { type: String, required: true, trim: true, minlength: 1 },
         experience: {
             type: String,
             enum: [
@@ -67,8 +72,8 @@ const jobPostSchema = new Schema<TJobPost>(
             trim: true,
             required: true,
         },
-        education: {
-            type: String,
+        educations: {
+            type: [String],
             enum: [
                 'All',
                 'High-School',
@@ -79,8 +84,9 @@ const jobPostSchema = new Schema<TJobPost>(
                 'Master-Degree',
                 'Phd',
             ],
-            trim: true,
             required: true,
+            trim: true,
+            validate: [(arr: string[]) => arr.length >= 1, 'At least one education is required.'],
         },
         expirationDate: {
             type: Date,
@@ -111,11 +117,16 @@ const jobPostSchema = new Schema<TJobPost>(
         jobLavel: {
             type: String,
             trim: true,
-            enum: ['Entry Level', 'Mid Level', 'Expert Level'],
+            enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],
             required: true,
         },
-        discription: { type: String, required: true },
-        responsibilities: { type: String, required: true },
+        jobBenefits: {
+            type: [String],
+            required: true,
+            validate: [(arr: string[]) => arr.length >= 1, 'At least one job benefit is required.']
+        },
+        discription: { type: String, required: true, minlength: 1 },
+        responsibilities: { type: String, required: true, minlength: 1 },
     },
 
     {

@@ -3,6 +3,8 @@ import { authMiddleware } from "../../../middlewares/auth";
 import { role } from "../../../utils/role";
 import { conditionalStepValidation } from "./constant";
 import { userController, } from "./user.controller";
+import { candidateIdentityVerificationController } from "../candidate/candidate.controller";
+import { candidateStepValidation } from "../candidate/candidate.constant";
 const router = express.Router();
 router.post("/register", userController.registerUser,);
 router.post("/verify-otp", userController.verifyOTP);
@@ -23,6 +25,7 @@ router.post("/active/:userId", authMiddleware(role.admin), userController.userAc
 router.post("/deactive/:userId", authMiddleware(role.admin), userController.userDeactive);
 router.get("/single-user/:id", authMiddleware(role.admin), userController.singleUser);
 router.post("/identity-verification", authMiddleware(role.employer), conditionalStepValidation, userController.IdentityVerification)
+router.post("/employer-identity-verification", authMiddleware(role.candidate), candidateStepValidation, candidateIdentityVerificationController.candidateIdentityVerification)
 
 router.get("/account-management", authMiddleware(role.admin), userController.employerAccountManagement)
 router.get("/approve-employer", authMiddleware(role.admin), userController.approveEmployer)

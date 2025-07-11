@@ -2,20 +2,28 @@ import mongoose, { Schema } from "mongoose";
 import { TCandidate } from "./candidate.interface";
 
 const candidateSchema = new Schema<TCandidate>({
-    profileImage: { type: String, required: false },
+    image: { type: String, required: false },
     title: { type: String, required: false },
     experience: {
         type: String,
-        enum: ["Freshers", "1 - 2", "2 - 4", "4 - 6", "8 - 10", "10 - 15", "15 +"],
+        enum: ["Freshers", "1-2", "2-4", "4-6", "8-10", "10-15", "15 +"],
         required: false
     },
     educations: {
-        type: String,
+        type: [String],
         enum: [
-            "All", "High-School", "Intermediate", "Graduation", "Associate-Degree",
-            "Bachelor-Degree", "Master-Degree", "Phd"
+            'All',
+            'High-School',
+            'Intermediate',
+            'Graduation',
+            'Associate-Degree',
+            'Bachelor-Degree',
+            'Master-Degree',
+            'Phd',
         ],
-        required: false
+        required: true,
+        trim: true,
+        validate: [(arr: string[]) => arr.length >= 1, 'At least one education is required.'],
     },
     parsonalWebsite: { type: String, required: false },
     cv: { type: [String], required: false },
@@ -25,6 +33,12 @@ const candidateSchema = new Schema<TCandidate>({
     gender: { type: String, required: false },
     maritalStatus: { type: String, required: false },
     biography: { type: String, required: false },
+    // step 3
+    facebook: { type: String, trim: true },
+    twitter: { type: String, trim: true },
+    youtube: { type: String, trim: true },
+    instagram: { type: String, trim: true },
+    linkedin: { type: String, trim: true },
     // Step 3     
     address: { type: String, required: false },
     phone: { type: String, required: false },

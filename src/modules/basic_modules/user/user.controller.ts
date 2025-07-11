@@ -318,6 +318,7 @@ import sendResponse from "../../../utils/sendResponse";
 import { emitNotification } from "../../../utils/socket";
 
 import { JobPostModel } from "../../make_modules/job-post/jobPost.model";
+import { conditionalStepValidation } from "./constant";
 import { sendRegistationOtpEmail } from "./sendEmail";
 import { IUser } from "./user.interface";
 import { UserModel } from "./user.model";
@@ -565,11 +566,18 @@ const myProfile = catchAsync(async (req, res) => {
   const { decoded, }: any = await tokenDecoded(req, res)
   const userId = decoded.user._id;
   const result = await userService.myProfileDB(userId)
+  const myJobs = await JobPostModel.find({
+    userId: userId,
+    expirationDate: { $exists: true }
+  })
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "profile information retrieved successfully",
-    data: result,
+    data: {
+      ...result?.toObject(),
+      totalJobs: myJobs.length,
+    }
   });
 });
 
@@ -607,6 +615,7 @@ const IdentityVerification = catchAsync(async (req, res) => {
   const { decoded, }: any = await tokenDecoded(req, res)
   const userId = decoded.user._id;
   const user = await UserModel.findById(userId)
+
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, " user not found ")
   }
@@ -615,6 +624,8 @@ const IdentityVerification = catchAsync(async (req, res) => {
     throw new AppError(httpStatus.BAD_REQUEST, "Please provide the 'step' query parameter for identity verification.");
   }
 
+
+  conditionalStepValidation
   const result: IUser = await userService.IdentityVerificationDB(userId, req.body, step as string)
   if (!result.isCompleted) {
     await UserModel.findByIdAndUpdate(userId, { step: step }, { new: true })

@@ -71,7 +71,6 @@ const employerStep3Schema = z.object({
       .trim()
       .url({ message: "Please enter a valid URL in the Facebook field." })
       .optional(),
-
     twitter: z
       .string()
       .trim()

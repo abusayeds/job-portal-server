@@ -13,6 +13,7 @@ const UserSchema = new Schema<IUser>(
       set: (v: string) => bcrypt.hashSync(v, bcrypt.genSaltSync(12)),
       select: false,
     },
+    candidateInfo: { type: Schema.Types.ObjectId, ref: "Candidate", required: false },
     image: {
       type: String,
       required: false,
@@ -42,7 +43,7 @@ const UserSchema = new Schema<IUser>(
     teamSize: { type: Number },
     companyWebsite: { type: String, trim: true },
     companyVision: { type: String, trim: true },
-    benefits: { type: [String], required: true },
+    benefits: { type: [String], trim: true, validate: [(arr: string[]) => arr.length >= 4, 'At least one benefits is required.'] },
 
     //***** employers stpe3 *******//
     facebook: { type: String, trim: true },

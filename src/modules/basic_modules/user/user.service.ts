@@ -243,7 +243,6 @@ const changePasswordDB = async (payload: any, email: string) => {
 const updateUserDB = async (payload: IUser, userId: string) => {
 
   const user = await UserModel.findById(userId);
-  console.log(user);
 
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND,
@@ -262,11 +261,17 @@ const myProfileDB = async (userId: string) => {
     .select("-password -createdAt -updatedAt -__v -isDeleted")
     .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" });
   if (!user) {
+    throw new AppError(httpStatus.NOT_FOUND, "user not found ")
+  }
+
+  if (!user) {
     throw new AppError(httpStatus.NOT_FOUND,
       "User not found.",
     );
   }
+
   return user
+
 }
 const allUserDB = async (query: Record<string, unknown>, role: string) => {
   const userQuery = new queryBuilder(UserModel.find({ role: role, }).select('-password -isVerify'), query).fields().filter().sort()
@@ -351,7 +356,9 @@ const employerAccountManagementDB = async (query: Record<string, unknown>) => {
       role: acc?.role,
       address: acc?.address,
       isApprove: acc?.isApprove,
+      foundIn: acc?.foundIn,
       createdAt: acc?.createdAt,
+
     }
   })
   return {
@@ -380,7 +387,7 @@ const approveEmployerDB = async (query: Record<string, unknown>) => {
       role: acc?.role,
       isApprove: acc?.isApprove,
       createdAt: acc?.createdAt,
-
+      foundIn: acc?.foundIn,
     }
   })
   return {

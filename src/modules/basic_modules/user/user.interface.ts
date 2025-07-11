@@ -13,6 +13,7 @@ export type IUser = {
   email: string;
   password: string;
   confirmPassword: string;
+  candidateInfo: Types.ObjectId
   image: {
     publicFileURL: string;
     path: string;
@@ -29,7 +30,7 @@ export type IUser = {
   teamSize: number
   companyWebsite: string
   companyVision: string
-  benefits: string[]
+  benefits?: string[]
 
   facebook: string
   twitter: string
