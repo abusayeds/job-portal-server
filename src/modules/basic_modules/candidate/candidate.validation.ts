@@ -1,13 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { z } from "zod";
 
 const candidateStep1validation = z.object({
     body: z.object({
-        image: z.string({ required_error: "Profile image is required" }),
+        logo: z.string({ required_error: "Profile image is required" }),
         title: z.string({ required_error: "Title is required" }),
         experience: z.enum(["Freshers", "1-2", "2-4", "4-6", "8-10", "10-15", "15+"], { required_error: "Experience is required" }),
         educations: z.array(z.string()).min(1, { message: "At least one benefit is required" }),
         parsonalWebsite: z.string().optional(),
-        cv: z.array(z.string(), { required_error: "CV is required" }),
     }),
 });
 const candidateStep2validation = z.object({
@@ -60,10 +60,44 @@ const candidateStep4validation = z.object({
             .string({ required_error: "Contact email is required" })
             .trim()
             .email({ message: "Contact email must be valid" }),
-        jobType: z.array(z.string()).min(1, { message: "At least one job Type is required" }),
-        jobLevel: z.array(z.string()).min(1, { message: "At least one job Level is required" }),
+
+    })
+});
+
+
+const candidateJobAlertValidation = z.object({
+    body: z.object({
+        jobType: z
+            .array(z.string())
+            .optional()
+            .refine((arr: any) => arr.every((item: any) => [
+                'All',
+                'Full-Time',
+                'Part-Time',
+                'Internship',
+                'Contract',
+                'Soft-Skill',
+                'Freelance',
+                'Vocational',
+                'Apprenticeship',
+                'Remote'
+            ].includes(item)), {
+                message: "Invalid job type. Must be one of 'All', 'Full-Time', 'Part-Time', 'Internship', 'Contract', 'Soft-Skill', 'Freelance', 'Vocational', 'Apprenticeship', 'Remote'.",
+            }),
+
+        jobLevel: z
+            .array(z.string())
+            .optional()
+            .refine((arr: any) => arr.every((item: any) => [
+                'Entry-Level',
+                'Mid-Level',
+                'Expert-Level'
+            ].includes(item)), {
+                message: "Invalid job level. Must be one of 'Entry-Level', 'Mid-Level', 'Expert-Level'.",
+            }),
     }),
 });
+
 
 
 
@@ -72,5 +106,6 @@ export const candidateValidation = {
     candidateStep1validation,
     candidateStep2validation,
     candidateStep4validation,
-    candidateStep3validation
+    candidateStep3validation,
+    candidateJobAlertValidation
 };

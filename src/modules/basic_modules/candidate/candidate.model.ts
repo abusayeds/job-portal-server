@@ -1,9 +1,12 @@
 import mongoose, { Schema } from "mongoose";
 import { TCandidate } from "./candidate.interface";
-
+const cvItemSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    file: { type: String, required: true }
+});
 const candidateSchema = new Schema<TCandidate>({
     email: { type: String, required: false },
-    image: { type: String, required: false },
+    logo: { type: String, required: false },
     title: { type: String, required: false },
     experience: {
         type: String,
@@ -26,7 +29,10 @@ const candidateSchema = new Schema<TCandidate>({
         trim: true,
     },
     parsonalWebsite: { type: String, required: false },
-    cv: { type: [String], required: false },
+    cv: {
+        type: [cvItemSchema],
+        required: false
+    },
     // step 2
     nationality: { type: String, required: false },
     dateOfBrith: { type: String, required: false },
@@ -64,7 +70,7 @@ const candidateSchema = new Schema<TCandidate>({
         type: [String],
         trim: true,
         enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],
-        required: true,
+        required: false,
     },
 });
 

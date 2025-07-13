@@ -6,6 +6,7 @@ import catchAsync from "../../../utils/catchAsync";
 import sendResponse from "../../../utils/sendResponse";
 import { IUser } from "../user/user.interface";
 import { UserModel } from "../user/user.model";
+import { candidateModel } from "./candidate.model";
 import { camdidateIIdentityVerificationService } from "./candidate.service";
 
 const candidateIdentityVerification = catchAsync(async (req, res) => {
@@ -58,6 +59,40 @@ const candidateIdentityVerification = catchAsync(async (req, res) => {
 }
 )
 
+const candidateJobAlert = catchAsync(async (req, res) => {
+    const { decoded }: any = await tokenDecoded(req, res);
+    const userId = decoded.user._id;
+    const email = decoded.user.email;
+    const user: IUser | null = await UserModel.findById(userId)
+    if (!user) {
+        throw new AppError(httpStatus.NOT_FOUND, "User not found");
+    }
+    const { jobType, jobLevel } = req.body;
+    if (!jobType || !jobLevel) {
+        throw new AppError(httpStatus.BAD_REQUEST, "Job Type and Job Level are required");
+    }
+    if (!Array.isArray(jobType) || !Array.isArray(jobLevel)) {
+        throw new AppError(httpStatus.BAD_REQUEST, "Job Type and Job Level must be arrays");
+    }
+    await candidateModel.findOneAndUpdate(
+        { email },
+        { jobType, jobLevel },
+        { new: true }
+    )
+    const updateUser: IUser | null = await UserModel.findById(userId).populate({
+        path: "candidateInfo",
+        select: "title parsonalWebsite image experience cv educations  maritalStatus gender dateOfBrith biography  nationality  address facebook twitter instagram youtube linkedin  phone jobLevel jobType contactEmail  "
+    });
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Job alert preferences updated successfully",
+        data: updateUser
+    });
+})
+
+
 export const candidateIdentityVerificationController = {
     candidateIdentityVerification
+    , candidateJobAlert
 }

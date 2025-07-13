@@ -5,6 +5,7 @@ import { IOTP, IUser } from "./user.interface";
 const UserSchema = new Schema<IUser>(
   {
     fullName: { type: String, trim: true, required: true },
+    userName: { type: String, trim: true, required: true, unique: true },
     email: { type: String, required: true, unique: true, trim: true },
     password: {
       type: String,
@@ -14,10 +15,6 @@ const UserSchema = new Schema<IUser>(
       select: false,
     },
     candidateInfo: { type: Schema.Types.ObjectId, ref: "Candidate", required: false },
-    image: {
-      type: String,
-      required: false,
-    },
     role: {
       type: String,
       enum: ["admin", "candidate", "employer", "employe"],
@@ -60,10 +57,10 @@ const UserSchema = new Schema<IUser>(
     contactEmail: { type: String, trim: true },
     isCompleted: { type: Boolean, default: false },
     isActive: { type: Boolean, default: true },
-    isDeleted: { type: Boolean, default: false },
-    isVerify: { type: Boolean, default: false },
     isApprove: { type: Boolean, default: false },
 
+    isDeleted: { type: Boolean, default: false },
+    isVerify: { type: Boolean, default: false },
     purchasePlan: {
       type: Schema.Types.ObjectId,
       ref: "PurchasePlanModel"

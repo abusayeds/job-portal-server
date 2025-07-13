@@ -10,14 +10,11 @@ export type IPendingUser = {
 
 export type IUser = {
   fullName: string;
+  userName: string;
   email: string;
   password: string;
   confirmPassword: string;
   candidateInfo: Types.ObjectId
-  image: {
-    publicFileURL: string;
-    path: string;
-  };
   adminErnings?: number
   role: "admin" | "candidate" | "employer" | "employe";
   logo: string;

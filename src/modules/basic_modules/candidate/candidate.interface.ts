@@ -1,6 +1,10 @@
+export type CVItem = {
+    name: string;
+    file: string;
+};
 export type TCandidate = {
     // step 1
-    image: string
+    logo: string
     email: string
     title: string
     experience: "Freshers" | "1-2" | "2-4" | "4-6" | "8-10" | "10-15" | "15 +"
@@ -18,7 +22,7 @@ export type TCandidate = {
         ],
     }
     parsonalWebsite: string
-    cv: string[]
+    cv: CVItem[];
     // step 2
     nationality: string
     dateOfBrith: string

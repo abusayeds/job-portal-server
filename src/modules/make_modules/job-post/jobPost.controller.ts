@@ -11,6 +11,7 @@ import { categoryModel } from "../category/category.model";
 import { subscriptionHandle } from "./jobPost-constant";
 import { TJobPost } from "./jobPost.interface";
 import { jobService } from "./jobPost.service";
+import { JobPostModel } from "./jobPost.model";
 
 const createJob = catchAsync(async (req, res) => {
     const { decoded, }: any = await tokenDecoded(req, res)
@@ -20,6 +21,9 @@ const createJob = catchAsync(async (req, res) => {
         .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" });
     if (!user) {
         throw new AppError(httpStatus.NOT_FOUND, "User not Found ")
+    }
+    if (!user.isApprove) {
+        throw new AppError(httpStatus.FORBIDDEN, "Your account is not approved by admin.");
     }
     if (!user.isActive) {
         throw new AppError(httpStatus.UNAUTHORIZED, "The admin has blocked you.")
@@ -83,7 +87,38 @@ const myJobs = catchAsync(async (req, res,) => {
     });
 })
 
+const getAllJobs = catchAsync(async (req, res) => {
+    const { decoded }: any = await tokenDecoded(req, res);
+    const userId = decoded.user._id;
+    const user: IUser | null = await UserModel.findById(userId);
+    if (!user) {
+        throw new AppError(httpStatus.NOT_FOUND, "User not found");
+    }
+    const jobs = await jobService.getAllJobsDB(req.query);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "All jobs fetched successfully",
+        data: jobs
+    });
+});
+const singleJobs = catchAsync(async (req, res) => {
+    const { jobId } = req.params
+    const job = await JobPostModel.findById(jobId)
+    if (!job) {
+        throw new AppError(httpStatus.NOT_FOUND, "Job not found");
+    }
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Job fetched successfully",
+        data: job
+    });
+});
 export const jobController = {
     createJob,
-    myJobs
+    myJobs,
+    getAllJobs,
+    singleJobs,
+
 }
