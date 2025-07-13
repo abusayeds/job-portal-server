@@ -8,10 +8,11 @@ import jwt from "jsonwebtoken";
 import queryBuilder from "../../../builder/queryBuilder";
 import { JWT_SECRET_KEY, } from "../../../config";
 import AppError from "../../../errors/AppError";
+import { JobPostModel } from "../../make_modules/job-post/jobPost.model";
+import { candidateModel } from "../candidate/candidate.model";
 import { forgotOtpEmail, resendOtpEmail, sendRegistationOtpEmail } from "./sendEmail";
 import { IUser, } from "./user.interface";
 import { OTPModel, UserModel } from "./user.model";
-import { candidateModel } from "../candidate/candidate.model";
 export const generateToken = (payload: any): string => {
   return jwt.sign(payload, JWT_SECRET_KEY as string, { expiresIn: "7d" });
 };
@@ -265,6 +266,10 @@ const myProfileDB = async (userId: string) => {
       path: "candidateInfo",
       select: "title parsonalWebsite image experience cv educations  maritalStatus gender dateOfBrith biography  nationality  address facebook twitter instagram youtube linkedin  phone jobLevel jobType contactEmail  "
     });
+  const myJobs = await JobPostModel.find({
+    userId: userId,
+    expirationDate: { $exists: true }
+  })
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, "user not found ")
   }
@@ -275,13 +280,25 @@ const myProfileDB = async (userId: string) => {
     );
   }
 
-  return user
+  if (user.role === "candidate") {
+    const { candidateInfo, ...userWithoutCandidateInfo } = user;
+    const flattenedUser = { ...userWithoutCandidateInfo, ...candidateInfo };
+    return flattenedUser
+  } else {
+    return {
+      ...user.toObject(),
+      totalJobs: myJobs.length,
+    }
+  }
+
+
 
 }
 const allUserDB = async (query: Record<string, unknown>, role: string) => {
-  const userQuery = new queryBuilder(UserModel.find({ role: role, }).select('-password -isVerify'), query).fields().filter().sort()
+  const userQuery = new queryBuilder(UserModel.find({ role: role, }).populate('candidateInfo').select('-password -isVerify'), query).fields().filter().sort()
   const { totalData } = await userQuery.paginate(UserModel.find({ role: role, }))
   const user: any = await userQuery.modelQuery.exec()
+
   const currentPage = Number(query?.page) || 1;
   const limit = Number(query.limit) || 10;
   const pagination = userQuery.calculatePagination({
@@ -291,28 +308,35 @@ const allUserDB = async (query: Record<string, unknown>, role: string) => {
   });
   const processedUsers = user.map((user: IUser) => {
     const userObj = user.toObject();
-    if (userObj.companyName) {
+
+
+    if (userObj.role === "employer") {
       return {
         _id: userObj._id,
-        address: userObj.address,
+        fullName: userObj?.fullName,
+        organizationType: userObj?.organizationType || "N/A",
+        foundIn: userObj?.foundIn || "N/A",
+        address: userObj.address || "N/A",
         email: userObj.email,
-        fullName: userObj.fullName,
+        companyName: userObj.companyName || "N/A",
+        phone: userObj.phone || "N/A",
+        teamSize: userObj.teamSize || "N/A",
+        website: userObj.companyWebsite || "N/A",
         createdAt: userObj.createdAt,
-        companyName: userObj.companyName,
-        isActive: userObj.isActive
+        isActive: userObj.isActive,
+        isApprove: userObj.isApprove,
       }
     } else {
       return {
         _id: userObj._id,
-        address: userObj.address || "N/A",
-        email: userObj.email,
         fullName: userObj.fullName,
-        phone: userObj.phone || "N/A",
-        companyWebsite: userObj.companyWebsite || "N/A",
+        dathOfBirth: userObj?.candidateInfo?.dateOfBrith || "N/A",
+        nationality: userObj?.candidateInfo?.nationality || "N/A",
+        website: userObj?.candidateInfo?.parsonalWebsite || "N/A",
+        email: userObj.email,
+        phone: userObj.candidateInfo?.phone || "N/A",
         createdAt: userObj.createdAt,
         isActive: userObj.isActive,
-        dathOfBirth: userObj.DathOfBirth || "N/A",
-        nationality: userObj.nationality || "N/A"
       }
     }
   });
@@ -333,7 +357,7 @@ const IdentityVerificationDB = async (id: string, payload: IUser, step: string) 
     case '2':
     case '3':
     case '4':
-      result = await UserModel.findByIdAndUpdate(id, { ...payload }, { new: true });
+      result = await UserModel.findByIdAndUpdate(id, { ...payload, isActive: true }, { new: true });
       break;
     default:
       throw new AppError(httpStatus.BAD_REQUEST, "Invalid step");
@@ -342,7 +366,7 @@ const IdentityVerificationDB = async (id: string, payload: IUser, step: string) 
 }
 
 const employerAccountManagementDB = async (query: Record<string, unknown>) => {
-  const userQuery = new queryBuilder(UserModel.find({ isApprove: false, isCompleted: true, role: "employer" }).select('-password -isVerify'), query).fields().filter().sort()
+  const userQuery = new queryBuilder(UserModel.find({ isApprove: false, isCompleted: true, role: "employer", isActive: true }).select('-password -isVerify'), query).fields().filter().sort()
   const { totalData } = await userQuery.paginate(UserModel.find({ isApprove: false, isCompleted: true, role: "employer" }))
   const user: any = await userQuery.modelQuery.exec()
   const currentPage = Number(query?.page) || 1;

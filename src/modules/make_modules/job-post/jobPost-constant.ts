@@ -39,3 +39,4 @@ export const subscriptionHandle = async (user: IUser | any, payload: TJobPost) =
 
 }
 
+export const searchJobs: Array<keyof TJobPost> = ["jobTitle"]

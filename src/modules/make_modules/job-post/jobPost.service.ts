@@ -3,6 +3,7 @@ import queryBuilder from "../../../builder/queryBuilder";
 import AppError from "../../../errors/AppError";
 import { TPurchasePlan } from "../purchasePlan/purchasePlan.interface";
 import { purchasePlanModel } from "../purchasePlan/purchasePlan.model";
+import { searchJobs } from "./jobPost-constant";
 import { TJobPost } from "./jobPost.interface";
 import { JobPostModel } from "./jobPost.model";
 
@@ -40,8 +41,8 @@ const crateJobDB = async (userId: string, subscriptionId: string, palan: string,
 
 }
 const myJobsDB = async (userId: string, query: Record<string, unknown>) => {
-    const myJobsQuery = new queryBuilder(JobPostModel.find({ userId, expirationDate: { $exists: true } }), query).sort()
-    const { totalData } = await myJobsQuery.paginate(JobPostModel.find({ userId, expirationDate: { $exists: true } }))
+    const myJobsQuery = new queryBuilder(JobPostModel.find({ userId, expirationDate: { $gte: new Date() } }), query).sort()
+    const { totalData } = await myJobsQuery.paginate(JobPostModel.find({ userId, expirationDate: { $gte: new Date() } }))
     const jobs = await myJobsQuery.modelQuery.exec()
     const currentPage = Number(query?.page) || 1;
     const limit = Number(query.limit) || 10;
@@ -50,7 +51,6 @@ const myJobsDB = async (userId: string, query: Record<string, unknown>) => {
         currentPage,
         limit,
     });
-
     const myJobs = jobs.map((job: TJobPost) => {
         return {
             jobTitle: job?.jobTitle,
@@ -61,9 +61,27 @@ const myJobsDB = async (userId: string, query: Record<string, unknown>) => {
     })
     return { pagination, myJobs }
 }
+const getAllJobsDB = async (query: Record<string, unknown>) => {
+    const myJobsQuery = new queryBuilder(JobPostModel.find({ expirationDate: { $gte: new Date() } }), query).search(searchJobs).filter().fields().sort()
+    const { totalData } = await myJobsQuery.paginate(JobPostModel.find({ expirationDate: { $gte: new Date() } }))
+    const jobs = await myJobsQuery.modelQuery.exec()
+
+
+    const currentPage = Number(query?.page) || 1;
+    const limit = Number(query.limit) || 10;
+    const pagination = myJobsQuery.calculatePagination({
+        totalData,
+        currentPage,
+        limit,
+    });
+
+
+    return { pagination, jobs }
+}
 
 
 export const jobService = {
     crateJobDB,
-    myJobsDB
+    myJobsDB,
+    getAllJobsDB
 }

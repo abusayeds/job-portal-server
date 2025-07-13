@@ -16,4 +16,6 @@ router.get("/single/:id", categoryController.getSingleCategory);
 
 router.get("/popular", categoryController.getPopularCategory)
 
+
+
 export const categoryRoute = router;

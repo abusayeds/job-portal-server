@@ -4,17 +4,10 @@ import { TCandidate } from "./candidate.interface";
 import { candidateModel } from "./candidate.model";
 
 const candidateIdentityVerificationDB = async (email: string, payload: TCandidate, step: string) => {
-    console.log(payload);
 
-    if (payload.image && !payload.image.startsWith('/images/')) {
+
+    if (payload.logo && !payload.logo.startsWith('/images/')) {
         throw new AppError(httpStatus.BAD_REQUEST, "Invalid image path");
-    }
-    if (payload.cv && Array.isArray(payload.cv)) {
-        payload.cv.forEach((cvItem) => {
-            if (!cvItem.startsWith('/images/')) {
-                throw new AppError(httpStatus.BAD_REQUEST, "Each CV path must start with '/images/'");
-            }
-        });
     }
 
     let result;
@@ -24,7 +17,6 @@ const candidateIdentityVerificationDB = async (email: string, payload: TCandidat
         case '3':
         case '4':
             result = await candidateModel.findOneAndUpdate({ email: email }, { $set: { ...payload } }, { new: true });
-            console.log(result);
 
             break;
         default:
