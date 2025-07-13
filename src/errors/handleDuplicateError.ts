@@ -35,7 +35,7 @@ const handleDuplicateError = (
   const statusCode = 400;
   return {
     statusCode,
-    message: " value alreday exists  ",
+    message: errorSoures[0]?.message,
     errorSoures,
   };
 };
