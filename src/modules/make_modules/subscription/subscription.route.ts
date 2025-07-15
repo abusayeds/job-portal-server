@@ -7,6 +7,7 @@ const router = express.Router();
 router.post("/create", authMiddleware(role.admin), subscriptionController.createSubscription);
 router.post("/update/:subs_id", authMiddleware(role.admin), subscriptionController.updateSubscription);
 router.get("/", authMiddleware(role.admin, role.employer), subscriptionController.allSubscription);
+router.get("/:subs_id", authMiddleware(role.admin, role.employer), subscriptionController.singleSubscription);
 
 
 

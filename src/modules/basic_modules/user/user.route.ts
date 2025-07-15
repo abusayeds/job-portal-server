@@ -22,7 +22,7 @@ router.get("/my-profile",
   userController.myProfile);
 
 
-router.get("/all-user", authMiddleware(role.admin), userController.getAllUsers);
+router.get("/all-user", authMiddleware(role.admin, role.employer), userController.getAllUsers);
 router.get("/single-user/:id", authMiddleware(role.admin), userController.singleUser);
 router.post("/identity-verification", authMiddleware(role.employer), conditionalStepValidation, userController.IdentityVerification)
 router.post("/candidate-identity-verification", authMiddleware(role.candidate), candidateStepValidation, candidateIdentityVerificationController.candidateIdentityVerification)

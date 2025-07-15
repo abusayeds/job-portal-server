@@ -82,10 +82,21 @@ const allSubscription = catchAsync(async (req, res) => {
         data: subscription
     });
 });
+const singleSubscription = catchAsync(async (req, res) => {
+    const { subs_id } = req.params;
+    const subscription = await sebscriptionService.singleSubscriptionDB(subs_id);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Single subscription fetched successfully.",
+        data: subscription
+    });
+});
 
 
 export const subscriptionController = {
     createSubscription,
     allSubscription,
     updateSubscription
+    , singleSubscription
 }

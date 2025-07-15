@@ -12,6 +12,7 @@ import { categoryRoute } from "../modules/make_modules/category/category.route";
 import { jobRoute } from "../modules/make_modules/job-post/jobPost.route";
 import { purchaseRoute } from "../modules/make_modules/purchasePlan/purchasePlan.route";
 import { SubscriptionRoute } from "../modules/make_modules/subscription/subscription.route";
+import { savedJobRoute } from "../modules/make_modules/savedCandidateAndJobs/saved.route";
 
 
 const router = express.Router();
@@ -32,9 +33,12 @@ router.use("/api/v1/plan", purchaseRoute);
 router.use("/api/v1/job", jobRoute);
 
 router.use("/api/v1/category", categoryRoute);
+
 router.use("/api/v1/admin", adminEarningRoute);
 
 router.use("/api/v1/job", appliedJobRoute);
+
+router.use("/api/v1/saved", savedJobRoute);
 
 
 

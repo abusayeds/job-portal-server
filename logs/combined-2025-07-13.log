@@ -587,3 +587,691 @@
 {"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[31m404\u001b[39m \u001b[35m/api/v1/job/apply/68736a7b5c4bbdb5427dc284\u001b[39m \u001b[93m83 ms\u001b[39m","size":"544","timestamp":"2025-07-13 17:51:01"}
 {"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[31m404\u001b[39m \u001b[35m/api/v1/job/apply/68736a7b5c4bbdb5427dc284\u001b[39m \u001b[93m76 ms\u001b[39m","size":"544","timestamp":"2025-07-13 17:51:10"}
 {"level":"info","message":" Incoming Request \u001b[34mPOST\u001b[39m \u001b[31m400\u001b[39m \u001b[35m/api/v1/job/apply/68736a7b5c4bbdb5437dc284\u001b[39m \u001b[93m151 ms\u001b[39m","size":"619","timestamp":"2025-07-13 17:51:25"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:15:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m5 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:15:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:16:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m3 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:16:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:17:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:17:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:18:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:18:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:19:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:19:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:20:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:20:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:21:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:21:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:22:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:22:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:23:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:23:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:24:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:24:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:25:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:25:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:26:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:26:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:27:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:27:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:28:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:28:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:29:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:29:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:30:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:30:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:31:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:31:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:32:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:32:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:33:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:33:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:34:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:34:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:35:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:35:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:36:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:36:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:37:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:37:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:38:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:38:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:39:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:39:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:40:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:40:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:41:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:41:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:42:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:42:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:43:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:43:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:44:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:44:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:45:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:45:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:46:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:46:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:47:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:47:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:48:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:48:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:49:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:49:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:50:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:50:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:51:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:51:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:52:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:52:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:53:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:53:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:54:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:54:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:55:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:55:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:56:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:56:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:57:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:57:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:58:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:58:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 18:59:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 18:59:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:00:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:00:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:01:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:01:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:02:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:02:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:03:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:03:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:04:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:04:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:05:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:05:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:06:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:06:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:07:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:07:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:08:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:08:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:09:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:09:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:10:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:10:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:11:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:11:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:12:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:12:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:13:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:13:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:14:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:14:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:15:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:15:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:16:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:16:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:17:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:17:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:18:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:18:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:19:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:19:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:20:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:20:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:21:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:21:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:22:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:22:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:23:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:23:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:24:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:24:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:25:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:25:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:26:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:26:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:27:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:27:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:28:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:28:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:29:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:29:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:30:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:30:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:31:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:31:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:32:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:32:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:33:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:33:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:34:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:34:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:35:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:35:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:36:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:36:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:37:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:37:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:38:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:38:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:39:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:39:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:40:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:40:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:41:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:41:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:42:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:42:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:43:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:43:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:44:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:44:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:45:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:45:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:46:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:46:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:47:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:47:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:48:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:48:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:49:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:49:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:50:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:50:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:51:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:51:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:52:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:52:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:53:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:53:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:54:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:54:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:55:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:55:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:56:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:56:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:57:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:57:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:58:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:58:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 19:59:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 19:59:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:00:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:00:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:01:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:01:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:02:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:02:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:03:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:03:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:04:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:04:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:05:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:05:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:06:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:06:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:07:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:07:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:08:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:08:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:09:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:09:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:10:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:10:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:11:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:11:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:12:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:12:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:13:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:13:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:14:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:14:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:15:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:15:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:16:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:16:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:17:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:17:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:18:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:18:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:19:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:19:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:20:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:20:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:21:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:21:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:22:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:22:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:23:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:23:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:24:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:24:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:25:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:25:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:26:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:26:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:27:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:27:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:28:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:28:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:29:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:29:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:30:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:30:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:31:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:31:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:32:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:32:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:33:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:33:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:34:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:34:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:35:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:35:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:36:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:36:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:37:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:37:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:38:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:38:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:39:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:39:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:40:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:40:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:41:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:41:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:42:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:42:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:43:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:43:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:44:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:44:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:45:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:45:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:46:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:46:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:47:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:47:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:48:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:48:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:49:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:49:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:50:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:50:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:51:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:51:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:52:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:52:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:53:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:53:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:54:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:54:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:55:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:55:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:56:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:56:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:57:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:57:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:58:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:58:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 20:59:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 20:59:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:00:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:00:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:01:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:01:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:02:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:02:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:03:36"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:03:36"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:04:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:04:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:05:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:05:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:06:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:06:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:07:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:07:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:08:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:08:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:09:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:09:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:10:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:10:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:11:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:11:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:12:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:12:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:13:37"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:13:37"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:14:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:14:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:15:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:15:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:16:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:16:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:17:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:17:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:18:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:18:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:19:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:19:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:20:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:20:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:21:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:21:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:22:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:22:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:23:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:23:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:24:37"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:24:37"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:25:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:25:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:26:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:26:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:27:36"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:27:36"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:28:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:28:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:29:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:29:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:30:36"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:30:36"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:31:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:31:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:32:36"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:32:36"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:34:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:34:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:35:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:35:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:36:35"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:36:35"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:37:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:37:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:38:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:38:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:39:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:39:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:40:39"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:40:39"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:41:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:41:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:42:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:42:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:43:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:43:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:44:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:44:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:45:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:45:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:46:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:46:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:47:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:47:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:48:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:48:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:49:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:49:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:50:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:50:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:51:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:51:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:52:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:52:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:53:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:53:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:54:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:54:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:55:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:55:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:56:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:56:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:57:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:57:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:58:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:58:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 21:59:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 21:59:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:00:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:00:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:01:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:01:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:02:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:02:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:03:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:03:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:04:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:04:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:05:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:05:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:06:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:06:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:07:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:07:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:08:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:08:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:09:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:09:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:10:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:10:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:11:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:11:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:12:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:12:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:13:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:13:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:14:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:14:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:15:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:15:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:16:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:16:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:17:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:17:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:18:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:18:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:19:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:19:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:20:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:20:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:21:34"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:21:34"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:22:37"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:22:37"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:23:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:23:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:24:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:24:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:25:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:25:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:26:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:26:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:27:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:27:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:28:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:28:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:29:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:29:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:30:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:30:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:31:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:31:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:32:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:32:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:33:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:33:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:34:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:34:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:35:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:35:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:36:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:36:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:37:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:37:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:38:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:38:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:39:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:39:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:40:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:40:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:41:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:41:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:42:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:42:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:43:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:43:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:44:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:44:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:45:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:45:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:46:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:46:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:47:33"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:47:33"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:48:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:48:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:49:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:49:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:50:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:50:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:51:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:51:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:52:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:52:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:53:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:53:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:54:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:54:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:55:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:55:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:56:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:56:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:57:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:57:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:58:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:58:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 22:59:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 22:59:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:00:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:00:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:01:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:01:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:02:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:02:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:03:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:03:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:04:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:04:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:05:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:05:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:06:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:06:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:07:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:07:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:08:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:08:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:09:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:09:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:10:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:10:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:11:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:11:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:12:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:12:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:13:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:13:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:14:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:14:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:15:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:15:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:16:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:16:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:17:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:17:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:18:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:18:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:19:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:19:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:20:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:20:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:21:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:21:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:22:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:22:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:23:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:23:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:24:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:24:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:25:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:25:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:26:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:26:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:27:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:27:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:28:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:28:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:29:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:29:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:30:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:30:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:31:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:31:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:32:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:32:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:33:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:33:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:34:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:34:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:35:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:35:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:36:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:36:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:37:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:37:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:38:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:38:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:39:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:39:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:40:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:40:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:41:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:41:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:42:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:42:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:43:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:43:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:44:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:44:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:45:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:45:32"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:46:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:46:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:47:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:47:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:48:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:48:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:49:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:49:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:50:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m2 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:50:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:51:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m0 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:51:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:52:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:52:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:53:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:53:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:54:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:54:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:55:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:55:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:56:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:56:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:57:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:57:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:58:31"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:58:31"}
+{"level":"info","message":"Root endpoint hit","timestamp":"2025-07-13 23:59:32"}
+{"level":"info","message":" Incoming Request \u001b[32mGET\u001b[39m \u001b[32m200\u001b[39m \u001b[35m/\u001b[39m \u001b[93m1 ms\u001b[39m","size":"109","timestamp":"2025-07-13 23:59:32"}

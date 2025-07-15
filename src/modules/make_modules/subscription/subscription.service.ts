@@ -39,10 +39,18 @@ const updateSubscriptionDB = async (payload: TSubscription, subs_id: string) => 
     const result = await subscriptionModel.findByIdAndUpdate(subs_id, payload, { new: true });
     return result;
 }
+const singleSubscriptionDB = async (subs_id: string) => {
+    const subscription = await subscriptionModel.findById(subs_id);
+    if (!subscription) {
+        throw new AppError(httpStatus.NOT_FOUND, "Subscription not found");
+    }
+    return subscription;
+}
 
 
 
 export const sebscriptionService = {
     createSubscriptionDB, updateSubscriptionDB,
+    singleSubscriptionDB
 }
 

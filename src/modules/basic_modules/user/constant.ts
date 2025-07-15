@@ -24,3 +24,35 @@ export const conditionalStepValidation = (req: Request, res: Response, next: Nex
     }
     return zodValidation(schema)(req, res, next);
 };
+
+
+// {
+//     _id: new ObjectId('68734b4dba6d90ec35edd0ea'),
+//         fullName: 'Candidate 1',
+//             userName: 'sayed',
+//                 email: 'candidate1@gmail.com',
+//                     role: 'candidate',
+//                         benefits: [],
+//                             isCompleted: true,
+//                                 isActive: true,
+//                                     isApprove: true,
+//                                         isVerify: true,
+//                                             step: 4,
+//                                                 educations: ['High-School', 'Intermediate'],
+//                                                     jobType: ['All', 'Internship'],
+//                                                         jobLevel: ['Entry-Level'],
+//                                                             cv: [[Object]],
+//                                                                 experience: '1-2',
+//                                                                     parsonalWebsite: 'https://www.facebook.com/',
+//                                                                         title: 'Hello Developer',
+//                                                                             biography: 'A passionate software developer with a love for coding and problem-solving. Always eager to learn and grow in the field of technology.',
+//                                                                                 dateOfBrith: '2025-07-29T18:00:00.000Z',
+//                                                                                     gender: 'Female',
+//                                                                                         maritalStatus: 'Single',
+//                                                                                             nationality: 'Bangladeshi',
+//                                                                                                 address: 'heelllo ',
+//                                                                                                     contactEmail: 'use@gmail.com',
+//                                                                                                         phone: '16745415645',
+//                                                                                                             facebook: 'https://www.facebook.com/'
+
+// }

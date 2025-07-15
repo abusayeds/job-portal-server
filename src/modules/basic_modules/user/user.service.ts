@@ -281,9 +281,12 @@ const myProfileDB = async (userId: string) => {
   }
 
   if (user.role === "candidate") {
-    const { candidateInfo, ...userWithoutCandidateInfo } = user;
-    const flattenedUser = { ...userWithoutCandidateInfo, ...candidateInfo };
-    return flattenedUser
+    const { candidateInfo, ...userWithoutCandidateInfo } = user.toObject();
+    const flattenedUser = { ...userWithoutCandidateInfo, ...candidateInfo, _id: user._id };
+
+    // console.log(flattenedUser);
+
+    return flattenedUser;
   } else {
     return {
       ...user.toObject(),
@@ -320,7 +323,7 @@ const allUserDB = async (query: Record<string, unknown>, role: string) => {
         email: userObj.email,
         companyName: userObj.companyName || "N/A",
         phone: userObj.phone || "N/A",
-        teamSize: userObj.teamSize || "N/A",
+        teamSize: userObj.teamSize,
         website: userObj.companyWebsite || "N/A",
         createdAt: userObj.createdAt,
         isActive: userObj.isActive,

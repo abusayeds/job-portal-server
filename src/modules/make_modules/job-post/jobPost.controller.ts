@@ -10,8 +10,8 @@ import { UserModel } from "../../basic_modules/user/user.model";
 import { categoryModel } from "../category/category.model";
 import { subscriptionHandle } from "./jobPost-constant";
 import { TJobPost } from "./jobPost.interface";
-import { jobService } from "./jobPost.service";
 import { JobPostModel } from "./jobPost.model";
+import { jobService } from "./jobPost.service";
 
 const createJob = catchAsync(async (req, res) => {
     const { decoded, }: any = await tokenDecoded(req, res)
@@ -47,15 +47,14 @@ const createJob = catchAsync(async (req, res) => {
     await subscriptionHandle(user, req.body)
     const result: TJobPost = await jobService.crateJobDB(userId, user.purchasePlan.subscriptionId, user.purchasePlan._id, req.body)
     for (const tag of result.tags) {
-        const foundTag = await categoryModel.findOneAndUpdate(
+        await categoryModel.findOneAndUpdate(
             { catagoryType: tag },
             { $inc: { jobPostCount: 1 } },
             { new: true }
         );
-        if (!foundTag) {
-            throw new AppError(httpStatus.NOT_FOUND, `Category not found for tag: ${tag}`);
-        }
+
     }
+
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
         success: true,
@@ -64,37 +63,9 @@ const createJob = catchAsync(async (req, res) => {
     });
 })
 
-const myJobs = catchAsync(async (req, res,) => {
-    const { decoded, }: any = await tokenDecoded(req, res)
-    const userId = decoded.user._id
-    const user: IUser | null = await UserModel.findById(userId)
-    if (!user) {
-        throw new AppError(httpStatus.NOT_FOUND, "  User not found ")
-    }
-    if (!user.isActive) {
-        throw new AppError(httpStatus.NOT_FOUND, "Your account is inactive.");
-    }
-
-    if (user.isDeleted) {
-        throw new AppError(httpStatus.NOT_FOUND, "Your account has been deleted by admin ");
-    }
-    const result = await jobService.myJobsDB(userId, req.query)
-    sendResponse(res, {
-        statusCode: httpStatus.CREATED,
-        success: true,
-        message: "My Jobs fetched successfully !",
-        data: result
-    });
-})
 
 const getAllJobs = catchAsync(async (req, res) => {
-    const { decoded }: any = await tokenDecoded(req, res);
-    const userId = decoded.user._id;
-    const user: IUser | null = await UserModel.findById(userId);
-    if (!user) {
-        throw new AppError(httpStatus.NOT_FOUND, "User not found");
-    }
-    const jobs = await jobService.getAllJobsDB(req.query);
+    const jobs = await jobService.candidateAllJobsDB(req.query);
     sendResponse(res, {
         statusCode: httpStatus.OK,
         success: true,
@@ -117,7 +88,6 @@ const singleJobs = catchAsync(async (req, res) => {
 });
 export const jobController = {
     createJob,
-    myJobs,
     getAllJobs,
     singleJobs,
 

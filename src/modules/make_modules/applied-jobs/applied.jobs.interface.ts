@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Types } from "mongoose";
 
 export type TAppliedJob = {
-    jobId: Types.ObjectId;
+    _id?: Types.ObjectId;
+    jobId: Types.ObjectId | any;
     userId: Types.ObjectId;
     coverLetter: string;
 } & Document;
