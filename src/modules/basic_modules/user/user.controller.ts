@@ -290,20 +290,43 @@ const getAllUsers = catchAsync(async (req, res) => {
 });
 const singleUser = catchAsync(async (req, res) => {
   const { id } = req.params
-  const result = await UserModel.findOne({ _id: id, }).select('-password -isVerify')
+  const result: IUser = await UserModel.findById(id)
+    .select("-password -createdAt -updatedAt -__v -isDeleted")
+    .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" }).populate({
+      path: "candidateInfo",
+      select: "title parsonalWebsite image experience cv educations  maritalStatus gender dateOfBrith biography  nationality  address facebook twitter instagram youtube linkedin  phone jobLevel jobType contactEmail  "
+    });
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, "User not found");
+  }
   const myJobs = await JobPostModel.find({
     userId: id,
     expirationDate: { $exists: true }
   })
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: "Get single user retrieved successfully",
-    data: {
-      ...result?.toObject(),
-      totalJobs: myJobs.length,
-    }
-  });
+
+  if (result.role === "candidate") {
+    const { candidateInfo, ...userWithoutCandidateInfo } = result.toObject();
+    const flattenedUser = { ...userWithoutCandidateInfo, ...candidateInfo, _id: result._id };
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Get single user retrieved successfully",
+      data: flattenedUser
+    });
+    return
+  } else {
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Get single user retrieved successfully",
+      data: {
+        ...result?.toObject(),
+        totalJobs: myJobs.length,
+      }
+    });
+  }
+
 });
 const IdentityVerification = catchAsync(async (req, res) => {
   const { decoded, }: any = await tokenDecoded(req, res)
@@ -359,7 +382,11 @@ const IdentityVerification = catchAsync(async (req, res) => {
 const handleStatus = catchAsync(async (req, res) => {
   const payload: IUser = req.body;
   const { userId } = req.params
+
+
   const isUserExist: IUser | null = await UserModel.findById(userId)
+  console.log(isUserExist);
+
   if (!isUserExist) {
     throw new AppError(httpStatus.NOT_FOUND, 'user not found ')
   }

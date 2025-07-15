@@ -40,9 +40,9 @@ const crateJobDB = async (userId: string, subscriptionId: string, palan: string,
     return result
 
 }
-const myJobsDB = async (userId: string, query: Record<string, unknown>) => {
-    const myJobsQuery = new queryBuilder(JobPostModel.find({ userId, expirationDate: { $gte: new Date() } }), query).sort()
-    const { totalData } = await myJobsQuery.paginate(JobPostModel.find({ userId, expirationDate: { $gte: new Date() } }))
+const employerAllPostedJobs = async (userId: string, query: Record<string, unknown>) => {
+    const myJobsQuery = new queryBuilder(JobPostModel.find({ userId, }), query).sort()
+    const { totalData } = await myJobsQuery.paginate(JobPostModel.find({ userId, }))
     const jobs = await myJobsQuery.modelQuery.exec()
     const currentPage = Number(query?.page) || 1;
     const limit = Number(query.limit) || 10;
@@ -61,12 +61,38 @@ const myJobsDB = async (userId: string, query: Record<string, unknown>) => {
     })
     return { pagination, myJobs }
 }
-const getAllJobsDB = async (query: Record<string, unknown>) => {
-    const myJobsQuery = new queryBuilder(JobPostModel.find({ expirationDate: { $gte: new Date() } }), query).search(searchJobs).filter().fields().sort()
-    const { totalData } = await myJobsQuery.paginate(JobPostModel.find({ expirationDate: { $gte: new Date() } }))
+const candidateAllJobsDB = async (query: Record<string, unknown>) => {
+    const myJobsQuery = new queryBuilder(JobPostModel.find(), query).search(searchJobs).filter().fields().sort()
+    const { totalData } = await myJobsQuery.paginate(JobPostModel.find())
     const jobs = await myJobsQuery.modelQuery.exec()
+    console.log(jobs);
 
+    const allJobs = jobs.map((job: TJobPost) => {
+        const expirationDate = job?.expirationDate;
+        let remainingTime: string | Date = expirationDate;
+        if (expirationDate) {
+            const now = new Date();
+            const expDate = new Date(expirationDate);
+            const diff = expDate.getTime() - now.getTime();
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                remainingTime = `${days}d ${hours}h ${minutes}m remaining`;
+            }
+        }
 
+        return {
+            _id: job._id,
+            jobTitle: job?.jobTitle,
+            logo: job?.logo,
+            banner: job?.banner,
+            jobType: job?.jobType,
+            jobLevel: job?.jobLevel,
+            expirationDate: remainingTime,
+            totalApplication: 0,
+        }
+    })
     const currentPage = Number(query?.page) || 1;
     const limit = Number(query.limit) || 10;
     const pagination = myJobsQuery.calculatePagination({
@@ -76,12 +102,12 @@ const getAllJobsDB = async (query: Record<string, unknown>) => {
     });
 
 
-    return { pagination, jobs }
+    return { pagination, allJobs }
 }
 
 
 export const jobService = {
     crateJobDB,
-    myJobsDB,
-    getAllJobsDB
+    employerAllPostedJobs,
+    candidateAllJobsDB
 }

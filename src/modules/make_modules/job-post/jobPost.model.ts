@@ -12,6 +12,7 @@ const jobPostSchema = new Schema<TJobPost>(
         logo: { type: String, required: true },
         banner: { type: String, required: true },
         jobTitle: { type: String, required: true, minlength: 1 },
+        location: { type: String, required: true, trim: true },
         tags: { type: [String], required: true, validate: [(arr: string[]) => arr.length >= 1, 'At least one tag is required.'] },
         minSalary: {
             type: Number,
@@ -82,7 +83,7 @@ const jobPostSchema = new Schema<TJobPost>(
             default: () => new Date(),
         },
 
-        jobLavel: {
+        jobLevel: {
             type: String,
             trim: true,
             enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],

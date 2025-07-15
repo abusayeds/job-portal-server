@@ -3,7 +3,9 @@ import { TCandidate } from "./candidate.interface";
 const cvItemSchema = new mongoose.Schema({
     name: { type: String, required: true },
     file: { type: String, required: true }
-});
+},
+    { timestamps: true }
+);
 const candidateSchema = new Schema<TCandidate>({
     email: { type: String, required: false },
     logo: { type: String, required: false },
