@@ -86,9 +86,56 @@ const singleJobs = catchAsync(async (req, res) => {
         data: job
     });
 });
+const viewApplications = catchAsync(async (req, res) => {
+    const { jobId } = req.params;
+    const job = await JobPostModel.findById(jobId)
+    if (!job) {
+        throw new AppError(httpStatus.NOT_FOUND, "Job not found");
+    }
+    const application = await jobService.viewApplicationsDB(jobId, req.query);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Applications fetched successfully",
+        data: application
+    });
+});
+const singleApplyJob = catchAsync(async (req, res) => {
+    const { appliedId } = req.params;
+    const application = await jobService.singleApplyJobDB(appliedId);
+    if (!application) {
+        throw new AppError(httpStatus.NOT_FOUND, "Application not found");
+    }
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Application fetched successfully",
+        data: application
+    });
+});
+const candidateJobAlert = catchAsync(async (req, res) => {
+    const { decoded }: any = await tokenDecoded(req, res);
+    const userId = decoded.user._id;
+    const user: IUser | null = await UserModel.findById(userId).populate("candidateInfo");
+    if (!user) {
+        throw new AppError(httpStatus.NOT_FOUND, "User not found");
+    }
+
+
+    const result = await jobService.candidateJobAlertDB(req.query);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Job alerts fetched successfully",
+        data: result
+    });
+});
 export const jobController = {
     createJob,
     getAllJobs,
     singleJobs,
+    viewApplications
+    , singleApplyJob,
+    candidateJobAlert
 
 }
