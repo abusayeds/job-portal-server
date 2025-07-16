@@ -198,6 +198,7 @@ const candidateJobAlertDB = async (info: any) => {
             const jobs = await JobPostModel.find({ jobType: type });
             jobs.forEach((job: any) => result.push(job));
         }));
+
     }
     if (info?.jobLevel && Array.isArray(info.jobLevel) && info.jobLevel.length > 0) {
         await Promise.all(info.jobLevel.map(async (level: any) => {
