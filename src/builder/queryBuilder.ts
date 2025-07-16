@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FilterQuery, Query } from "mongoose";
 class queryBuilder<T> {
   public modelQuery: Query<T[], T>;
@@ -11,8 +12,8 @@ class queryBuilder<T> {
     if (typeof searchTerm === 'string') {
       const keywords: string[] = searchTerm
         .trim()
-        .split(/\s+/) 
-        .filter(Boolean); 
+        .split(/\s+/)
+        .filter(Boolean);
       if (keywords.length > 0) {
         const andConditions = keywords.map((keyword: string) => ({
           $or: searchableFields.map((field: keyof T) => ({
@@ -75,13 +76,13 @@ class queryBuilder<T> {
     limit,
   }: {
     totalData: number;
-    currentPage: number ;
+    currentPage: number;
     limit: number;
   }): {
     totalPage: number;
     currentPage: number;
-    prevPage: number 
-    nextPage: number 
+    prevPage: number
+    nextPage: number
     totalData: number;
   } {
     const totalPage = Math.ceil(totalData / limit) || 1;

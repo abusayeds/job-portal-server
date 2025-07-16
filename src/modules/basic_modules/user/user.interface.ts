@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Document, Types } from "mongoose";
 
 export type IPendingUser = {
@@ -14,7 +15,7 @@ export type IUser = {
   email: string;
   password: string;
   confirmPassword: string;
-  candidateInfo: Types.ObjectId
+  candidateInfo: Types.ObjectId | any
   adminErnings?: number
   role: "admin" | "candidate" | "employer" | "employe";
   logo: string;
