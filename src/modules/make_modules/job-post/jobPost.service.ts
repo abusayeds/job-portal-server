@@ -191,28 +191,72 @@ const singleApplyJobDB = async (appliedId: string) => {
 
 }
 
-const candidateJobAlertDB = async (info: any) => {
+// const candidateJobAlertDB = async (info: any) => {
+//     const result: any = [];
+//     if (info?.jobType && Array.isArray(info.jobType) && info.jobType.length > 0) {
+//         await Promise.all(info.jobType.map(async (type: any) => {
+//             const jobs = await JobPostModel.find({ jobType: type });
+//             jobs.forEach((job: any) => result.push(job));
+//         }));
+
+//     }
+//     if (info?.jobLevel && Array.isArray(info.jobLevel) && info.jobLevel.length > 0) {
+//         await Promise.all(info.jobLevel.map(async (level: any) => {
+//             const jobs = await JobPostModel.find({ jobLevel: level });
+//             jobs.forEach((job: any) => result.push(job));
+//         }));
+//     }
+
+//     return result;
+// };
+
+
+
+
+const candidateJobAlertDB = async (info: any, page: number = 1, pageSize: number = 10) => {
     const result: any = [];
+    const skip = (page - 1) * pageSize;
+    const totalDataCount = await JobPostModel.countDocuments({
+        $or: [
+            { jobType: { $in: info.jobType || [] } },
+            { jobLevel: { $in: info.jobLevel || [] } }
+        ]
+    });
+    const totalPage = Math.ceil(totalDataCount / pageSize);
+    const prevPage = page > 1 ? page - 1 : 1;
+    const nextPage = page < totalPage ? page + 1 : totalPage;
+
     if (info?.jobType && Array.isArray(info.jobType) && info.jobType.length > 0) {
         await Promise.all(info.jobType.map(async (type: any) => {
-            const jobs = await JobPostModel.find({ jobType: type });
+            const jobs = await JobPostModel.find({ jobType: type })
+                .skip(skip)
+                .limit(pageSize)
+                .exec();
             jobs.forEach((job: any) => result.push(job));
         }));
-
     }
+
     if (info?.jobLevel && Array.isArray(info.jobLevel) && info.jobLevel.length > 0) {
         await Promise.all(info.jobLevel.map(async (level: any) => {
-            const jobs = await JobPostModel.find({ jobLevel: level });
+            const jobs = await JobPostModel.find({ jobLevel: level })
+                .skip(skip)
+                .limit(pageSize)
+                .exec();
             jobs.forEach((job: any) => result.push(job));
         }));
     }
 
-    return result;
+    return {
+        pagination: {
+            totalPage,
+            currentPage: page,
+            prevPage,
+            nextPage,
+            totalData: totalDataCount
+        },
+        data: result
+    };
 };
-
-
-
-
 
 
 
