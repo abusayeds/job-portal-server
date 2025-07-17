@@ -75,7 +75,10 @@ const getAllJobs = catchAsync(async (req, res) => {
 });
 const singleJobs = catchAsync(async (req, res) => {
     const { jobId } = req.params
-    const job = await JobPostModel.findById(jobId)
+    const job = await JobPostModel.findById(jobId).populate({
+        path: "userId",
+        select: "address phone contactEmail"
+    })
     if (!job) {
         throw new AppError(httpStatus.NOT_FOUND, "Job not found");
     }
@@ -113,6 +116,29 @@ const singleApplyJob = catchAsync(async (req, res) => {
         data: application
     });
 });
+// const candidateJobAlert = catchAsync(async (req, res) => {
+//     const { decoded }: any = await tokenDecoded(req, res);
+//     const userId = decoded.user._id;
+//     const user: IUser | null = await UserModel.findById(userId).populate("candidateInfo");
+//     if (!user) {
+//         throw new AppError(httpStatus.NOT_FOUND, "User not found");
+//     }
+
+//     const info = {
+//         jobType: user.candidateInfo.jobType,
+//         jobLvel: user.candidateInfo.jobLevel
+//     }
+
+
+//     const result = await jobService.candidateJobAlertDB(info,);
+//     sendResponse(res, {
+//         statusCode: httpStatus.OK,
+//         success: true,
+//         message: "Job alerts fetched successfully",
+//         data: result
+//     });
+// });
+
 const candidateJobAlert = catchAsync(async (req, res) => {
     const { decoded }: any = await tokenDecoded(req, res);
     const userId = decoded.user._id;
@@ -120,9 +146,12 @@ const candidateJobAlert = catchAsync(async (req, res) => {
     if (!user) {
         throw new AppError(httpStatus.NOT_FOUND, "User not found");
     }
-
-
-    const result = await jobService.candidateJobAlertDB(req.query);
+    const info = {
+        jobType: user.candidateInfo.jobType,
+        jobLevel: user.candidateInfo.jobLevel
+    };
+    const { page = 1, limit = 10 } = req.query;
+    const result = await jobService.candidateJobAlertDB(info, parseInt(page as string), parseInt(limit as string));
     sendResponse(res, {
         statusCode: httpStatus.OK,
         success: true,
@@ -130,6 +159,7 @@ const candidateJobAlert = catchAsync(async (req, res) => {
         data: result
     });
 });
+
 export const jobController = {
     createJob,
     getAllJobs,

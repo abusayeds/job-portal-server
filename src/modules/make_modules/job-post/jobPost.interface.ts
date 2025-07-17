@@ -18,6 +18,7 @@ export type TJobPost = {
     experience: "Freshers" | "1 - 2" | "2 - 4" | "4 - 6" | "8 - 10" | "10 - 15" | "15 +"
     jobType: "All" | "Full-Time" | "Part-Time" | "Internship" | "Contract" | "Soft-Skill" | "Freelance" | "Vocational" | "Apprenticeship" | "Remote"
     educations: string[];
+    organizationType: "All" | "Federal Government" | "County Government" | "City Government" | "State Government" | "Local Government" | "NGO" | "Private Company" | "International Agencies" | "Airport Authority"
     scheduleDate: Date
     expirationDate: Date
     jobLevel: "Entry Level" | "Mid Level" | "Expert Level"

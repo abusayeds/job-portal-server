@@ -63,6 +63,12 @@ const jobPostSchema = new Schema<TJobPost>(
             trim: true,
             validate: [(arr: string[]) => arr.length >= 1, 'At least one education is required.'],
         },
+        organizationType: {
+            type: String,
+            enum: ["All", "Federal Government", "County Government", "City Government", "State Government", "Local Government", "NGO", "Private Company", "International Agencies", "Airport Authority"],
+            required: true,
+            trim: true
+        },
         expirationDate: {
             type: Date,
             required: true,
