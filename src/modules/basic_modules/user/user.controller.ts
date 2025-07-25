@@ -510,6 +510,65 @@ const accessEmploye = catchAsync(async (req, res) => {
   });
 });
 
+const topCompanies = catchAsync(async (req, res) => {
+  const topEmployers = await UserModel.aggregate([
+    // Match users where the role is "employer"
+    {
+      $match: {
+        role: 'employer',
+        isDeleted: false, // Exclude deleted users
+        isActive: true,  // Only include active users
+      }
+    },
+    // Lookup job posts for each employer
+    {
+      $lookup: {
+        from: 'jobposts', // The name of your JobPost collection in MongoDB
+        localField: '_id',
+        foreignField: 'userId',
+        as: 'jobPosts',
+      }
+    },
+    // Add fields for job count and open positions
+    {
+      $addFields: {
+        jobCount: { $size: '$jobPosts' },
+        openPositions: {
+          $size: {
+            $filter: {
+              input: '$jobPosts',
+              as: 'jobPost',
+              cond: { $gt: ['$$jobPost.expirationDate', new Date()] } // Filter for active job posts
+            }
+          }
+        }
+      }
+    },
+    // Sort by the number of job posts in descending order (most jobs first)
+    {
+      $sort: {
+        jobCount: -1,
+      }
+    },
+    // Optionally, limit the results to top N employers
+    {
+      $limit: 6
+    },
+    // Project only relevant fields (name, profile, image, jobCount, openPositions)
+    {
+      $project: {
+        companyName: 1, // Adjust this field as per your model
+        address: 1,
+        logo: 1, // Or image or profile
+        banner: 1,
+        jobCount: 1,
+        openPositions: 1,
+      }
+    }
+  ]);
+
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: topEmployers });
+});
 
 export const userController = {
   registerUser,
@@ -529,7 +588,8 @@ export const userController = {
   approveEmployer,
   handleStatus,
   candidateCvUpdate,
-  accessEmploye
+  accessEmploye,
+  topCompanies,
 }
 
 
