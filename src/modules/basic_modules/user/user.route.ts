@@ -40,7 +40,7 @@ router.get("/approve-employer", authMiddleware(role.admin), userController.appro
 
 router.post("/access-employe", authMiddleware(role.employer), userController.accessEmploye)
 
-router.get('/top-companies',)
+router.get('/top-companies', userController.topCompanies)
 
 
 export const UserRoutes = router;
