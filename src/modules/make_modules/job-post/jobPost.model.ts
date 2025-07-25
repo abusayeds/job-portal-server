@@ -7,6 +7,7 @@ import { TJobPost } from './jobPost.interface';
 const jobPostSchema = new Schema<TJobPost>(
     {
         userId: { type: Schema.Types.ObjectId, required: true, ref: 'User' },
+        companyId: { type: Schema.Types.ObjectId, required: true, ref: 'User' },
         subscriptionId: { type: String, required: true },
         palan: { type: Schema.Types.ObjectId, required: true, ref: 'PurchasePlanModel' },
         logo: { type: String, required: true },

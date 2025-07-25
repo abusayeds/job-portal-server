@@ -45,7 +45,7 @@ export type IUser = {
   isVerify: boolean
   isApprove: boolean
   purchasePlan: Types.ObjectId
-
+  companyId?: Types.ObjectId
   step: number
   createdAt?: string
 } & Document;

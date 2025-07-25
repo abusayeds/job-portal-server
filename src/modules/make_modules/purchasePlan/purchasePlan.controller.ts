@@ -44,6 +44,8 @@ const purchasePlan = catchAsync(async (req, res) => {
     }
     const { numberOfEmployees }: any = req.query;
     const product: TSubscription | null = await subscriptionModel.findById(productId);
+    console.log(product);
+
     if (product?.planName === "unlimited_plan") {
         if (numberOfEmployees === undefined || !numberOfEmployees) {
             throw new AppError(httpStatus.BAD_REQUEST, 'numberOfEmployees is required for unlimited plan');

@@ -36,10 +36,10 @@ const getMyAppliedJobs = catchAsync(async (req, res) => {
         throw new AppError(httpStatus.NOT_FOUND, "Your account has been deleted by admin ");
     }
     let jobs
-    if (user.role === "employer") {
-        jobs = await jobService.employerAllPostedJobs(userId, req.query)
+    if (user.role === "employer" || user.role === "employe") {
+        jobs = await jobService.employerAllPostedJobs(userId, req.query, user.role,)
     } else {
-        jobs = await await appliedJobsService.getMyAppliedJobsDB(userId, req.query)
+        jobs = await appliedJobsService.getMyAppliedJobsDB(userId, req.query)
     }
     sendResponse(res, {
         statusCode: httpStatus.CREATED,

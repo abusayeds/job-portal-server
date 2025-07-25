@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import bcrypt from "bcrypt";
 import mongoose, { Schema } from "mongoose";
 import { IOTP, IUser } from "./user.interface";
@@ -6,7 +7,18 @@ const UserSchema = new Schema<IUser>(
   {
     fullName: { type: String, trim: true, required: true },
     userName: { type: String, trim: true, required: true, unique: true },
-    email: { type: String, required: true, unique: true, trim: true },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      validate: {
+        validator: function (v: string) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+        },
+        message: (props: any) => `${props.value} is not a valid email address!`
+      }
+    },
     password: {
       type: String,
       required: [true, "Password is required"],
@@ -49,8 +61,6 @@ const UserSchema = new Schema<IUser>(
     instagram: { type: String, trim: true },
     linkedin: { type: String, trim: true },
 
-
-
     //***** employers stpe4 *bbbbbbbb******//
     address: { type: String, trim: true, },
     phone: { type: String, trim: true, },
@@ -65,7 +75,11 @@ const UserSchema = new Schema<IUser>(
       type: Schema.Types.ObjectId,
       ref: "PurchasePlanModel"
     },
+    companyId: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
 
+    },
     step: {
       type: Number, default: 0
     }

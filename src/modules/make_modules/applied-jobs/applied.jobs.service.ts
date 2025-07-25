@@ -36,6 +36,7 @@ const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>
     });
 
 
+
     const appliedJobs = jobs.map((job: TAppliedJob) => {
         const expirationDate = job?.jobId?.expirationDate;
         let remainingTime: string | Date = expirationDate;
@@ -50,6 +51,8 @@ const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>
             }
         }
 
+console.log("=============>>>>",job);
+
         return {
             _id: job._id,
             jobId: job?.jobId?._id,
@@ -59,11 +62,18 @@ const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>
             banner: job?.jobId?.banner,
             jobType: job?.jobId?.jobType,
             jobLevel: job?.jobId?.jobLevel,
-            expirationDate: remainingTime
+            expirationDate: remainingTime,
+            minSalary: job?.jobId?.minSalary,
+            maxSalary: job?.jobId?.maxSalary,
+            salaryType: job?.jobId?.salaryType,
+            currency: job?.jobId?.currency,
+            location: job?.jobId?.location,
+            appliedDate: job?.createdAt,
+
         }
     })
     return {
-        pagination, appliedJobs
+        pagination, jobs: appliedJobs
     }
 }
 

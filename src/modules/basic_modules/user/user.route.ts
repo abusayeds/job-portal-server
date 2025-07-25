@@ -1,12 +1,12 @@
 import express from "express";
 import { authMiddleware } from "../../../middlewares/auth";
+import zodValidation from "../../../middlewares/zodValidationHandler";
 import { role } from "../../../utils/role";
 import { candidateStepValidation } from "../candidate/candidate.constant";
 import { candidateIdentityVerificationController } from "../candidate/candidate.controller";
+import { candidateValidation } from "../candidate/candidate.validation";
 import { conditionalStepValidation } from "./constant";
 import { userController, } from "./user.controller";
-import zodValidation from "../../../middlewares/zodValidationHandler";
-import { candidateValidation } from "../candidate/candidate.validation";
 const router = express.Router();
 router.post("/register", userController.registerUser,);
 router.post("/verify-otp", userController.verifyOTP);
@@ -37,6 +37,8 @@ router.post("/handle-status/:userId", authMiddleware(role.admin), userController
 
 router.get("/account-management", authMiddleware(role.admin), userController.employerAccountManagement)
 router.get("/approve-employer", authMiddleware(role.admin), userController.approveEmployer)
+
+router.post("/access-employe", authMiddleware(role.employer), userController.accessEmploye)
 
 router.get('/top-companies',)
 

@@ -6,4 +6,5 @@ export type TAppliedJob = {
     jobId: Types.ObjectId | any;
     userId: Types.ObjectId;
     coverLetter: string;
+     createdAt?: Date;
 } & Document;
