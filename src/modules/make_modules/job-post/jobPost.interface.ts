@@ -3,6 +3,7 @@ import { Types } from "mongoose"
 export type TJobPost = {
     _id?: Types.ObjectId
     userId: Types.ObjectId,
+    companyId: Types.ObjectId,
     subscriptionId: string
     palan: Types.ObjectId,
     logo: string,

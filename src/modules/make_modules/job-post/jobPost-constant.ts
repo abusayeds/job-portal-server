@@ -28,14 +28,17 @@ export const subscriptionHandle = async (user: IUser | any, payload: TJobPost) =
         throw new AppError(httpStatus.BAD_REQUEST, `schedule Date not allow for ${subscription?.planName} subscription`)
     }
     if (payload.scheduleDate) {
-        const expiration = new Date(payload.scheduleDate);
-        if (isNaN(expiration.getTime())) {
-            throw new AppError(httpStatus.BAD_REQUEST, "Invalid scheduledate format.");
-        }
-        if (expiration < new Date()) {
-            throw new AppError(httpStatus.BAD_REQUEST, "schedule date cannot be in the past.");
+        const scheduleDate = new Date(payload.scheduleDate);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set today's date to midnight to ignore the time part
+
+        if (scheduleDate < today) {
+            throw new AppError(httpStatus.BAD_REQUEST, "The schedule date cannot be in the past")
+        } else {
+            console.log(scheduleDate); // Valid schedule date
         }
     }
+
 
 }
 

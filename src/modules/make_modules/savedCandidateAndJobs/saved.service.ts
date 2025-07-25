@@ -49,7 +49,9 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
     if (role === "candidate") {
         const savedQuery = new queryBuilder(SavedModel.find({ userId: userId }).populate("jobId"), query)
         const { totalData } = await savedQuery.paginate(SavedModel.find({ userId: userId }))
-        const saveData: any = await savedQuery.modelQuery.exec()
+        const saveData: any = await savedQuery.modelQuery.exec();
+        console.log("saveData", saveData);
+        
         const currentPage = Number(query?.page) || 1;
         const limit = Number(query.limit) || 10;
         const pagination = savedQuery.calculatePagination({
@@ -59,12 +61,12 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
         });
         return {
             pagination, saveData
+
         };
     } else {
         const savedQuery = new queryBuilder(
             SavedModel.find({ userId: userId }).populate({
                 path: "candidate",
-                select: "fullName",
                 populate: {
                     path: "candidateInfo",
                     select: "title"
@@ -74,6 +76,8 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
         )
         const { totalData } = await savedQuery.paginate(SavedModel.find({ userId: userId }))
         const saveData: any = await savedQuery.modelQuery.exec()
+        console.log("saveData", saveData);
+        
         const currentPage = Number(query?.page) || 1;
         const limit = Number(query.limit) || 10;
         const pagination = savedQuery.calculatePagination({
@@ -88,9 +92,12 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
                 // userId: item.userId,
                 fullName: item.candidate.fullName,
                 candidateId: item.candidate._id,
-                title: item.candidate.candidateInfo.title
+                title: item.candidate.candidateInfo.title,
+                logo: item.candidate?.candidateInfo
             };
         });
+        console.log("formatData", formatData);
+        
         return {
             pagination, saveData: formatData
         };

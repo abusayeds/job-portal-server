@@ -428,6 +428,35 @@ const approveEmployerDB = async (query: Record<string, unknown>) => {
 
 }
 
+const accessEmployeDB = async (payload: IUser, employerId: string) => {
+  const employer = await UserModel.findById(employerId).populate('purchasePlan')
+  if (employer?.purchasePlan?.planName !== "unlimited_plan") {
+    throw new AppError(httpStatus.BAD_REQUEST, ` Access cannot be granted to anyone under the ${employer?.purchasePlan?.planName}`)
+  }
+  const maxEmploye = await UserModel.find({
+    role: "employe",
+    purchasePlan: employer.purchasePlan,
+  })
+
+  if (maxEmploye.length >= 3) {
+    throw new AppError(httpStatus.BAD_REQUEST, "Cannot assign more than 3 employees to this plan.");
+  }
+
+  const employe = {
+    ...payload,
+    role: "employe",
+    isActive: true,
+    isApprove: true,
+    isVerify: true,
+    isCompleted: true,
+    purchasePlan: employer.purchasePlan,
+    companyId: employerId
+  }
+
+
+  const employeCreate = await UserModel.create(employe)
+  return employeCreate
+}
 
 export const userService = {
   createUserDB,
@@ -443,7 +472,8 @@ export const userService = {
   allUserDB,
   IdentityVerificationDB,
   employerAccountManagementDB,
-  approveEmployerDB
+  approveEmployerDB,
+  accessEmployeDB
 }
 
 

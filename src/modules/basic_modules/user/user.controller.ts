@@ -385,7 +385,7 @@ const handleStatus = catchAsync(async (req, res) => {
 
 
   const isUserExist: IUser | null = await UserModel.findById(userId)
-  console.log(isUserExist);
+
 
   if (!isUserExist) {
     throw new AppError(httpStatus.NOT_FOUND, 'user not found ')
@@ -498,6 +498,17 @@ const candidateCvUpdate = catchAsync(async (req, res) => {
   });
 });
 
+const accessEmploye = catchAsync(async (req, res) => {
+  const { decoded }: any = await tokenDecoded(req, res);
+  const id = decoded.user._id;
+  const employeAccount = await userService.accessEmployeDB(req.body, id)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "An employee has been added.",
+    data: employeAccount
+  });
+});
 
 
 export const userController = {
@@ -517,7 +528,8 @@ export const userController = {
   employerAccountManagement,
   approveEmployer,
   handleStatus,
-  candidateCvUpdate
+  candidateCvUpdate,
+  accessEmploye
 }
 
 

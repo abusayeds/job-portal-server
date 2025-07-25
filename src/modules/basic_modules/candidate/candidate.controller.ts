@@ -22,6 +22,7 @@ const candidateIdentityVerification = catchAsync(async (req, res) => {
         throw new AppError(httpStatus.BAD_REQUEST, "Please provide the 'step' query parameter for identity verification.");
     }
     const result: any = await camdidateIIdentityVerificationService.candidateIdentityVerificationDB(email, req.body, step as string)
+    console.log(result);
 
     if (!user.isCompleted) {
         await UserModel.findByIdAndUpdate(userId, { step: step }, { new: true })
