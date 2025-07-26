@@ -96,6 +96,18 @@ class queryBuilder<T> {
       totalData,
     };
   }
+
+
+  populate(populateFields: string | string[]): this {
+    if (Array.isArray(populateFields)) {
+      populateFields.forEach(field => {
+        this.modelQuery = this.modelQuery.populate(field);
+      });
+    } else {
+      this.modelQuery = this.modelQuery.populate(populateFields);
+    }
+    return this;
+  }
 }
 
 export default queryBuilder;

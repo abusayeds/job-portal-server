@@ -2,12 +2,12 @@
 import mongoose from "mongoose";
 import seedSuperAdmin from "./DB";
 import app from "./app";
-import { DATABASE_URL, PORT } from "./config";
+import { DATABASE_URL, PORT, IP } from "./config";
 import { initSocketIO } from "./utils/socket";
 
 import http from "http";
 
-const server = http.createServer(app);
+const server: any = http.createServer(app);
 initSocketIO(server);
 
 async function main() {
@@ -20,8 +20,8 @@ async function main() {
     await seedSuperAdmin();
 
     // Create the HTTP server
-    server.listen(PORT, () => {
-      console.log(`Server is running on ${PORT}`);
+    server.listen(PORT, IP, () => {
+      console.log(`Server is running on http://${IP}:${PORT}`);
     });
   } catch (error) {
     console.error("Error in main function:", error);
