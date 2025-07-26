@@ -139,7 +139,16 @@ const employerAllPostedJobs = async (
   return { pagination, jobs: myJobs };
 };
 const candidateAllJobsDB = async (query: Record<string, unknown>) => {
-  const myJobsQuery = new queryBuilder(JobPostModel.find(), query)
+  const { minSalary, maxSalary, education, jobTypes, ...restQury } = query;
+  if (minSalary) restQury.minSalary = { $gte: minSalary };
+  if (maxSalary) restQury.maxSalary = { $lte: maxSalary };
+  if (jobTypes && typeof jobTypes === "string") {
+    const jobTypeArr = jobTypes.split(',') || [];
+    restQury.jobType = { $in: jobTypeArr };
+  }
+  if (education) restQury.educations = education;
+
+  const myJobsQuery = new queryBuilder(JobPostModel.find(), restQury)
     .search(searchJobs)
     .filter()
     .fields()

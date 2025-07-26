@@ -1,4 +1,10 @@
-import { Types } from "mongoose"
+import { Types } from "mongoose";
+
+type IEducation = "All" | "High-School" | "Intermediate" | "Graduation" | "Associate-Degree" | "Bachelor-Degree" | "Master-Degree" | "Phd";
+export const Educations: IEducation[] = ['All', 'High-School', 'Intermediate', 'Graduation', 'Associate-Degree', 'Bachelor-Degree', 'Master-Degree', 'Phd'];
+
+type IJobLevel = 'Entry-Level' | 'Mid-Level' | 'Expert-Level';
+export const JobLevels: IJobLevel[] = ['Entry-Level', 'Mid-Level', 'Expert-Level']
 
 export type TJobPost = {
     _id?: Types.ObjectId
@@ -18,11 +24,11 @@ export type TJobPost = {
     location: string
     experience: "Freshers" | "1 - 2" | "2 - 4" | "4 - 6" | "8 - 10" | "10 - 15" | "15 +"
     jobType: "All" | "Full-Time" | "Part-Time" | "Internship" | "Contract" | "Soft-Skill" | "Freelance" | "Vocational" | "Apprenticeship" | "Remote"
-    educations: string[];
+    educations: [IEducation];
     organizationType: "All" | "Federal Government" | "County Government" | "City Government" | "State Government" | "Local Government" | "NGO" | "Private Company" | "International Agencies" | "Airport Authority"
     scheduleDate: Date
     expirationDate: Date
-    jobLevel: "Entry Level" | "Mid Level" | "Expert Level"
+    jobLevel: IJobLevel
     description: string
     responsibilities: string
 }
