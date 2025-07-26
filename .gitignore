@@ -1,4 +1,6 @@
+.vscode
 node_modules
+logs
 /dist
 /public
 /logs.env
