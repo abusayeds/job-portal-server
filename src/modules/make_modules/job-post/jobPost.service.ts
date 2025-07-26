@@ -139,19 +139,20 @@ const employerAllPostedJobs = async (
   return { pagination, jobs: myJobs };
 };
 const candidateAllJobsDB = async (query: Record<string, unknown>) => {
-  const { minSalary, maxSalary, education, jobTypes, ...restQury } = query;
-  if (minSalary) restQury.minSalary = { $gte: minSalary };
-  if (maxSalary) restQury.maxSalary = { $lte: maxSalary };
+  const { minSalary, maxSalary, education, jobTypes, ...restQuery } = query;
+  if (minSalary) restQuery.minSalary = { $gte: minSalary };
+  if (maxSalary) restQuery.maxSalary = { $lte: maxSalary };
   if (jobTypes && typeof jobTypes === "string") {
     const jobTypeArr = jobTypes.split(',') || [];
-    restQury.jobType = { $in: jobTypeArr };
+    restQuery.jobType = { $in: jobTypeArr };
   }
-  if (education) restQury.educations = education;
+  if (education) restQuery.educations = education;
 
-  const myJobsQuery = new queryBuilder(JobPostModel.find(), restQury)
+  const myJobsQuery = new queryBuilder(JobPostModel.find(), restQuery)
     .search(searchJobs)
     .filter()
     .fields()
+    .populate("companyId")
     .sort();
   const { totalData } = await myJobsQuery.paginate(JobPostModel.find());
   const jobs = await myJobsQuery.modelQuery.exec();
@@ -170,15 +171,21 @@ const candidateAllJobsDB = async (query: Record<string, unknown>) => {
       }
     }
 
+    const company: any = job.companyId;
     return {
       _id: job._id,
       jobTitle: job?.jobTitle,
+      companyName: company?.companyName,
+      location: company?.address,
+      educations: job?.educations,
+      experience: job?.experience,
+      expirationDate: job?.expirationDate,
       logo: job?.logo,
       banner: job?.banner,
       jobType: job?.jobType,
       jobLevel: job?.jobLevel,
-      expirationDate: remainingTime,
-      totalApplication: 0,
+      expiringIn: remainingTime,
+      totalApplication: 0
     };
   });
   const currentPage = Number(query?.page) || 1;

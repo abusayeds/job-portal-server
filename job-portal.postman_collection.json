@@ -1,0 +1,2863 @@
+{
+	"info": {
+		"_postman_id": "9b2386e9-2853-49d0-8d4c-9ea5c33dc6cc",
+		"name": "job-portal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35012738",
+		"_collection_link": "https://magy00.postman.co/workspace/sayed-server2~54932eba-394e-4ce8-ac07-9da2ee1a077e/collection/35012738-9b2386e9-2853-49d0-8d4c-9ea5c33dc6cc?action=share&source=collection_link&creator=35012738"
+	},
+	"item": [
+		{
+			"name": "website",
+			"item": [
+				{
+					"name": "authentication",
+					"item": [
+						{
+							"name": "user-reg:",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullName\": \"candidate 3\",\r\n    \"userName\": \"candidate 3 sayed\" , \r\n    \"email\": \"candidate3@gmail.com\",\r\n    \"role\": \"candidate\",\r\n    \"password\": \"1qazxsw21qaz\",\r\n    \"confirmPassword\": \"1qazxsw21qaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify-otp",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNheWVkNzU2ODlAZ21haWwuY29tIiwib3RwIjoiNzc3MzA4IiwiaWF0IjoxNzUyMzA5MTMzLCJleHAiOjE3NTI5MTM5MzN9.sRJeMgDJz2JHN0TQP6LGFI9je-wb8gLqU3J2mK-u6p4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"otp\" : \"392984\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/verify-otp",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"verify-otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "forget-password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"vohibej223@exitbit.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/forget-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"forget-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify-forget-otp",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFidXNheWVkc3R1ZGVudDg1NUBnbWFpbC5jb20iLCJmb3Jnb3QiOiJmb3Jnb3QiLCJvdHAiOiI0MDE1NDMiLCJpYXQiOjE3NTEwMjE4NzgsImV4cCI6MTc1MTYyNjY3OH0.lCavAOzauK6I4LbxRGdx8UCcn1h0HqgaIjAeG9vXe6A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"otp\" : \"401543\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/verify-forget-otp",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"verify-forget-otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "resend",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFidXNheWVkc3R1ZGVudDg1NUBnbWFpbC5jb20iLCJvdHAiOiI1NjQ2NDMiLCJpYXQiOjE3NTEwMTk4MjQsImV4cCI6MTc1MTYyNDYyNH0.uiKr3KphBZkKYcI1DxyCPGPSenWapgpq0slBa-oSFDQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/resend",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"resend"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset-password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFidXNheWVkc3R1ZGVudDg1NUBnbWFpbC5jb20iLCJ2ZXJpZnlGb3Jnb3QiOiJ2ZXJpZnlGb3Jnb3QiLCJvdHAiOiI0MDE1NDMiLCJpYXQiOjE3NTEwMjIxODIsImV4cCI6MTc1MTYyNjk4Mn0.8b2jj4y81mU094vzPanA0ROTAmiNfz_zOtTWUOwfZzU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\" : \"1qazxsw2\" ,\r\n    \"confirmPassword\" : \"1qazxsw2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n{\r\n    \"email\": \"candidate3@gmail.com\",\r\n    \"password\": \"1qazxsw21qaz\"\r\n}\r\n\r\n// empolyer\r\n// {\r\n//     \"email\": \"employer1@gmail.com\",\r\n//     \"password\": \"1qazxsw21qaz\"\r\n// }\r\n\r\n// employe\r\n// {\r\n//     \"email\": \"employe1@gmail.com\",\r\n//     \"password\": \"1qazxsw21qaz\"\r\n// }\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my-profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"candidate@gmail.com\",\r\n    \"password\": \"1qazxsw21qaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/my-profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"my-profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "employer identity verification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0Y2U4YmE2ZDkwZWMzNWVkZDExOSIsImVtYWlsIjoiZW1wbG95ZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJlbXBsb3llciIsImlzQ29tcGxldGVkIjpmYWxzZSwiaXNBY3RpdmUiOnRydWUsImlzVmVyaWZ5Ijp0cnVlLCJpc0FwcHJvdmUiOnRydWV9LCJpYXQiOjE3NTI3MzA2NzMsImV4cCI6MTc1MzMzNTQ3M30.RVA4mGUanPOQGKjS7XwsuexCikkXnnCpziyWqtp99-I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "//  step 1\r\n// {\r\n//     \"logo\": \"/images/1976dc6b-de5e-4834-abee-efb1eb841b62.jpg\",\r\n//     \"banner\": \"/images/1976dc6b-de5e-4834-abee-efb1eb841b62.jpg\",\r\n//     \"companyName\": \"jvi Agenvy\",\r\n//     \"about\": \"lorem it some lorem it some lorem it some lorem it some lorem it some lorem it some  \"\r\n// }\r\n//  step 2\r\n// {\r\n//     \"organizationType\": \"County Government\",\r\n//     \"industry\": \"Legal & Government\",\r\n//     \"foundIn\": \"2025-07-13T06:06:52.815Z\",\r\n//     \"teamSize\": 2,\r\n//     \"companyWebsite\": \"htps://host\",\r\n//     \"companyVision\": \"lorem it some lorem it some lorem it some lorem it some lorem it some lorem it some\" ,\r\n//     \"benefits\": [\r\n//         \"lorem\" , \"lorem\" , \"lorem\"\r\n//     ]\r\n//  }\r\n//  step 3\r\n// {\r\n//     \"facebook\": \"https://www.facebook.com/\"\r\n\r\n// }\r\n// step 4\r\n// {\r\n//     \"address\": \"123 Main Street, City, Country\",\r\n//     \"phone\": \"+1234567890\",\r\n//     \"contactEmail\": \"empolyer@example.com\"\r\n// }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/identity-verification?step=4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"identity-verification"
+									],
+									"query": [
+										{
+											"key": "step",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "candidate identity verification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "//  step 1\r\n\r\n// {\r\n//     \"image\": \"/images/7b2363b181a1455-images(4).png\",\r\n//     \"title\": \"Software Developer\",\r\n//     \"experience\": \"2-4\",\r\n//     \"educations\": [\r\n//         \"BSc in Computer Science\",\r\n//         \"Masters in Software Engineering\"\r\n//     ],\r\n//     \"parsonalWebsite\": \"https://example.com\",\r\n//     \"cv\": [\r\n//         \"/images/50743ebe462a401-Untitleddocument.pdf\"\r\n//     ]\r\n// }\r\n\r\n//  step 2\r\n\r\n// {\r\n// \"nationality\": \"Bangladeshi\",\r\n// \"dateOfBrith\": \"1990-05-14\",\r\n// \"gender\": \"Female\",\r\n// \"maritalStatus\": \"Single\",\r\n// \"biography\": \"A passionate software developer with a love for coding and problem-solving. Always eager to learn and grow in the field of technology.\"\r\n// }\r\n\r\n//  step 3\r\n\r\n// {\r\n//     \"facebook\": \"https://www.facebook.com/\"\r\n// }\r\n\r\n// step 4 \r\n\r\n// {\r\n//   \"address\": \" Dhaka, Bangladesh\",\r\n//   \"phone\": \"+8801XXXXXXXXX\",\r\n//   \"contactEmail\": \"john.doe@example.com\",\r\n//   \"jobType\": [\"Full-time\" , \"Part-Time\"] ,\r\n//   \"jobLevel\": [\"Mid-level\"]\r\n// }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/candidate-identity-verification?step=4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"candidate-identity-verification"
+									],
+									"query": [
+										{
+											"key": "step",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change  password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NWU3MjQxNTk2ODc2MGQ3MTBhMWYwMyIsImVtYWlsIjoiYWJ1c2F5ZWRzdHVkZW50ODU1QGdtYWlsLmNvbSIsInJvbGUiOiJlbXBsb3llciIsImlzQ29tcGxldGVkIjp0cnVlLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNWZXJpZnkiOnRydWUsImlzQXBwcm92ZSI6dHJ1ZX0sImlhdCI6MTc1MTM2MTY5MSwiZXhwIjoxNzUxOTY2NDkxfQ.MyqSpFYfAdn0yRMIh6ze34WvphhgqtGLK1LtgfJ5OSM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\": \"1qazxsw2\",\r\n    \"newPassword\": \"1qazxsw21qaz\" ,\r\n    \"confirmPassword\" : \"1qazxsw21qaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/change-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"change-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "candidate cv update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"cv\": [\r\n      {\r\n        \"name\": \"CV Name 1\",\r\n        \"file\": \"/images/cdasfgv1.pdf\"\r\n      }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/cv-update?pull=6875f0d127348825034e6c25",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"cv-update"
+									],
+									"query": [
+										{
+											"key": "pull",
+											"value": "68737e2b8cf00459fe4cbacd",
+											"disabled": true
+										},
+										{
+											"key": "pull",
+											"value": "6875f05627348825034e6c0e",
+											"disabled": true
+										},
+										{
+											"key": "pull",
+											"value": "6875f0d127348825034e6c25"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "candidate job alert",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jobType\" :  [\"All\" , \"Internship\"] ,\r\n    \"jobLevel\" : [\"Entry-Level\"] \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/job-alert",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"job-alert"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/all-user?role=employer",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"all-user"
+									],
+									"query": [
+										{
+											"key": "role",
+											"value": "employer"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single-user  candidate/employer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"catagoryType\": \" jr frontend dev \",\r\n    \"logo\": \"/images/14faf3b33f584e8-download(2).jpg\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/user/single-user/6868af413db99908822128d4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"single-user",
+										"6868af413db99908822128d4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Access Employe",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/access-employe",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"access-employe"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "purchase-plan",
+					"item": [
+						{
+							"name": "purchase-plan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cancel_url\": \"https://job-potal-local-abusayedserver.sarv.live/\",\r\n    \"success_url\": \"https://job-potal-local-abusayedserver.sarv.live/\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/purchase/6868f8464973a3973c75f9c3?numberOfEmployees=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"purchase",
+										"6868f8464973a3973c75f9c3"
+									],
+									"query": [
+										{
+											"key": "numberOfEmployees",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "autoRenewal",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"autoRenewal\" : true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/auto-renewal/sub_1ReGqiGzEnBHrKG8nAp7yzFE",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"auto-renewal",
+										"sub_1ReGqiGzEnBHrKG8nAp7yzFE"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all-subscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/subscription",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"subscription"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "job-post",
+					"item": [
+						{
+							"name": "create a job post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employe1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"jobTitle\": \"Backend dev test access post \",\r\n    \"tags\": [\r\n        // \"Dashboard developer\" ,\r\n        \"Sr. Backend developer\"\r\n        // \"Jr. Front end developer\" \r\n        // \"Dashboard developer\" ,\r\n        // \"UI UX\"\r\n    ],\r\n    \"location\" : \"Dhaka , mohakhali \" ,\r\n    \"minSalary\": 55000.75,\r\n    \"currency\": \"USD\",\r\n    \"maxSalary\": 85000.50,\r\n    \"salaryType\": \"Monthly\",\r\n    \"educations\": [\r\n        \"All\",\r\n        // \"High-School\",\r\n        \"Master-Degree\"\r\n    ],\r\n    //  'All', 'High-School', 'Intermediate',  'Graduation','Associate-Degree', 'Bachelor-Degree',  'Master-Degree', 'Phd',\r\n    \"experience\": \"8-10\",\r\n    // Freshers', '1-2', '2-4',  '4-6',  '8-10',  '10-15',  '15+'\r\n    \"expirationDate\": \"2025-12-31\",\r\n    // \"scheduleDate\": \"2025-12-31\",     // when unlimited plan in puarchse then this field is add (optional )\r\n    \"jobType\": \"Vocational\",\r\n    // All', 'Full-Time', 'Part-Time', 'Internship', 'Contract', 'Soft-Skill', 'Freelance', 'Vocational', 'Apprenticeship', 'Remote',\r\n    \"jobBenefits\": [\r\n        \"when unlimited\",\r\n        \"when unlimited plan in puarchse then this field is add (optional )\"\r\n    ],\r\n    \"organizationType\": \"County Government\",\r\n    \"jobLevel\": \"Mid-Level\",\r\n    //  enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],\r\n    \"description\": \"We are looking for an experienced software developer to join our team.\",\r\n    \"responsibilities\": \"Develop and maintain web applications, collaborate with cross-functional teams, and write clean, scalable code.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/job/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Single job",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/job/single/68736a7b5c4bbdb5437dc284",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"single",
+										"68736a7b5c4bbdb5437dc284"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "My posted all jobs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employe1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/job/my-jobs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"my-jobs"
+									],
+									"query": [
+										{
+											"key": "searchTerm",
+											"value": "d",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view all applications",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/job/view-applications/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"view-applications",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete jobs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer2}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"jobTitle\": \"Backend dev  \",\r\n    \"tags\": [\r\n        // \"Dashboard developer\" ,\r\n        \"Sr. Backend developer\"\r\n        // \"Jr. Front end developer\" \r\n        // \"Dashboard developer\" ,\r\n        // \"UI UX\"\r\n    ],\r\n    \"location\" : \"Dhaka , mohakhali\" ,\r\n    \"minSalary\": 55000.75,\r\n    \"currency\": \"USD\",\r\n    \"maxSalary\": 85000.50,\r\n    \"salaryType\": \"Monthly\",\r\n    \"educations\": [\r\n        \"All\",\r\n        // \"High-School\",\r\n        \"Master-Degree\"\r\n    ],\r\n    //  'All', 'High-School', 'Intermediate',  'Graduation','Associate-Degree', 'Bachelor-Degree',  'Master-Degree', 'Phd',\r\n    \"experience\": \"8-10\",\r\n    // Freshers', '1-2', '2-4',  '4-6',  '8-10',  '10-15',  '15+'\r\n    \"expirationDate\": \"2025-12-31\",\r\n    // \"scheduleDate\": \"2025-12-31\",     // when unlimited plan in puarchse then this field is add (optional )\r\n    \"jobType\": \"Vocational\",\r\n    // All', 'Full-Time', 'Part-Time', 'Internship', 'Contract', 'Soft-Skill', 'Freelance', 'Vocational', 'Apprenticeship', 'Remote',\r\n    \"jobBenefits\": [\r\n        \"when unlimited\",\r\n        \"when unlimited plan in puarchse then this field is add (optional )\"\r\n    ],\r\n    \"organizationType\": \"County Government\",\r\n    \"jobLevel\": \"Mid-Level\",\r\n    //  enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],\r\n    \"description\": \"We are looking for an experienced software developer to join our team.\",\r\n    \"responsibilities\": \"Develop and maintain web applications, collaborate with cross-functional teams, and write clean, scalable code.\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/job/delete-job/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"delete-job",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "related Jobs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/job/related-jobs/68788d8a9feeb0e491c402d9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"related-jobs",
+										"68788d8a9feeb0e491c402d9"
+									],
+									"query": [
+										{
+											"key": "searchTerm",
+											"value": "back",
+											"disabled": true
+										},
+										{
+											"key": "experience",
+											"value": "8-10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "home page api",
+					"item": [
+						{
+							"name": "Get All category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/category/all",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"category",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get single category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/category/single/68636d2477944ed563abb34e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"category",
+										"single",
+										"68636d2477944ed563abb34e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Popular Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/category/popular",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"category",
+										"popular"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all jobs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/job/all?jobLevel=Mid-Level",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"all"
+									],
+									"query": [
+										{
+											"key": "searchTerm",
+											"value": "back",
+											"disabled": true
+										},
+										{
+											"key": "experience",
+											"value": "8-10",
+											"description": "Freshers\" | \"1 - 2\" | \"2 - 4\" | \"4 - 6\" | \"8 - 10\" | \"10 - 15\" | \"15 +",
+											"disabled": true
+										},
+										{
+											"key": "minSalary",
+											"value": "44444",
+											"disabled": true
+										},
+										{
+											"key": "maxSalary",
+											"value": "88880",
+											"disabled": true
+										},
+										{
+											"key": "jobTypes",
+											"value": "All,Full-Time",
+											"description": "\"Full-Time\" | \"Part-Time\" | \"Internship\" | \"Contract\" | \"Soft-Skill\" | \"Freelance\" | \"Vocational\" | \"Apprenticeship\" | \"Remote\"",
+											"disabled": true
+										},
+										{
+											"key": "education",
+											"value": "",
+											"description": "\"High-School\" | \"Intermediate\" | \"Graduation\" | \"Associate-Degree\" | \"Bachelor-Degree\" | \"Master-Degree\" | \"Phd\";",
+											"disabled": true
+										},
+										{
+											"key": "jobLevel",
+											"value": "Mid-Level",
+											"description": " 'Entry-Level' | 'Mid-Level' | 'Expert-Level'"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "all jobs",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}/job/all?jobLevel=Mid-Level",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"job",
+												"all"
+											],
+											"query": [
+												{
+													"key": "searchTerm",
+													"value": "back",
+													"disabled": true
+												},
+												{
+													"key": "experience",
+													"value": "8-10",
+													"description": "Freshers\" | \"1 - 2\" | \"2 - 4\" | \"4 - 6\" | \"8 - 10\" | \"10 - 15\" | \"15 +",
+													"disabled": true
+												},
+												{
+													"key": "minSalary",
+													"value": "44444",
+													"disabled": true
+												},
+												{
+													"key": "maxSalary",
+													"value": "88880",
+													"disabled": true
+												},
+												{
+													"key": "jobTypes",
+													"value": "All,Full-Time",
+													"description": "\"Full-Time\" | \"Part-Time\" | \"Internship\" | \"Contract\" | \"Soft-Skill\" | \"Freelance\" | \"Vocational\" | \"Apprenticeship\" | \"Remote\"",
+													"disabled": true
+												},
+												{
+													"key": "education",
+													"value": "",
+													"description": "\"High-School\" | \"Intermediate\" | \"Graduation\" | \"Associate-Degree\" | \"Bachelor-Degree\" | \"Master-Degree\" | \"Phd\";",
+													"disabled": true
+												},
+												{
+													"key": "jobLevel",
+													"value": "Mid-Level",
+													"description": " 'Entry-Level' | 'Mid-Level' | 'Expert-Level'"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1895"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"767-ehBDbVLdin+rf3G0HuFHTiastvQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 26 Jul 2025 04:04:46 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"All jobs fetched successfully\",\n    \"data\": {\n        \"pagination\": {\n            \"totalPage\": 1,\n            \"currentPage\": 1,\n            \"prevPage\": 1,\n            \"nextPage\": 1,\n            \"totalData\": 6\n        },\n        \"allJobs\": [\n            {\n                \"_id\": \"687b0cc633646c2edb0a2f5d\",\n                \"jobTitle\": \"Js Developer\",\n                \"logo\": \"/images/c376a9aaa1da4e8-507211778_1270074427848327_4327946230780989407_n.jpg\",\n                \"banner\": \"/images/9e7e35fd1ea24bb-f062056c-a340-4955-90d1-84ddbd3bc3fa.jpg\",\n                \"jobType\": \"Full-Time\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"2d 13h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a31dd8f3d444ddfe570ac\",\n                \"jobTitle\": \"Backend dev test  \",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a30b6332c4e6a921643d2\",\n                \"jobTitle\": \"Backend dev test  \",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a293f27657fdf3e8abd34\",\n                \"jobTitle\": \"Backend dev test access post \",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a28f227657fdf3e8abd26\",\n                \"jobTitle\": \"Backend dev employe\",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a2846f4bc4b239099a5e2\",\n                \"jobTitle\": \"Backend dev employe job post   \",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "top companies/employer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://10.10.11.39:7001/api/v1/user/top-companies",
+									"protocol": "http",
+									"host": [
+										"10",
+										"10",
+										"11",
+										"39"
+									],
+									"port": "7001",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"top-companies"
+									],
+									"query": [
+										{
+											"key": "searchTerm",
+											"value": "back",
+											"disabled": true
+										},
+										{
+											"key": "experience",
+											"value": "8-10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "plan && billing",
+					"item": [
+						{
+							"name": "my plan",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/plan/my-plan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"my-plan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "latest invoice",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/plan/latest-invoice",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"latest-invoice"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "applied jobs",
+					"item": [
+						{
+							"name": "apply-job",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"coverLetter\": \" hi test \"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/job/apply/68736a7b5c4bbdb5437dc284",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"apply",
+										"68736a7b5c4bbdb5437dc284"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "My applied jobs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/job/my-applied-jobs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"my-applied-jobs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Saved a job and candidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/saved/68734b4dba6d90ec35edd0ea",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"saved",
+										"68734b4dba6d90ec35edd0ea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view single Apply details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/job/single-apply/6879dbaa6df484a91486adbf",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"single-apply",
+										"6879dbaa6df484a91486adbf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "job alerts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/job/my-job-alerts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"my-job-alerts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "favorite info",
+					"item": [
+						{
+							"name": "my favorite info",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/saved/my-favorites",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"saved",
+										"my-favorites"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Overview",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/job/overview",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"overview"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "dashboard",
+			"item": [
+				{
+					"name": "subscription",
+					"item": [
+						{
+							"name": "UNLIMITED PLAN",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"planName\": \"unlimited plan\",\r\n    \"expiryDate\": 730,\r\n    \"jobpost\": \"unlimited\",\r\n    \"numberOfEmployees\": [\r\n        {\r\n            \"minEmployees\": 5,\r\n            \"maxEmployees\": 34,\r\n            \"price\": 200\r\n        },\r\n        {\r\n            \"minEmployees\": 2,\r\n            \"maxEmployees\": 50,\r\n            \"price\": 350\r\n        },\r\n        {\r\n            \"minEmployees\": 21,\r\n            \"maxEmployees\": 50,\r\n            \"price\": 350\r\n        }\r\n    ] ,\r\n    \"unlimited_text\":  true,\r\n    \"add_logo_images\": true,\r\n    \"avg_viewed_1000\": true,\r\n    \"multi_categories\": true,\r\n    \"schedule_dates\": true,\r\n    \"unlimited_postings\": true ,\r\n    \"fill_multiple_positions\": true,\r\n    \"continuous_posting\": true,\r\n    \"multi_user_access\": true,\r\n    \"popular_choice\":  true,\r\n    \"cost_effective\": true,\r\n    \"no_time_limit\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/subscription/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"subscription",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "STANDARD PLAN",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"planName\": \"standard_plan\",\r\n    \"jobpost\": 5,\r\n    \"planPrice\": 100,\r\n    \"unlimited_text\": true,\r\n    \"add_logo_images\": true,\r\n    \"avg_viewed_1000\": true,\r\n    \"multi_categories\": true ,\r\n    \"discount\" : 50 \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/subscription/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"subscription",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "BASIC PLAN",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"planName\": \"basic_plan\",\r\n    \"jobpost\": 4,\r\n    \"planPrice\": 30,\r\n    \"expiryDate\" : 30 ,\r\n    \"unlimited_text\": true,\r\n    \"add_logo_images\": true,\r\n    \"avg_viewed_1000\": true,\r\n    \"multi_categories\": true     \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/subscription/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"subscription",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all-subscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/subscription",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"subscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single subscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/subscription/6868f9dd236864c43c2b9871",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"subscription",
+										"6868f9dd236864c43c2b9871"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update-subscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n    {\r\n    // \"expiryDate\": 365,\r\n    \"jobpost\": \"unlimited\",\r\n    \"numberOfEmployees\": [\r\n        {\r\n            \"minEmployees\": 5,\r\n            \"maxEmployees\": 10,\r\n            \"price\": 200\r\n        },\r\n        {\r\n            \"minEmployees\": 5,\r\n            \"maxEmployees\": 20,\r\n            \"price\": 400\r\n        },\r\n        {\r\n            \"minEmployees\": 5,\r\n            \"maxEmployees\": 30,\r\n            \"price\": 600\r\n        }\r\n    ] ,\r\n    \"unlimited_text\":  true,\r\n    \"add_logo_images\": true,\r\n    \"avg_viewed_1000\": true,\r\n    \"multi_categories\": true,\r\n    \"schedule_dates\": true,\r\n    \"unlimited_postings\": true ,\r\n    \"fill_multiple_positions\": true,\r\n    \"continuous_posting\": true,\r\n    \"multi_user_access\": true,\r\n    \"popular_choice\":  true,\r\n    \"cost_effective\": true,\r\n    \"no_time_limit\":  true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/subscription/update/6868f8464973a3973c75f9c3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"subscription",
+										"update",
+										"6868f8464973a3973c75f9c3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "authentication",
+					"item": [
+						{
+							"name": "forget-password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"cemiwib207@nomrista.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/forget-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"forget-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify-forget-otp",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{forgat_pass_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"otp\" : \"201604\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/verify-forget-otp",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"verify-forget-otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "resend",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"cemiwib207@nomrista.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}user/resend",
+									"host": [
+										"{{url}}user"
+									],
+									"path": [
+										"resend"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset-password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNlbWl3aWIyMDdAbm9tcmlzdGEuY29tIiwidmVyaWZ5Rm9yZ290IjoidmVyaWZ5Rm9yZ290IiwiaWF0IjoxNzQ4NjAwMzQ2LCJleHAiOjE3NDkyMDUxNDZ9.89jOWbzI4wlIFdzdueRdHBKDrBdlf0f2Iqeo8ZqM4ZI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\" : \"1qazxsw2\" ,\r\n    \"confirmPassword\" : \"1qazxsw2\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"1qazxsw21qaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my-profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/my-profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"my-profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update admin profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \r\n      \"fullName\" : \"nijam \" ,\r\n      \"logo\" :  ,\r\n    \"contactEmail\" : \"adminContackEmail@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "All user",
+					"item": [
+						{
+							"name": "status change by admin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isActive\" : true,\r\n\r\n    \"isApprove\" : true \r\n    // \"isActive\" : true \r\n    //  \"title\" : \"hi test \" ,\r\n    //  \"description\" :  \" hi how \" \r\n    //  \"isApprove\" : true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/handle-status/68734b4dba6d90ec35edd0ec",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"handle-status",
+										"68734b4dba6d90ec35edd0ec"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/all-user?role=candidate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"all-user"
+									],
+									"query": [
+										{
+											"key": "role",
+											"value": "candidate",
+											"description": "candidate, employer"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single-user  candidate/employer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"catagoryType\": \" jr frontend dev \",\r\n    \"logo\": \"/images/14faf3b33f584e8-download(2).jpg\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/user/single-user/6868af413db99908822128d4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"single-user",
+										"6868af413db99908822128d4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Earning",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/earning/2027",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"earning",
+										"2027"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dashboard",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/dashboard",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"dashboard"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "create the category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"catagoryType\": \" jr sfrontend dev \",\r\n    \"logo\": \"/images/14faf3b33f584e8-download(2).jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/category/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update the category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"catagoryType\":  \" Sr. Backend developer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/category/update/686b42bd69c9df6d341ffa7e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"category",
+										"update",
+										"686b42bd69c9df6d341ffa7e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/category/all",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"category",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get single category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/category/single/68636d2477944ed563abb34e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"category",
+										"single",
+										"68636d2477944ed563abb34e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/category/delete/6863ad051bd95e6e5c290848",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"category",
+										"delete",
+										"6863ad051bd95e6e5c290848"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "A.C Management",
+					"item": [
+						{
+							"name": "Employer A.C management",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/account-management",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"account-management"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employer approve  A.C",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/approve-employer",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"approve-employer"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Earning history",
+					"item": [
+						{
+							"name": "Earning history",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/earning-history",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"earning-history"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "privacy",
+					"item": [
+						{
+							"name": "Update  privacy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/privacy/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"privacy",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get privacy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/privacy",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"privacy"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "About",
+					"item": [
+						{
+							"name": "Update about",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/about/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"about",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get About",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/about",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"about"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Disclaimer",
+					"item": [
+						{
+							"name": "disclaimer Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/disclaimer/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"disclaimer",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "disclamier",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/disclaimer",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"disclaimer"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Terms",
+					"item": [
+						{
+							"name": "create terms",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/terms/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"terms",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get terms",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/terms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"terms"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "file_uploader",
+			"item": [
+				{
+					"name": "file-upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MzliYzJkZjNlZjc4MDRkMjcwNzdkZSIsImVtYWlsIjoiY2VtaXdpYjIwN0Bub21yaXN0YS5jb20iLCJyb2xlIjoiZW1wbG95ZXJzIiwiaXNDb21wbGV0ZWQiOmZhbHNlLCJpc0FwcHJvdmUiOmZhbHNlLCJpc0FjdGl2ZSI6dHJ1ZX0sImlhdCI6MTc0ODYxNDcyMiwiZXhwIjoxNzQ5MjE5NTIyfQ.Ugyl6WUgSzCpQim2nsFosReHy33Kk1l78mEXOazXsUg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/sayed/Downloads/download (3).jfif"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/uploded",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uploded"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/sayed/Downloads/images (4).png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/uploded",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"uploded"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://jop-potal-abusayedserver.sarv.live/api/v1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "admin_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0YWI0YmE2ZDkwZWMzNWVkZDBlMiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaXNDb21wbGV0ZWQiOnRydWUsImlzQWN0aXZlIjp0cnVlLCJpc1ZlcmlmeSI6dHJ1ZSwiaXNBcHByb3ZlIjp0cnVlfSwiaWF0IjoxNzUyNDY5MTkwLCJleHAiOjE3NTMwNzM5OTB9.-OIwKtazIxaPsDuwj689sLkNJbMhOLN01eAySU27xAg",
+			"type": "string"
+		},
+		{
+			"key": "candidate_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0YjRkYmE2ZDkwZWMzNWVkZDBlYSIsImVtYWlsIjoiY2FuZGlkYXRlMUBnbWFpbC5jb20iLCJyb2xlIjoiY2FuZGlkYXRlIiwiaXNDb21wbGV0ZWQiOnRydWUsImlzQWN0aXZlIjp0cnVlLCJpc1ZlcmlmeSI6dHJ1ZSwiaXNBcHByb3ZlIjp0cnVlfSwiaWF0IjoxNzUyODEyNzkzLCJleHAiOjE3NTM0MTc1OTN9.8xw5RGE393gJNtzz35x6VXX8RZgn7x8RsbiZHJY9YuI",
+			"type": "string"
+		},
+		{
+			"key": "employe_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MzliYzJkZjNlZjc4MDRkMjcwNzdkZSIsImVtYWlsIjoiY2VtaXdpYjIwN0Bub21yaXN0YS5jb20iLCJyb2xlIjoiZW1wbG95ZSIsImlzQ29tcGxldGVkIjp0cnVlLCJpc0FwcHJvdmUiOmZhbHNlLCJpc0FjdGl2ZSI6dHJ1ZX0sImlhdCI6MTc1MDY3MDk0OCwiZXhwIjoxNzUxMjc1NzQ4fQ.mYe3JJumjio2scSBs23qHM2DuI3DmEiqAN3gaSYCZPU",
+			"type": "string"
+		},
+		{
+			"key": "employer_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0Yzc2YmE2ZDkwZWMzNWVkZDEwYyIsImVtYWlsIjoiZW1wbG95ZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJlbXBsb3llciIsImlzQ29tcGxldGVkIjp0cnVlLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNWZXJpZnkiOnRydWUsImlzQXBwcm92ZSI6dHJ1ZX0sImlhdCI6MTc1MzI2NTM0MywiZXhwIjoxNzUzODcwMTQzfQ.s5M9JB7ezlfnoZ_Q3XoOlCTx7ts8FK1nc53eGuMK6rs",
+			"type": "string"
+		},
+		{
+			"key": "reg_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNlbWl3aWIyMDdAbm9tcmlzdGEuY29tIiwiaWF0IjoxNzQ4NTk5NTk1LCJleHAiOjE3NDkyMDQzOTV9.KFg7e6QJchKizGRAhJIHtYl9sDDfnDAWN0lNWaT6h7k",
+			"type": "string"
+		},
+		{
+			"key": "forgat_pass_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFidXNheWVkc3R1ZGVudDg1NUBnbWFpbC5jb20iLCJmb3Jnb3QiOiJmb3Jnb3QiLCJpYXQiOjE3NTEwMDUxNDIsImV4cCI6MTc1MTYwOTk0Mn0.igB-lK3DVHKIHQwPQL6u7UWccXhNubpnNtcYfyZxUn0",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "https://job-potal-local-abusayedserver.sarv.live/api/v1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "url",
+			"value": "http://localhost:7001/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "candidate1",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0YjRkYmE2ZDkwZWMzNWVkZDBlYSIsImVtYWlsIjoiY2FuZGlkYXRlMUBnbWFpbC5jb20iLCJyb2xlIjoiY2FuZGlkYXRlIiwiaXNDb21wbGV0ZWQiOnRydWUsImlzQWN0aXZlIjp0cnVlLCJpc1ZlcmlmeSI6dHJ1ZSwiaXNBcHByb3ZlIjp0cnVlfSwiaWF0IjoxNzUyNzI4NzIwLCJleHAiOjE3NTMzMzM1MjB9.V4scy8IF079m9u30zuMmkLVAXV3Yl0TvzEHhFZihuyg",
+			"type": "string"
+		},
+		{
+			"key": "candidate2",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0YzA2YmE2ZDkwZWMzNWVkZDBmYiIsImVtYWlsIjoiY2FuZGlkYXRlMkBnbWFpbC5jb20iLCJyb2xlIjoiY2FuZGlkYXRlIiwiaXNDb21wbGV0ZWQiOnRydWUsImlzQWN0aXZlIjp0cnVlLCJpc1ZlcmlmeSI6dHJ1ZSwiaXNBcHByb3ZlIjp0cnVlfSwiaWF0IjoxNzUyNzI4NzU3LCJleHAiOjE3NTMzMzM1NTd9.gxUMSYQmwZoF65_aPHGOP37XDo2nR1Cd4bdBcLaF03I",
+			"type": "string"
+		},
+		{
+			"key": "candidate3",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4Nzg4OGQ5YTM2YjY3OGIzZGE3MDBmMSIsImVtYWlsIjoiY2FuZGlkYXRlM0BnbWFpbC5jb20iLCJyb2xlIjoiY2FuZGlkYXRlIiwiaXNDb21wbGV0ZWQiOnRydWUsImlzQWN0aXZlIjp0cnVlLCJpc1ZlcmlmeSI6dHJ1ZSwiaXNBcHByb3ZlIjp0cnVlfSwiaWF0IjoxNzUyNzI5OTc4LCJleHAiOjE3NTMzMzQ3Nzh9.2HIGFSddvOncGnnOXC4wyFbiBlg0eHiKiR7Nix6ssXI",
+			"type": "string"
+		},
+		{
+			"key": "employer1",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0Yzc2YmE2ZDkwZWMzNWVkZDEwYyIsImVtYWlsIjoiZW1wbG95ZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJlbXBsb3llciIsImlzQ29tcGxldGVkIjp0cnVlLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNWZXJpZnkiOnRydWUsImlzQXBwcm92ZSI6dHJ1ZX0sImlhdCI6MTc1MjczMDI4NSwiZXhwIjoxNzUzMzM1MDg1fQ.7amVvzX2d0kxpV58a9Hf7mvfHltpO__SANOqXHAfWlM",
+			"type": "string"
+		},
+		{
+			"key": "employer2",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0Y2U4YmE2ZDkwZWMzNWVkZDExOSIsImVtYWlsIjoiZW1wbG95ZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJlbXBsb3llciIsImlzQ29tcGxldGVkIjpmYWxzZSwiaXNBY3RpdmUiOnRydWUsImlzVmVyaWZ5Ijp0cnVlLCJpc0FwcHJvdmUiOmZhbHNlfSwiaWF0IjoxNzUyNzMwMzI5LCJleHAiOjE3NTMzMzUxMjl9.8XL0YtinrOGdb-dWjVzniGYHYfL8bQKCrKncdhAkdQY",
+			"type": "string"
+		},
+		{
+			"key": "employer3",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4NzM0Y2ZjYmE2ZDkwZWMzNWVkZDExZSIsImVtYWlsIjoiZW1wbG95ZXIzQGdtYWlsLmNvbSIsInJvbGUiOiJlbXBsb3llciIsImlzQ29tcGxldGVkIjp0cnVlLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNWZXJpZnkiOnRydWUsImlzQXBwcm92ZSI6ZmFsc2V9LCJpYXQiOjE3NTI3MzAzNTQsImV4cCI6MTc1MzMzNTE1NH0.NPBo8_MSRGwBfl44BwNyinI_1ttoVrBbV5b2_EzXs3E",
+			"type": "string"
+		},
+		{
+			"key": "employe1",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4N2EyNjk2ZjRiYzRiMjM5MDk5YTVkNCIsImVtYWlsIjoiZW1wbG95ZTFAZ21haWwuY29tIiwicm9sZSI6ImVtcGxveWUiLCJpc0NvbXBsZXRlZCI6dHJ1ZSwiaXNBY3RpdmUiOnRydWUsImlzVmVyaWZ5Ijp0cnVlLCJpc0FwcHJvdmUiOnRydWV9LCJpYXQiOjE3NTI4MzU3NTIsImV4cCI6MTc1MzQ0MDU1Mn0.SBCOKsEJjb3FJzYwJSyiVvHVVV6LL125GUdhLzcb89g",
+			"type": "string"
+		},
+		{
+			"value": "",
+			"type": "string"
+		}
+	]
+}
