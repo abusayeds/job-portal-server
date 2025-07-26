@@ -569,6 +569,21 @@ const topCompanies = catchAsync(async (req, res) => {
 
   sendResponse(res, { statusCode: httpStatus.OK, success: true, data: topEmployers });
 });
+const statistics = catchAsync(async (req, res) => {
+  const now = new Date();
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(now.getDate() - 7);
+
+  const [activeJobs, totalJobs, candidates, companies, newJobs] = await Promise.all([
+    JobPostModel.countDocuments({ expirationDate: { $gt: now } }),
+    JobPostModel.countDocuments(),
+    UserModel.countDocuments({ role: "candidate" }),
+    UserModel.countDocuments({ role: "employer" }),
+    JobPostModel.countDocuments({ createdAt: { $gte: sevenDaysAgo } }),
+  ]);
+ 
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { candidates, activeJobs, companies, totalJobs, newJobs } });
+});
 
 export const userController = {
   registerUser,
@@ -590,6 +605,7 @@ export const userController = {
   candidateCvUpdate,
   accessEmploye,
   topCompanies,
+  statistics,
 }
 
 
