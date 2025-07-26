@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { TJobPost } from './jobPost.interface';
+import { Educations, JobLevels, TJobPost } from './jobPost.interface';
 
 
 
@@ -58,8 +58,7 @@ const jobPostSchema = new Schema<TJobPost>(
         },
         educations: {
             type: [String],
-            enum: ['All', 'High-School', 'Intermediate', 'Graduation', 'Associate-Degree', 'Bachelor-Degree', 'Master-Degree', 'Phd',
-            ],
+            enum: Educations,
             required: true,
             trim: true,
             validate: [(arr: string[]) => arr.length >= 1, 'At least one education is required.'],
@@ -93,7 +92,7 @@ const jobPostSchema = new Schema<TJobPost>(
         jobLevel: {
             type: String,
             trim: true,
-            enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],
+            enum: JobLevels,
             required: true,
         },
         jobBenefits: {
