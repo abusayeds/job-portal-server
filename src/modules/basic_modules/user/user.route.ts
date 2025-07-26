@@ -40,6 +40,7 @@ router.get("/approve-employer", authMiddleware(role.admin), userController.appro
 
 router.post("/access-employe", authMiddleware(role.employer), userController.accessEmploye)
 
+router.get('/companies', userController.getCompanies)
 router.get('/top-companies', userController.topCompanies)
 router.get('/statistics', userController.statistics)
 

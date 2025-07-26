@@ -24,6 +24,7 @@ import {
   saveOTP,
   userService,
 } from "./user.service";
+import queryBuilder from '../../../builder/queryBuilder';
 const registerUser = catchAsync(async (req, res) => {
   const { email } = req.body;
   const isUserRegistered: IUser | null = await UserModel.findOne({ email: email, isVerify: false });
@@ -585,6 +586,33 @@ const statistics = catchAsync(async (req, res) => {
   sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { candidates, activeJobs, companies, totalJobs, newJobs } });
 });
 
+const getCompanies =  catchAsync(async (req, res) => {
+  let myEmployerQuery: any; 
+  let totalData: number;
+  const query = req.query;
+  
+  myEmployerQuery = new queryBuilder(
+    UserModel.find({ role: "employer" }).select('companyName logo address fullName industry createdAt foundIn organizationType teamSize'),
+    query
+  )
+    .filter()
+    .sort();
+  const paginationResult = await myEmployerQuery.paginate(
+    JobPostModel.find({ role: "employer" })
+  );
+  totalData = paginationResult.totalData;
+
+  const companies = await myEmployerQuery.modelQuery.exec();
+  const currentPage = Number(query?.page) || 1;
+  const limit = Number(query.limit) || 10;
+  const pagination = myEmployerQuery.calculatePagination({
+    totalData,
+    currentPage,
+    limit,
+  });
+ sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, companies } });
+});
+
 export const userController = {
   registerUser,
   loginUser,
@@ -606,6 +634,7 @@ export const userController = {
   accessEmploye,
   topCompanies,
   statistics,
+  getCompanies,
 }
 
 

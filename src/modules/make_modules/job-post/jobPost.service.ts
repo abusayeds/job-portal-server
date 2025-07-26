@@ -176,6 +176,7 @@ const candidateAllJobsDB = async (query: Record<string, unknown>) => {
       _id: job._id,
       jobTitle: job?.jobTitle,
       companyName: company?.companyName,
+      companyId: job.companyId,
       location: company?.address,
       educations: job?.educations,
       experience: job?.experience,
