@@ -42,6 +42,7 @@ router.post("/access-employe", authMiddleware(role.employer), userController.acc
 
 router.get('/companies', userController.getCompanies)
 router.get('/seekers', userController.getSeekers)
+router.get('/employers', userController.getEmployers)
 router.get('/top-companies', userController.topCompanies)
 router.get('/statistics', userController.statistics)
 

@@ -632,6 +632,39 @@ const getSeekers =  catchAsync(async (req, res) => {
     .filter()
     .sort();
   const paginationResult = await myQuery.paginate(
+    JobPostModel.find({ role: "candidate" })
+  );
+  totalData = paginationResult.totalData;
+
+  const seekers = await myQuery.modelQuery.exec();
+  const currentPage = Number(query?.page) || 1;
+  const limit = Number(query.limit) || 10;
+  const pagination = myQuery.calculatePagination({
+    totalData,
+    currentPage,
+    limit,
+  });
+ sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, seekers } });
+});
+
+const getEmployers =  catchAsync(async (req, res) => {
+  let myQuery: any; 
+  let totalData: number;
+  const query = req.query;
+  const { educations, ...restQuery } = query;
+
+  // if (educations && typeof educations === "string") {
+  //   const educationArr = educations.split(',') || [];
+  //    restQuery["candidateInfo.educations"] = { $in: educationArr };
+  // }
+  
+  myQuery = new queryBuilder(
+    UserModel.find({ role: "employer" as TRole }),
+    restQuery
+  )
+    .filter()
+    .sort();
+  const paginationResult = await myQuery.paginate(
     JobPostModel.find({ role: "employer" })
   );
   totalData = paginationResult.totalData;
@@ -670,6 +703,7 @@ export const userController = {
   statistics,
   getCompanies,
   getSeekers,
+  getEmployers,
 }
 
 
