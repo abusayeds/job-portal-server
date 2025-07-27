@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import bcrypt from "bcrypt";
 import mongoose, { Schema } from "mongoose";
-import { IOTP, IUser } from "./user.interface";
+import { IOTP, IUser, UserIndustry } from "./user.interface";
 
 const UserSchema = new Schema<IUser>(
   {
@@ -47,7 +47,7 @@ const UserSchema = new Schema<IUser>(
       required: false,
       trim: true
     },
-    industry: { type: String, enam: ['Technical & Engineering', "Business & Finance", "Sales, Marketing & Customer Service", "Education & Training", "Legal & Government"], trim: true },
+    industry: { type: String, enum: UserIndustry, trim: true },
     foundIn: { type: String, trim: true },
     teamSize: { type: Number },
     companyWebsite: { type: String, trim: true },

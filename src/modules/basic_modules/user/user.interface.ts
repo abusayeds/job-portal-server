@@ -1,6 +1,46 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Document, Types } from "mongoose";
 
+export const UserIndustry = [
+  'All',
+  'Technical-And-Engineering',
+  'Business-And-Finance',
+  'Sales,-Marketing-And-Customer-Service',
+  'Education-And-Training',
+  'Legal-And-Government',
+  'Professional-Services',
+  'Education-And-Facilities-Management',
+  'Real-Estate',
+  'Retail',
+  'Technology',
+  'Telecoms',
+  'Tourism-And-Leisure',
+  'Wholesale-Trade',
+  'Agriculture-And-Soft-Commodities',
+  'Automotive',
+  'Aviation',
+  'Chemicals',
+  'Conglomerates',
+  'Construction-And-Building-Materials',
+  'Consumer-Goods',
+  'Apparel-And-Textiles',
+  'Corporates-Managed-Sponsors',
+  'Food',
+  'Beverages-And-Tobacco',
+  'Healthcare',
+  'Hotels',
+  'Industrials',
+  'LAnd-Transport-And-Logistics',
+  'Marine',
+  'Media',
+  'Metals-And-Mining',
+  'Oil-And-Gas',
+  'Power-And-Utilities',
+  'Other',
+];
+
+export type IUserIndustry = typeof UserIndustry[number];
+
 export type IPendingUser = {
   email: string;
   name: string;
@@ -22,8 +62,8 @@ export type IUser = {
   banner: string
   companyName: string;
   about: string;
-  organizationType: "All" | "Federal Government" | "County Government" | "City Government" | "State Government" | "Local Government" | "NGO" | "Private Company" | "International Agencies" | "Airport Authority"
-  industry: "Technical & Engineering" | "Business & Finance" | "Sales, Marketing & Customer Service" | "Education & Training" | " Legal & Government";
+  organizationType: IUserIndustry,
+  industry: IUserIndustry
   foundIn: string;
   teamSize: number
   companyWebsite: string
