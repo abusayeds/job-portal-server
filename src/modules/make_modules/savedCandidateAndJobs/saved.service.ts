@@ -9,9 +9,9 @@ const savedCandidateAndJobsDB = async (role: string, userId: string, id: string)
     if (role === "candidate") {
         const jobs = await JobPostModel.findById(id)
         if (!jobs) {
-            throw new AppError(404, "Job not found");
+            throw new AppError(404, "You are not a job seeker");
         }
-        const existingSavedJob = await SavedModel.findOne({ userId: jobs?.userId, jobId: id });
+        const existingSavedJob = await SavedModel.findOne({ userId: userId, jobId: id });
         if (existingSavedJob) {
             await SavedModel.findByIdAndDelete(existingSavedJob._id);
             return 'Job unsaved successfully';
@@ -27,7 +27,7 @@ const savedCandidateAndJobsDB = async (role: string, userId: string, id: string)
     } else {
         const candidate = await UserModel.findById(id)
         if (!candidate) {
-            throw new AppError(404, "Candidate not found");
+            throw new AppError(404, "You are not employer");
         }
         const existingSavedCandidate = await SavedModel.findOne({ userId: userId, candidate: id });
         if (existingSavedCandidate) {
