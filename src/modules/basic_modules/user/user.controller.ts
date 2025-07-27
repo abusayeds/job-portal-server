@@ -25,6 +25,7 @@ import {
   userService,
 } from "./user.service";
 import queryBuilder from '../../../builder/queryBuilder';
+import { TRole } from '../../../utils/role';
 const registerUser = catchAsync(async (req, res) => {
   const { email } = req.body;
   const isUserRegistered: IUser | null = await UserModel.findOne({ email: email, isVerify: false });
@@ -613,6 +614,39 @@ const getCompanies =  catchAsync(async (req, res) => {
  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, companies } });
 });
 
+const getSeekers =  catchAsync(async (req, res) => {
+  let myQuery: any; 
+  let totalData: number;
+  const query = req.query;
+  const { educations, ...restQuery } = query;
+
+  // if (educations && typeof educations === "string") {
+  //   const educationArr = educations.split(',') || [];
+  //    restQuery["candidateInfo.educations"] = { $in: educationArr };
+  // }
+  
+  myQuery = new queryBuilder(
+    UserModel.find({ role: "candidate" as TRole }).populate('candidateInfo'),
+    restQuery
+  )
+    .filter()
+    .sort();
+  const paginationResult = await myQuery.paginate(
+    JobPostModel.find({ role: "employer" })
+  );
+  totalData = paginationResult.totalData;
+
+  const seekers = await myQuery.modelQuery.exec();
+  const currentPage = Number(query?.page) || 1;
+  const limit = Number(query.limit) || 10;
+  const pagination = myQuery.calculatePagination({
+    totalData,
+    currentPage,
+    limit,
+  });
+ sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, seekers } });
+});
+
 export const userController = {
   registerUser,
   loginUser,
@@ -635,6 +669,7 @@ export const userController = {
   topCompanies,
   statistics,
   getCompanies,
+  getSeekers,
 }
 
 
