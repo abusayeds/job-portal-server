@@ -93,7 +93,7 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
                 fullName: item.candidate.fullName,
                 candidateId: item.candidate._id,
                 title: item.candidate.candidateInfo.title,
-                logo: item.candidate?.candidateInfo
+                logo: item.candidate?.logo,
             };
         });
         console.log("formatData", formatData);
