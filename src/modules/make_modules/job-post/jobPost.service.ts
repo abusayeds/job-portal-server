@@ -379,7 +379,7 @@ const relatedJobsDB = async (jobId: string) => {
   const result = await JobPostModel.findById(jobId);
   const relatedResult = await JobPostModel.find({
     jobLevel: result?.jobLevel,
-  }).limit(6);
+  }).populate([{path: 'companyId', select: 'companyName'}]).limit(6);
   return relatedResult;
 };
 
