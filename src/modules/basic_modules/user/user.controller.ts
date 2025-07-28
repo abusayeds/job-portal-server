@@ -647,16 +647,30 @@ const getSeekers =  catchAsync(async (req, res) => {
  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, seekers } });
 });
 
+const getSeekerById =  catchAsync(async (req, res) => {
+  const id = req.params.id;
+  const seeker = await UserModel.findOne({_id: id, role: 'candidate' as TRole}).populate('candidateInfo');
+
+  if (!seeker) {
+    throw new AppError(httpStatus.NOT_FOUND, "Seeker not found");
+  }
+
+ sendResponse(res, { statusCode: httpStatus.OK, success: true, data: seeker });
+});
+
 const getEmployers =  catchAsync(async (req, res) => {
   let myQuery: any; 
   let totalData: number;
   const query = req.query;
-  const { educations, ...restQuery } = query;
+  const { educations, address, ...restQuery } = query;
 
   // if (educations && typeof educations === "string") {
   //   const educationArr = educations.split(',') || [];
   //    restQuery["candidateInfo.educations"] = { $in: educationArr };
   // }
+
+  if (address) restQuery.address = { $regex: address, $options: 'i' };
+  
   
   myQuery = new queryBuilder(
     UserModel.find({ role: "employer" as TRole }),
@@ -669,7 +683,7 @@ const getEmployers =  catchAsync(async (req, res) => {
   );
   totalData = paginationResult.totalData;
 
-  const seekers = await myQuery.modelQuery.exec();
+  const employers = await myQuery.modelQuery.exec();
   const currentPage = Number(query?.page) || 1;
   const limit = Number(query.limit) || 10;
   const pagination = myQuery.calculatePagination({
@@ -677,7 +691,28 @@ const getEmployers =  catchAsync(async (req, res) => {
     currentPage,
     limit,
   });
- sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, seekers } });
+ sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, employers } });
+});
+
+const getEmployerById =  catchAsync(async (req, res) => {
+  const id = req.params.id;
+  const employer = await UserModel.findOne({_id: id, role: 'employer'}).populate('purchasePlan');
+
+  if (!employer) {
+    throw new AppError(httpStatus.NOT_FOUND, "Employer not found");
+  }
+
+  // Fetch jobs in a single query
+  const jobsCount = await JobPostModel.countDocuments({ 
+    companyId: employer._id, 
+    expirationDate: { $gt: new Date() } 
+  });
+
+  const resData = {
+    ...employer.toObject(),
+    activeJobs: jobsCount,
+  };
+ sendResponse(res, { statusCode: httpStatus.OK, success: true, data: resData });
 });
 
 export const userController = {
@@ -703,7 +738,9 @@ export const userController = {
   statistics,
   getCompanies,
   getSeekers,
+  getSeekerById,
   getEmployers,
+  getEmployerById,
 }
 
 

@@ -47,22 +47,39 @@ const savedCandidateAndJobsDB = async (role: string, userId: string, id: string)
 
 const myFavoritesDB = async (role: string, userId: string, query: Record<string, unknown>) => {
     if (role === "candidate") {
-        const savedQuery = new queryBuilder(SavedModel.find({ userId: userId }).populate("jobId"), query)
-        const { totalData } = await savedQuery.paginate(SavedModel.find({ userId: userId }))
-        const saveData: any = await savedQuery.modelQuery.exec();
-        console.log("saveData", saveData);
-        
+        const savedQuery = new queryBuilder(
+            SavedModel.find({ userId }).populate({
+                path: "jobId",
+                populate: {
+                    path: "companyId",
+                    select: "companyName", // only fetch companyName
+                },
+            }),
+            query
+        );
+
+        const { totalData } = await savedQuery.paginate(SavedModel.find({ userId }));
+        let saveData: any = await savedQuery.modelQuery.exec();
+
+        // Loop through saveData and restructure company info
+        saveData = saveData.map((saved: any) => {
+            if (saved?.jobId?.companyId) {
+                saved.jobId.companyName = saved.jobId.companyId.companyName;
+                delete saved.jobId.companyId; // remove full company object if needed
+            }
+            return saved;
+        });
+
         const currentPage = Number(query?.page) || 1;
-        const limit = Number(query.limit) || 10;
+        const limit = Number(query?.limit) || 10;
+
         const pagination = savedQuery.calculatePagination({
             totalData,
             currentPage,
             limit,
         });
-        return {
-            pagination, saveData
 
-        };
+        return { pagination, saveData };
     } else {
         const savedQuery = new queryBuilder(
             SavedModel.find({ userId: userId }).populate({
@@ -92,7 +109,7 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
                 // userId: item.userId,
                 fullName: item.candidate.fullName,
                 candidateId: item.candidate._id,
-                title: item.candidate.candidateInfo.title,
+                title: item.candidate?.candidateInfo?.title,
                 logo: item.candidate?.logo,
             };
         });

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { z } from "zod";
+import { JobLevels, JobTypes } from "../../make_modules/job-post/jobPost.interface";
 
 const candidateStep1validation = z.object({
     body: z.object({
@@ -67,34 +68,8 @@ const candidateStep4validation = z.object({
 
 const candidateJobAlertValidation = z.object({
     body: z.object({
-        jobType: z
-            .array(z.string())
-            .optional()
-            .refine((arr: any) => arr.every((item: any) => [
-                'All',
-                'Full-Time',
-                'Part-Time',
-                'Internship',
-                'Contract',
-                'Soft-Skill',
-                'Freelance',
-                'Vocational',
-                'Apprenticeship',
-                'Remote'
-            ].includes(item)), {
-                message: "Invalid job type. Must be one of 'All', 'Full-Time', 'Part-Time', 'Internship', 'Contract', 'Soft-Skill', 'Freelance', 'Vocational', 'Apprenticeship', 'Remote'.",
-            }),
-
-        jobLevel: z
-            .array(z.string())
-            .optional()
-            .refine((arr: any) => arr.every((item: any) => [
-                'Entry-Level',
-                'Mid-Level',
-                'Expert-Level'
-            ].includes(item)), {
-                message: "Invalid job level. Must be one of 'Entry-Level', 'Mid-Level', 'Expert-Level'.",
-            }),
+        jobType: z.array(z.enum(JobTypes as [string, ...string[]]), { required_error: "Job type is required" }),
+        jobLevel: z.array(z.enum(JobLevels as [string, ...string[]]), { required_error: "Job level is required" }).optional(),
     }),
 });
 
