@@ -88,7 +88,9 @@ const createJob = catchAsync(async (req, res) => {
 
 
 const getAllJobs = catchAsync(async (req, res) => {
-  const jobs = await jobService.candidateAllJobsDB(req.query);
+const employerId = req.params.employerId;
+
+  const jobs = await jobService.candidateAllJobsDB(req.query, employerId);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

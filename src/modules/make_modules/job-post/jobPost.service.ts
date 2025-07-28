@@ -10,6 +10,7 @@ import { TPurchasePlan } from "../purchasePlan/purchasePlan.interface";
 import { purchasePlanModel } from "../purchasePlan/purchasePlan.model";
 import { searchJobs } from "./jobPost-constant";
 import { TJobPost } from "./jobPost.interface";
+import { ObjectId } from "mongoose";
 
 const crateJobDB = async (
   userId: string,
@@ -138,7 +139,7 @@ const employerAllPostedJobs = async (
   );
   return { pagination, jobs: myJobs };
 };
-const candidateAllJobsDB = async (query: Record<string, unknown>) => {
+const candidateAllJobsDB = async (query: Record<string, unknown>, employerId: string | null) => {
   console.log(query);
   const { minSalary, maxSalary, educations, jobType, _rsc, ...restQuery } = query;
   if (minSalary) restQuery.minSalary = { $gte: minSalary };
@@ -152,7 +153,7 @@ const candidateAllJobsDB = async (query: Record<string, unknown>) => {
     restQuery.educations = { $in: educationArr };
   }
 
-  const myJobsQuery = new queryBuilder(JobPostModel.find(), restQuery)
+  const myJobsQuery = new queryBuilder(JobPostModel.find({companyId: employerId}), restQuery)
     .search(searchJobs)
     .filter()
     .fields()
@@ -338,7 +339,7 @@ const candidateJobAlertDB = async (
   if (info?.jobType && Array.isArray(info.jobType) && info.jobType.length > 0) {
     await Promise.all(
       info.jobType.map(async (type: any) => {
-        const jobs = await JobPostModel.find({ jobType: type })
+        const jobs = await JobPostModel.find({ jobType: type }).populate('companyId')
           .skip(skip)
           .limit(pageSize)
           .exec();
