@@ -153,7 +153,11 @@ const candidateAllJobsDB = async (query: Record<string, unknown>, employerId: st
     restQuery.educations = { $in: educationArr };
   }
 
-  const myJobsQuery = new queryBuilder(JobPostModel.find({companyId: employerId}), restQuery)
+
+  const filter: any = {};
+  if (employerId) filter.companyId = employerId;
+
+  const myJobsQuery = new queryBuilder(JobPostModel.find(filter), restQuery)
     .search(searchJobs)
     .filter()
     .fields()

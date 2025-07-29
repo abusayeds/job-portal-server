@@ -260,7 +260,7 @@ const updateUserDB = async (payload: IUser, userId: string) => {
 }
 
 const myProfileDB = async (userId: string) => {
-  const user: IUser | null = await UserModel.findById(userId)
+  const user: IUser | null = await UserModel.findOne({_id: userId, isDeleted: false})
     .select("-password -createdAt -updatedAt -__v -isDeleted")
     .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" }).populate({
       path: "candidateInfo",

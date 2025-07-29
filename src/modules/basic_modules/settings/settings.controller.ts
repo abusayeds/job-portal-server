@@ -17,7 +17,7 @@ const createOrUpdate = catchAsync(async (req: Request, res: Response) => {
   }
 
   const setting = await Setting.findOneAndUpdate({ key }, req.body, { new: true, upsert: true });
-  sendResponse(res, { success: true, statusCode: httpStatus.BAD_REQUEST, message: 'Setting updated successfully', data: setting });
+  sendResponse(res, { success: true, statusCode: httpStatus.OK, message: 'Setting updated successfully', data: setting });
 });
 
 // get a setting by key

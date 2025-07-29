@@ -17,9 +17,8 @@ router.post("/resend", userController.resendOTP);
 router.post("/reset-password", userController.resetPassword);
 router.post("/change-password", userController.changePassword);
 router.post("/update", userController.updateUser);
-router.get("/my-profile",
-  authMiddleware(role.admin, role.candidate, role.employer, role.employe),
-  userController.myProfile);
+router.get("/my-profile", authMiddleware(role.admin, role.candidate, role.employer, role.employe), userController.myProfile);
+router.delete('/my-profile', authMiddleware(role.admin, role.candidate, role.employer, role.employe), userController.profileDelete)
 
 
 router.get("/all-user", authMiddleware(role.admin, role.employer), userController.getAllUsers);
@@ -38,6 +37,7 @@ router.post("/handle-status/:userId", authMiddleware(role.admin), userController
 router.get("/account-management", authMiddleware(role.admin), userController.employerAccountManagement)
 router.get("/approve-employer", authMiddleware(role.admin), userController.approveEmployer)
 
+router.get("/access-employe", authMiddleware(role.employer), userController.accessEmployeList)
 router.post("/access-employe", authMiddleware(role.employer), userController.accessEmploye)
 
 router.get('/companies', userController.getCompanies)
