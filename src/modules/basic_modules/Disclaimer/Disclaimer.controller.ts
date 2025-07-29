@@ -73,7 +73,7 @@ export const getAllDisclaimer = catchAsync(async (req: Request, res: Response) =
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: "About retrieved successfully.",
+    message: "Disclaimer retrieved successfully.",
     data: result,
   });
 });
