@@ -7,6 +7,7 @@ import { jobController } from "./jobPost.controller";
 
 const router = express.Router();
 router.post("/create", authMiddleware(role.employer, role.employe), jobController.createJob);
+router.put("/:id", authMiddleware(role.employer, role.employe), jobController.updateJob);
 router.get("/single/:jobId", jobController.singleJobs);
 router.get("/all", jobController.getAllJobs);
 router.get("/view-applications/:jobId", authMiddleware(role.employer, role.employe), jobController.viewApplications);
