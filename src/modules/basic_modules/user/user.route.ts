@@ -39,6 +39,7 @@ router.get("/approve-employer", authMiddleware(role.admin), userController.appro
 
 router.get("/access-employe", authMiddleware(role.employer), userController.accessEmployeList)
 router.post("/access-employe", authMiddleware(role.employer), userController.accessEmploye)
+router.delete("/employe/:id", authMiddleware(role.employer), userController.deleteEmploye);
 
 router.get('/companies', userController.getCompanies)
 router.get('/seekers', userController.getSeekers)

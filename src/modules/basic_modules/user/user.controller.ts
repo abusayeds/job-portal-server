@@ -393,10 +393,11 @@ const handleStatus = catchAsync(async (req, res) => {
   if (!isUserExist) {
     throw new AppError(httpStatus.NOT_FOUND, 'user not found ')
   }
-  if (payload.isApprove === false && payload.isActive === false) {
+  if (payload.isApprove === false) {
     if (!req.body.description) {
       throw new AppError(httpStatus.BAD_REQUEST, "Please provide a reason for rejection.")
     }
+    payload.isActive = false;
     await employerRejectEmail(req.body.title, req.body.description, isUserExist.fullName, isUserExist.email)
   }
 
@@ -405,7 +406,7 @@ const handleStatus = catchAsync(async (req, res) => {
   )
 
   let message
-  if (payload.isApprove === false && payload.isActive === false) {
+  if (payload.isApprove === false) {
     message = "The user is rejected.";
   } else if (payload.isActive === false) {
     message = "The user is deactivated.";
@@ -511,6 +512,15 @@ const accessEmploye = catchAsync(async (req, res) => {
     message: "An employee has been added.",
     data: employeAccount
   });
+});
+
+const deleteEmploye =  catchAsync(async (req, res) => {
+  const {id} = req.params;
+  const { decoded, }: any = await tokenDecoded(req, res)
+  const user = await UserModel.findOneAndUpdate({_id: id, companyId: decoded?.user?._id}, {isDeleted: true, companyId: null, purchasePlan: null});
+  if(!user) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Employee deleted!', data: undefined });
 });
 
 const accessEmployeList = catchAsync(async (req, res) => {
@@ -758,6 +768,7 @@ export const userController = {
   candidateCvUpdate,
   accessEmployeList,
   accessEmploye,
+  deleteEmploye,
   topCompanies,
   statistics,
   getCompanies,

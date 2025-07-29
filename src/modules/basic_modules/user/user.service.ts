@@ -370,7 +370,7 @@ const IdentityVerificationDB = async (id: string, payload: IUser, step: string) 
 
 const employerAccountManagementDB = async (query: Record<string, unknown>) => {
   const userQuery = new queryBuilder(UserModel.find({ isApprove: false, isCompleted: true, role: "employer", isActive: true }).select('-password -isVerify'), query).fields().filter().sort()
-  const { totalData } = await userQuery.paginate(UserModel.find({ isApprove: false, isCompleted: true, role: "employer" }))
+  const { totalData } = await userQuery.paginate(UserModel.find({ isApprove: false, isCompleted: true, role: "employer", isActive: true }))
   const user: any = await userQuery.modelQuery.exec()
   const currentPage = Number(query?.page) || 1;
   const limit = Number(query.limit) || 10;
