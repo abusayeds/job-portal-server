@@ -13,6 +13,7 @@ import { jobRoute } from "../modules/make_modules/job-post/jobPost.route";
 import { purchaseRoute } from "../modules/make_modules/purchasePlan/purchasePlan.route";
 import { SubscriptionRoute } from "../modules/make_modules/subscription/subscription.route";
 import { savedJobRoute } from "../modules/make_modules/savedCandidateAndJobs/saved.route";
+import { SettingsRoutes } from "../modules/basic_modules/settings/settings.routes";
 
 
 const router = express.Router();
@@ -39,6 +40,7 @@ router.use("/api/v1/admin", adminEarningRoute);
 router.use("/api/v1/job", appliedJobRoute);
 
 router.use("/api/v1/saved", savedJobRoute);
+router.use("/api/v1/setting", SettingsRoutes);
 
 
 

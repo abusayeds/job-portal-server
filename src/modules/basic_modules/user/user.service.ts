@@ -444,6 +444,7 @@ const accessEmployeDB = async (payload: IUser, employerId: string) => {
 
   const employe = {
     ...payload,
+    userName: payload.email,
     role: "employe",
     isActive: true,
     isApprove: true,

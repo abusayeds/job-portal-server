@@ -715,6 +715,12 @@ const getEmployerById =  catchAsync(async (req, res) => {
  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: resData });
 });
 
+const sendEmailToSupport =  catchAsync(async (req, res) => {
+  const {name, email, subject, body} = req.body;
+  // TODO:
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Mail sent to support. We will take action soon.', data: null });
+});
+
 export const userController = {
   registerUser,
   loginUser,
@@ -741,6 +747,7 @@ export const userController = {
   getSeekerById,
   getEmployers,
   getEmployerById,
+  sendEmailToSupport,
 }
 
 

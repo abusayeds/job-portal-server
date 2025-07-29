@@ -47,6 +47,7 @@ router.get('/employers', userController.getEmployers)
 router.get('/top-companies', userController.topCompanies)
 router.get('/statistics', userController.statistics)
 router.get('/single-employer/:id', userController.getEmployerById)
+router.post('/send-mail', userController.sendEmailToSupport)
 
 
 export const UserRoutes = router;
