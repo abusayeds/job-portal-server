@@ -513,6 +513,13 @@ const accessEmploye = catchAsync(async (req, res) => {
   });
 });
 
+const accessEmployeList = catchAsync(async (req, res) => {
+  const { decoded }: any = await tokenDecoded(req, res);
+  const id = decoded.user._id;
+  const result = await UserModel.find({role: 'employe', companyId: id, isDeleted: false});
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: "An employee has been added.", data: result });
+});
+
 const topCompanies = catchAsync(async (req, res) => {
   const topEmployers = await UserModel.aggregate([
     // Match users where the role is "employer"
@@ -723,6 +730,14 @@ const sendEmailToSupport =  catchAsync(async (req, res) => {
   sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Mail sent to support. We will take action soon.', data: undefined });
 });
 
+const profileDelete =  catchAsync(async (req, res) => {
+  const { decoded, }: any = await tokenDecoded(req, res)
+  const user = await UserModel.findByIdAndUpdate(decoded?.user?._id, {isDeleted: true});
+  if(!user) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Profile deleted!', data: undefined });
+});
+
 export const userController = {
   registerUser,
   loginUser,
@@ -741,6 +756,7 @@ export const userController = {
   approveEmployer,
   handleStatus,
   candidateCvUpdate,
+  accessEmployeList,
   accessEmploye,
   topCompanies,
   statistics,
@@ -750,6 +766,7 @@ export const userController = {
   getEmployers,
   getEmployerById,
   sendEmailToSupport,
+  profileDelete,
 }
 
 

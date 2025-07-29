@@ -14,6 +14,7 @@ import { purchaseRoute } from "../modules/make_modules/purchasePlan/purchasePlan
 import { SubscriptionRoute } from "../modules/make_modules/subscription/subscription.route";
 import { savedJobRoute } from "../modules/make_modules/savedCandidateAndJobs/saved.route";
 import { SettingsRoutes } from "../modules/basic_modules/settings/settings.routes";
+import { RefundRoutes } from "../modules/basic_modules/refund/refund.route";
 
 
 const router = express.Router();
@@ -23,6 +24,7 @@ router.use("/api/v1/terms", TermsRoutes);
 router.use("/api/v1/about", AboutRoutes);
 router.use("/api/v1/disclaimer", disclaimerRoutes);
 router.use("/api/v1/privacy", PrivacyRoutes);
+router.use("/api/v1/refund", RefundRoutes);
 router.use("/api/v1/notification", NotificationRoutes);
 
 router.use('/api/v1/uploded', uploadRouter)
