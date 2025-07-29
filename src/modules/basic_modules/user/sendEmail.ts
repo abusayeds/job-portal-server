@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import nodemailer from "nodemailer";
 import { Nodemailer_GMAIL, Nodemailer_GMAIL_PASSWORD } from "../../../config";
+import Setting from "../settings/settings.model";
+import AppError from "../../../errors/AppError";
+import httpStatus from "http-status";
 
 export const sendEmail = async (otp: any, email: string) => {
   const transporter = nodemailer.createTransport({
@@ -37,6 +40,46 @@ export const sendEmail = async (otp: any, email: string) => {
   };
 
   await transporter.sendMail(receiver);
+}
+
+export const sendSupportEmail = async ({ email, subject, body, name }: { email: string; subject: string; body: string; name: string }) => {
+  const support = await Setting.findOne({ key: "support" });
+  if (!support) throw new AppError(httpStatus.NOT_FOUND, "Support not found");
+
+  const supportEmail = support.value?.email;
+
+  if (!supportEmail) {
+    throw new AppError(httpStatus.BAD_REQUEST, "Support email is not configured");
+  }
+
+  console.log("Sending support email to:", supportEmail);
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    secure: true,
+    auth: {
+      user: Nodemailer_GMAIL,
+      pass: Nodemailer_GMAIL_PASSWORD,
+    },
+  });
+
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f0f0f0; padding: 20px;">
+      <h1 style="text-align: center; color: #452778; font-family: 'Times New Roman', Times, serif;">
+        Mail from ${name} (${email})
+      </h1>
+      <div style="background-color: white; padding: 20px; border-radius: 5px;">
+        <p>${body}</p>
+      </div>
+    </div>
+  `;
+
+  await transporter.sendMail({
+    from: email,
+    to: supportEmail,
+    subject,
+    html,
+  });
 }
 
 export const forgotOtpEmail = async (otp: any, email: string) => {

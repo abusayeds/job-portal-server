@@ -16,7 +16,7 @@ import { candidateModel } from '../candidate/candidate.model';
 import { INotification } from '../notifications/notification.interface';
 import { createNotification } from "../notifications/notification.service";
 import { conditionalStepValidation } from "./constant";
-import { employerRejectEmail, sendRegistationOtpEmail } from "./sendEmail";
+import { employerRejectEmail, sendRegistationOtpEmail, sendSupportEmail } from "./sendEmail";
 import { UserModel } from "./user.model";
 import {
   generateOTP,
@@ -26,6 +26,7 @@ import {
 } from "./user.service";
 import queryBuilder from '../../../builder/queryBuilder';
 import { TRole } from '../../../utils/role';
+import Setting from '../settings/settings.model';
 const registerUser = catchAsync(async (req, res) => {
   const { email } = req.body;
   const isUserRegistered: IUser | null = await UserModel.findOne({ email: email, isVerify: false });
@@ -717,8 +718,9 @@ const getEmployerById =  catchAsync(async (req, res) => {
 
 const sendEmailToSupport =  catchAsync(async (req, res) => {
   const {name, email, subject, body} = req.body;
-  // TODO:
-  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Mail sent to support. We will take action soon.', data: null });
+  await sendSupportEmail({email, subject, body, name})
+  
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Mail sent to support. We will take action soon.', data: undefined });
 });
 
 export const userController = {
