@@ -6,4 +6,5 @@ export type INotification = {
   userId: Types.ObjectId;
   jobId?: Types.ObjectId;
   notification: string;
+  isRead: boolean; 
 } 
