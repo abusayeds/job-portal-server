@@ -38,7 +38,7 @@ export const getMyNotification = catchAsync(async (req: Request, res: Response) 
   totalData = paginationResult.totalData;
 
   const notifications = await myQuery.modelQuery.exec();
-  
+
   await Promise.all(
     notifications.map((notification: any) => {
       if (!notification.isRead) {
@@ -57,4 +57,19 @@ export const getMyNotification = catchAsync(async (req: Request, res: Response) 
     limit,
   });
   sendResponse(res, { statusCode: 200, success: true, message: "Notifications retrieved successfully", data: {pagination, notifications} });
+});
+
+export const getUnreadNotificationCount = catchAsync(async (req: Request, res: Response) => {
+  const { decoded }: any = await tokenDecoded(req, res);
+  const userId = decoded.user._id;
+
+  const user = await UserModel.findById(userId);
+  if (!user) throw new AppError(404, "User not found");
+
+  const unreadCount = await NotificationModel.countDocuments({
+    userId,
+    isRead: false,
+  });
+
+  sendResponse(res, { statusCode: 200, success: true, message: "Unread notification count retrieved successfully", data: unreadCount });
 });
