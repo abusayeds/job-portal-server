@@ -297,8 +297,10 @@ const myProfileDB = async (userId: string) => {
 
 
 }
-const allUserDB = async (query: Record<string, unknown>, role: string) => {
-  const userQuery = new queryBuilder(UserModel.find({ role: role, }).populate('candidateInfo').select('-password -isVerify'), query).fields().filter().sort()
+const allUserDB = async (query: Record<string, unknown>, role: string) => { 
+  const userQuery = new queryBuilder(UserModel.find({ role: role, }).populate('candidateInfo').select('-password -isVerify'), query)
+  .search(['fullName', 'email', 'phone', 'userName'])
+  .fields().filter().sort()
   const { totalData } = await userQuery.paginate(UserModel.find({ role: role, }))
   const user: any = await userQuery.modelQuery.exec()
 
@@ -340,6 +342,7 @@ const allUserDB = async (query: Record<string, unknown>, role: string) => {
         phone: userObj.candidateInfo?.phone || "N/A",
         createdAt: userObj.createdAt,
         isActive: userObj.isActive,
+        cv: userObj.candidateInfo?.cv,
       }
     }
   });
