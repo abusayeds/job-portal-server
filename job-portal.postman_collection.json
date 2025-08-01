@@ -615,7 +615,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"cancel_url\": \"https://job-potal-local-abusayedserver.sarv.live/\",\r\n    \"success_url\": \"https://job-potal-local-abusayedserver.sarv.live/\"\r\n}",
+									"raw": "{\r\n    \"cancel_url\": \"https://job-portal-mamun.sarv.live/\",\r\n    \"success_url\": \"https://job-portal-mamun.sarv.live/\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2811,7 +2811,7 @@
 		},
 		{
 			"key": "url",
-			"value": "https://job-potal-local-abusayedserver.sarv.live/api/v1",
+			"value": "https://job-portal-mamun.sarv.live/api/v1",
 			"type": "string",
 			"disabled": true
 		},
