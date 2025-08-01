@@ -21,6 +21,7 @@ const webhook = async (req: Request, res: Response) => {
             throw new AppError(httpStatus.BAD_REQUEST, " Webhook Secret Key Missing!");
         }
         event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+        console.log(event);
         if (event.type === 'invoice.payment_succeeded') {
             const invoice = event.data.object;
             const subscriptionId = invoice.subscription;

@@ -124,10 +124,9 @@ const loginDB = async (email: string, password: string) => {
     );
   }
 
-  if (!user.isActive) {
-    throw new AppError(httpStatus.NOT_FOUND,
-      "your account is deactive by admin.",
-    );
+  const isAllowedEmployer = user.role === 'employer' && !user.isApprove;
+  if (!user.isActive && !isAllowedEmployer) {
+    throw new AppError(httpStatus.NOT_FOUND, "Your account is inactive by admin.");
   }
 
   const isPasswordValid = await bcrypt.compare(

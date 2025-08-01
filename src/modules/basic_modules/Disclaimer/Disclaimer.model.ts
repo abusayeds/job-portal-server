@@ -8,6 +8,5 @@ const disclaimerSchema = new Schema<TDisclaimer>(
   { timestamps: true },
 );
 
-export const disclaimerModel =
-  mongoose.models.About || mongoose.model<TDisclaimer>("Disclaimer", disclaimerSchema);
+export const disclaimerModel = mongoose.models.Disclaimer || mongoose.model<TDisclaimer>("Disclaimer", disclaimerSchema);
 
