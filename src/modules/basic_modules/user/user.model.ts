@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import bcrypt from "bcrypt";
 import mongoose, { Schema } from "mongoose";
-import { IOTP, IUser, UserIndustry } from "./user.interface";
+import { IOTP, IUser, UserIndustry, UserOrganizationType } from "./user.interface";
 
 const UserSchema = new Schema<IUser>(
   {
@@ -43,7 +43,7 @@ const UserSchema = new Schema<IUser>(
     //***** employers stpe2 *******//
     organizationType: {
       type: String,
-      enum: ["All", "Federal Government", "County Government", "City Government", "State Government", "Local Government", "NGO", "Private Company", "International Agencies", "Airport Authority"],
+      enum: UserOrganizationType,
       required: false,
       trim: true
     },
