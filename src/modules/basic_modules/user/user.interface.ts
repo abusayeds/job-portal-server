@@ -41,6 +41,21 @@ export const UserIndustry = [
 
 export type IUserIndustry = typeof UserIndustry[number];
 
+export const UserOrganizationType = [
+  "All",
+  "Federal Government",
+  "County Government",
+  "City Government",
+  "State Government",
+  "Local Government",
+  "NGO",
+  "Private Company",
+  "International Agencies",
+  "Airport Authority"
+];
+
+export type IUserOrganizationType = typeof UserIndustry[number];
+
 export type IPendingUser = {
   email: string;
   name: string;
@@ -62,7 +77,7 @@ export type IUser = {
   banner: string
   companyName: string;
   about: string;
-  organizationType: IUserIndustry,
+  organizationType: IUserOrganizationType,
   industry: IUserIndustry
   foundIn: string;
   teamSize: number

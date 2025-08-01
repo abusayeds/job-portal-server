@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { z } from "zod";
+import { UserIndustry, UserOrganizationType } from "./user.interface";
 
 function enumWithCustomError<T extends readonly string[]>(
   values: T,
@@ -12,26 +13,6 @@ function enumWithCustomError<T extends readonly string[]>(
     }) as z.ZodType<T[number], any, string>;
 }
 
-const organizationTypes = [
-  "All",
-  "Federal Government",
-  "County Government",
-  "City Government",
-  "State Government",
-  "Local Government",
-  "NGO",
-  "Private Company",
-  "International Agencies",
-  "Airport Authority",
-] as const;
-
-const industries = [
-  "Technical & Engineering",
-  "Business & Finance",
-  "Sales, Marketing & Customer Service",
-  "Education & Training",
-  "Legal & Government",
-] as const;
 
 const employerStep1Schema = z.object({
   body: z.object({
@@ -45,11 +26,11 @@ const employerStep1Schema = z.object({
 const employerStep2Schema = z.object({
   body: z.object({
     organizationType: enumWithCustomError(
-      organizationTypes,
+      UserOrganizationType,
       "Organization type is invalid. Please select a valid option."
     ).refine(val => val.length > 0, { message: "Organization type is required" }),
     industry: enumWithCustomError(
-      industries,
+      UserIndustry,
       "Industry is invalid. Please select a valid option."
     ).refine(val => val.length > 0, { message: "Industry is required" }),
     foundIn: z.string({ required_error: "Found in field is required" }).trim().nonempty({ message: "Found in field is required" }),
