@@ -263,7 +263,7 @@ const myProfileDB = async (userId: string) => {
     .select("-password -createdAt -updatedAt -__v -isDeleted")
     .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" }).populate({
       path: "candidateInfo",
-      select: "title parsonalWebsite image experience cv educations  maritalStatus gender dateOfBrith biography  nationality  address facebook twitter instagram youtube linkedin  phone jobLevel jobType contactEmail  "
+      // select: "title parsonalWebsite image experience cv educations  maritalStatus gender dateOfBrith biography  nationality  address facebook twitter instagram youtube linkedin  phone jobLevel jobType contactEmail  "
     });
   const myJobs = await JobPostModel.find({
     userId: userId,

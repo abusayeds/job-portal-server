@@ -53,6 +53,7 @@ const makeAutoRenewalDB = async (userId: string, subscriptionId: string, payload
 
 const latestInvoiceDB = async (userId: string, query: Record<string, unknown>,) => {
     const subs_query = new queryBuilder(purchasePlanModel.find({ userId: userId }), query)
+    subs_query.sort();
 
     const { totalData } = await subs_query.paginate(purchasePlanModel.find({ userId: userId }))
     const subs: any = await subs_query.modelQuery.exec()
