@@ -9,5 +9,5 @@ const router = express.Router();
 router.post("/apply/:jobId", authMiddleware(role.candidate), appliedJobController.createAppliedJob);
 router.get("/my-jobs", authMiddleware(role.candidate, role.employer, role.employe), appliedJobController.getMyAppliedJobs);
 
-router.get("/overview", authMiddleware(role.employer, role.candidate), appliedJobController.overview);
+router.get("/overview", authMiddleware(role.employer, role.candidate, role.employe), appliedJobController.overview);
 export const appliedJobRoute = router;

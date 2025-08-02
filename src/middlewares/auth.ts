@@ -32,7 +32,7 @@ export const authMiddleware = (...requiredRoles: TRole[]) => {
       next();
     } catch (error) {
       throw new AppError(400,
-        `Invalid token!`,
+        `You are not permitted`,
       );
     }
   };

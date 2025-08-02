@@ -88,6 +88,17 @@ const overviewDB = async (userId: string, role: string) => {
             jobAlerts: 0,
         };
         return overviewData;
+    } else if (role === 'employe') {
+        const now = new Date();
+        const openJobs = await JobPostModel.find({ userId, expirationDate: { $gt: now } }).countDocuments();
+        const expriredJobs = await JobPostModel.find({ userId, expirationDate: { $lte: now } }).countDocuments();
+        const saveCandidate = await SavedModel.find({ userId }).countDocuments();
+        overviewData = {
+            openJobs,
+            expriredJobs,
+            saveCandidate,
+        };
+        return overviewData;
     } else {
         const now = new Date();
         const openJobs = await JobPostModel.find({ expirationDate: { $gt: now } }).countDocuments();

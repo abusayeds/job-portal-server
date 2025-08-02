@@ -86,7 +86,7 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
                 path: "candidate",
                 populate: {
                     path: "candidateInfo",
-                    select: "title"
+                    // select: "title"
                 }
             }),
             query
@@ -110,7 +110,7 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
                 fullName: item.candidate.fullName,
                 candidateId: item.candidate._id,
                 title: item.candidate?.candidateInfo?.title,
-                logo: item.candidate?.logo,
+                logo: item.candidate?.candidateInfo?.logo,
             };
         });
         console.log("formatData", formatData);
