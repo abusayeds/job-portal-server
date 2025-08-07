@@ -27,6 +27,7 @@ import {
 import queryBuilder from '../../../builder/queryBuilder';
 import { TRole } from '../../../utils/role';
 import Setting from '../settings/settings.model';
+import { savedCandidateAndJobService } from '../../make_modules/savedCandidateAndJobs/saved.service';
 const registerUser = catchAsync(async (req, res) => {
   const { email } = req.body;
   const isUserRegistered: IUser | null = await UserModel.findOne({ email: email, isVerify: false });
@@ -268,13 +269,18 @@ const updateUser = catchAsync(async (req, res) => {
 const myProfile = catchAsync(async (req, res) => {
   const { decoded, }: any = await tokenDecoded(req, res)
   const userId = decoded.user._id;
-  const result = await userService.myProfileDB(userId)
+  let [data, favorites] = await Promise.all([
+    userService.myProfileDB(userId),
+    savedCandidateAndJobService.getAllFavoriteIds(decoded.user.role, decoded.user._id)
+  ])
+
+  data.favorites = favorites;
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "profile information retrieved successfully",
-    data: result
+    data
   });
 });
 
