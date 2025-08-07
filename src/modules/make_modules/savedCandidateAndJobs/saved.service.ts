@@ -120,9 +120,28 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
         };
     }
 }
+
+const getAllFavoriteIds = async (role: string, userId: string): Promise<string[]> => {
+    if (role === "candidate") {
+        // Fetch saved jobs for the candidate
+        const savedJobs = await SavedModel.find({ userId }).select("jobId").lean();
+        const jobIds = savedJobs
+            .map((item: any) => item?.jobId?._id || item?.jobId)
+            .filter(Boolean); // remove null/undefined
+        return jobIds;
+    } else {
+        // Fetch saved candidates for the employer
+        const savedCandidates = await SavedModel.find({ userId }).select("candidate").lean();
+        const candidateIds = savedCandidates
+            .map((item: any) => item?.candidate?._id || item?.candidate)
+            .filter(Boolean); // remove null/undefined
+        return candidateIds;
+    }
+};
 export const savedCandidateAndJobService = {
     savedCandidateAndJobsDB,
-    myFavoritesDB
+    myFavoritesDB,
+    getAllFavoriteIds,
 }
 
 
