@@ -401,8 +401,9 @@ const employerAccountManagementDB = async (query: Record<string, unknown>) => {
 
 }
 const approveEmployerDB = async (query: Record<string, unknown>) => {
-  const userQuery = new queryBuilder(UserModel.find({ isActive: true, isApprove: true, isCompleted: true, role: "employer" }).select('-password -isVerify'), query).fields().filter().sort()
-  const { totalData } = await userQuery.paginate(UserModel.find({ isActive: true, isApprove: false, isCompleted: true, role: "employer" }))
+  const filters = { isActive: true, isApprove: true, isCompleted: true, role: "employer" };
+  const userQuery = new queryBuilder(UserModel.find(filters).select('-password -isVerify'), query).fields().filter().sort()
+  const { totalData } = await userQuery.paginate(UserModel.find(filters))
   const user: any = await userQuery.modelQuery.exec()
   const currentPage = Number(query?.page) || 1;
   const limit = Number(query.limit) || 10;
