@@ -269,6 +269,8 @@ const updateUser = catchAsync(async (req, res) => {
 const myProfile = catchAsync(async (req, res) => {
   const { decoded, }: any = await tokenDecoded(req, res)
   const userId = decoded.user._id;
+  console.log(userId);
+
   let [data, favorites] = await Promise.all([
     userService.myProfileDB(userId),
     savedCandidateAndJobService.getAllFavoriteIds(decoded.user.role, decoded.user._id)
@@ -520,11 +522,11 @@ const accessEmploye = catchAsync(async (req, res) => {
   });
 });
 
-const deleteEmploye =  catchAsync(async (req, res) => {
-  const {id} = req.params;
+const deleteEmploye = catchAsync(async (req, res) => {
+  const { id } = req.params;
   const { decoded, }: any = await tokenDecoded(req, res)
-  const user = await UserModel.findOneAndUpdate({_id: id, companyId: decoded?.user?._id}, {isDeleted: true, companyId: null, purchasePlan: null});
-  if(!user) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+  const user = await UserModel.findOneAndUpdate({ _id: id, companyId: decoded?.user?._id }, { isDeleted: true, companyId: null, purchasePlan: null });
+  if (!user) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
 
   sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Employee deleted!', data: undefined });
 });
@@ -532,7 +534,7 @@ const deleteEmploye =  catchAsync(async (req, res) => {
 const accessEmployeList = catchAsync(async (req, res) => {
   const { decoded }: any = await tokenDecoded(req, res);
   const id = decoded.user._id;
-  const result = await UserModel.find({role: 'employe', companyId: id, isDeleted: false});
+  const result = await UserModel.find({ role: 'employe', companyId: id, isDeleted: false });
   sendResponse(res, { statusCode: httpStatus.OK, success: true, message: "An employee has been added.", data: result });
 });
 
@@ -607,15 +609,15 @@ const statistics = catchAsync(async (req, res) => {
     UserModel.countDocuments({ role: "employer" }),
     JobPostModel.countDocuments({ createdAt: { $gte: sevenDaysAgo } }),
   ]);
- 
+
   sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { candidates, activeJobs, companies, totalJobs, newJobs } });
 });
 
-const getCompanies =  catchAsync(async (req, res) => {
-  let myEmployerQuery: any; 
+const getCompanies = catchAsync(async (req, res) => {
+  let myEmployerQuery: any;
   let totalData: number;
   const query = req.query;
-  
+
   myEmployerQuery = new queryBuilder(
     UserModel.find({ role: "employer" }).select('companyName logo address fullName industry createdAt foundIn organizationType teamSize'),
     query
@@ -635,11 +637,11 @@ const getCompanies =  catchAsync(async (req, res) => {
     currentPage,
     limit,
   });
- sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, companies } });
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, companies } });
 });
 
-const getSeekers =  catchAsync(async (req, res) => {
-  let myQuery: any; 
+const getSeekers = catchAsync(async (req, res) => {
+  let myQuery: any;
   let totalData: number;
   const query = req.query;
   const { educations, ...restQuery } = query;
@@ -648,7 +650,7 @@ const getSeekers =  catchAsync(async (req, res) => {
   //   const educationArr = educations.split(',') || [];
   //    restQuery["candidateInfo.educations"] = { $in: educationArr };
   // }
-  
+
   myQuery = new queryBuilder(
     UserModel.find({ role: "candidate" as TRole }).populate('candidateInfo'),
     restQuery
@@ -668,22 +670,22 @@ const getSeekers =  catchAsync(async (req, res) => {
     currentPage,
     limit,
   });
- sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, seekers } });
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, seekers } });
 });
 
-const getSeekerById =  catchAsync(async (req, res) => {
+const getSeekerById = catchAsync(async (req, res) => {
   const id = req.params.id;
-  const seeker = await UserModel.findOne({_id: id, role: 'candidate' as TRole}).populate('candidateInfo');
+  const seeker = await UserModel.findOne({ _id: id, role: 'candidate' as TRole }).populate('candidateInfo');
 
   if (!seeker) {
     throw new AppError(httpStatus.NOT_FOUND, "Seeker not found");
   }
 
- sendResponse(res, { statusCode: httpStatus.OK, success: true, data: seeker });
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: seeker });
 });
 
-const getEmployers =  catchAsync(async (req, res) => {
-  let myQuery: any; 
+const getEmployers = catchAsync(async (req, res) => {
+  let myQuery: any;
   let totalData: number;
   const query = req.query;
   const { educations, address, ...restQuery } = query;
@@ -694,8 +696,8 @@ const getEmployers =  catchAsync(async (req, res) => {
   // }
 
   if (address) restQuery.address = { $regex: address, $options: 'i' };
-  
-  
+
+
   myQuery = new queryBuilder(
     UserModel.find({ role: "employer" as TRole }),
     restQuery
@@ -715,41 +717,41 @@ const getEmployers =  catchAsync(async (req, res) => {
     currentPage,
     limit,
   });
- sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, employers } });
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: { pagination, employers } });
 });
 
-const getEmployerById =  catchAsync(async (req, res) => {
+const getEmployerById = catchAsync(async (req, res) => {
   const id = req.params.id;
-  const employer = await UserModel.findOne({_id: id, role: 'employer'}).populate('purchasePlan');
+  const employer = await UserModel.findOne({ _id: id, role: 'employer' }).populate('purchasePlan');
 
   if (!employer) {
     throw new AppError(httpStatus.NOT_FOUND, "Employer not found");
   }
 
   // Fetch jobs in a single query
-  const jobsCount = await JobPostModel.countDocuments({ 
-    companyId: employer._id, 
-    expirationDate: { $gt: new Date() } 
+  const jobsCount = await JobPostModel.countDocuments({
+    companyId: employer._id,
+    expirationDate: { $gt: new Date() }
   });
 
   const resData = {
     ...employer.toObject(),
     activeJobs: jobsCount,
   };
- sendResponse(res, { statusCode: httpStatus.OK, success: true, data: resData });
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, data: resData });
 });
 
-const sendEmailToSupport =  catchAsync(async (req, res) => {
-  const {name, email, subject, body} = req.body;
-  await sendSupportEmail({email, subject, body, name})
-  
+const sendEmailToSupport = catchAsync(async (req, res) => {
+  const { name, email, subject, body } = req.body;
+  await sendSupportEmail({ email, subject, body, name })
+
   sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Mail sent to support. We will take action soon.', data: undefined });
 });
 
-const profileDelete =  catchAsync(async (req, res) => {
+const profileDelete = catchAsync(async (req, res) => {
   const { decoded, }: any = await tokenDecoded(req, res)
-  const user = await UserModel.findByIdAndUpdate(decoded?.user?._id, {isDeleted: true});
-  if(!user) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+  const user = await UserModel.findByIdAndUpdate(decoded?.user?._id, { isDeleted: true });
+  if (!user) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
 
   sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Profile deleted!', data: undefined });
 });

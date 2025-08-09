@@ -51,7 +51,7 @@ const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>
             }
         }
 
-console.log("=============>>>>",job);
+        console.log("=============>>>>", job);
 
         return {
             _id: job._id,
@@ -101,8 +101,8 @@ const overviewDB = async (userId: string, role: string) => {
         return overviewData;
     } else {
         const now = new Date();
-        const openJobs = await JobPostModel.find({ expirationDate: { $gt: now } }).countDocuments();
-        const expriredJobs = await JobPostModel.find({ expirationDate: { $lte: now } }).countDocuments();
+        const openJobs = await JobPostModel.find({ userId, expirationDate: { $gt: now } }).countDocuments();
+        const expriredJobs = await JobPostModel.find({ userId, expirationDate: { $lte: now } }).countDocuments();
         const saveCandidate = await SavedModel.find({ userId }).countDocuments();
         overviewData = {
             openJobs,
