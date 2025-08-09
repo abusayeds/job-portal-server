@@ -51,7 +51,7 @@ const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>
             }
         }
 
-        console.log("=============>>>>", job);
+
 
         return {
             _id: job._id,
