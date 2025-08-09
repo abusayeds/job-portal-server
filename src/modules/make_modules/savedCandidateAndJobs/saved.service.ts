@@ -27,7 +27,7 @@ const savedCandidateAndJobsDB = async (role: string, userId: string, id: string)
     } else {
         const candidate = await UserModel.findById(id)
         if (!candidate) {
-            throw new AppError(404, "You are not employer");
+            throw new AppError(404, "You are not permitted");
         }
         const existingSavedCandidate = await SavedModel.findOne({ userId: userId, candidate: id });
         if (existingSavedCandidate) {
@@ -94,7 +94,7 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
         const { totalData } = await savedQuery.paginate(SavedModel.find({ userId: userId }))
         const saveData: any = await savedQuery.modelQuery.exec()
         console.log("saveData", saveData);
-        
+
         const currentPage = Number(query?.page) || 1;
         const limit = Number(query.limit) || 10;
         const pagination = savedQuery.calculatePagination({
@@ -114,7 +114,7 @@ const myFavoritesDB = async (role: string, userId: string, query: Record<string,
             };
         });
         console.log("formatData", formatData);
-        
+
         return {
             pagination, saveData: formatData
         };

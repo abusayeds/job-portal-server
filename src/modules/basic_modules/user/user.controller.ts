@@ -268,7 +268,7 @@ const updateUser = catchAsync(async (req, res) => {
 const myProfile = catchAsync(async (req, res) => {
   const { decoded, }: any = await tokenDecoded(req, res)
   const userId = decoded.user._id;
-  console.log(userId);
+
 
   const [data, favorites] = await Promise.all([
     userService.myProfileDB(userId),
@@ -339,7 +339,7 @@ const singleUser = catchAsync(async (req, res) => {
 
 });
 const IdentityVerification = catchAsync(async (req, res) => {
-  console.log(req.body);
+
 
   const { decoded, }: any = await tokenDecoded(req, res)
   const userId = decoded.user._id;
@@ -754,7 +754,7 @@ const profileDelete = catchAsync(async (req, res) => {
   const user = await UserModel.findByIdAndUpdate(decoded?.user?._id, { isDeleted: true });
   if (!user) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
 
-  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Profile deleted!', data: undefined });
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Profile deleted ! ', data: undefined });
 });
 
 export const userController = {
