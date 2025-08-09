@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import mongoose from "mongoose";
 import seedSuperAdmin from "./DB";
 import app from "./app";
-import { DATABASE_URL, PORT, IP } from "./config";
+import { DATABASE_URL, IP, PORT } from "./config";
 import { initSocketIO } from "./utils/socket";
 
 import http from "http";
