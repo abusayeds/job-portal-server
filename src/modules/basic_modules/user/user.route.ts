@@ -23,7 +23,7 @@ router.delete('/my-profile', authMiddleware(role.admin, role.candidate, role.emp
 
 router.get("/all-user", authMiddleware(role.admin, role.employer), userController.getAllUsers);
 router.get("/single-user/:id", authMiddleware(role.admin), userController.singleUser);
-router.post("/identity-verification", authMiddleware(role.employer), conditionalStepValidation, userController.IdentityVerification)
+router.post("/identity-verification", authMiddleware(role.employer, role.employe), conditionalStepValidation, userController.IdentityVerification)
 router.post("/candidate-identity-verification", authMiddleware(role.candidate), candidateStepValidation, candidateIdentityVerificationController.candidateIdentityVerification)
 
 router.post('/cv-update', authMiddleware(role.candidate), userController.candidateCvUpdate)
@@ -50,6 +50,6 @@ router.get('/statistics', userController.statistics)
 router.get('/single-employer/:id', userController.getEmployerById)
 router.post('/send-mail', userController.sendEmailToSupport)
 
-router.delete("/delete",)
+// router.delete("/delete",)
 
 export const UserRoutes = router;
