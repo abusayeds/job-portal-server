@@ -8,5 +8,5 @@ import { savedCandidateAndJobsController } from "./saved.controller";
 
 const router = express.Router();
 router.post("/:id", authMiddleware(role.candidate, role.employer), savedCandidateAndJobsController.savedCandidateAndJobs);
-router.get("/my-favorites", authMiddleware(role.candidate, role.employer), savedCandidateAndJobsController.myFavorites);
+router.get("/my-favorites", authMiddleware(role.candidate, role.employer, role.employe), savedCandidateAndJobsController.myFavorites);
 export const savedJobRoute = router;

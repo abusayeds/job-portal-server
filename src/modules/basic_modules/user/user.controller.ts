@@ -9,8 +9,11 @@ import { tokenDecoded } from "../../../middlewares/decoded";
 import catchAsync from "../../../utils/catchAsync";
 import sendResponse from "../../../utils/sendResponse";
 
+import queryBuilder from '../../../builder/queryBuilder';
 import { admin } from "../../../DB";
+import { TRole } from '../../../utils/role';
 import { JobPostModel } from "../../make_modules/job-post/jobPost.model";
+import { savedCandidateAndJobService } from '../../make_modules/savedCandidateAndJobs/saved.service';
 import { CVItem, TCandidate } from '../candidate/candidate.interface';
 import { candidateModel } from '../candidate/candidate.model';
 import { INotification } from '../notifications/notification.interface';
@@ -24,10 +27,6 @@ import {
   saveOTP,
   userService,
 } from "./user.service";
-import queryBuilder from '../../../builder/queryBuilder';
-import { TRole } from '../../../utils/role';
-import Setting from '../settings/settings.model';
-import { savedCandidateAndJobService } from '../../make_modules/savedCandidateAndJobs/saved.service';
 const registerUser = catchAsync(async (req, res) => {
   const { email } = req.body;
   const isUserRegistered: IUser | null = await UserModel.findOne({ email: email, isVerify: false });
@@ -271,7 +270,7 @@ const myProfile = catchAsync(async (req, res) => {
   const userId = decoded.user._id;
   console.log(userId);
 
-  let [data, favorites] = await Promise.all([
+  const [data, favorites] = await Promise.all([
     userService.myProfileDB(userId),
     savedCandidateAndJobService.getAllFavoriteIds(decoded.user.role, decoded.user._id)
   ])
@@ -340,6 +339,8 @@ const singleUser = catchAsync(async (req, res) => {
 
 });
 const IdentityVerification = catchAsync(async (req, res) => {
+  console.log(req.body);
+
   const { decoded, }: any = await tokenDecoded(req, res)
   const userId = decoded.user._id;
   const user = await UserModel.findById(userId)
