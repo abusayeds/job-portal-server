@@ -140,7 +140,7 @@ const employerAllPostedJobs = async (
   return { pagination, jobs: myJobs };
 };
 const candidateAllJobsDB = async (query: Record<string, unknown>, employerId: string | null) => {
-  console.log(query);
+
   const { minSalary, maxSalary, educations, jobType, _rsc, ...restQuery } = query;
   if (minSalary) restQuery.minSalary = { $gte: minSalary };
   if (maxSalary) restQuery.maxSalary = { $lte: maxSalary };
@@ -213,7 +213,7 @@ const viewApplicationsDB = async (
   jobId: string,
   query: Record<string, unknown>
 ) => {
-  console.log("jobId====>", jobId, query);
+
 
   const jobsQuery = new queryBuilder(
     AppliedJobModel.find({ jobId }).populate([
@@ -233,13 +233,13 @@ const viewApplicationsDB = async (
     query
   ).sort();
 
-  //   console.log("jobsQuery====>", jobsQuery);
+
 
   const { totalData } = await jobsQuery.paginate(
     AppliedJobModel.find({ jobId })
   );
   const jobs = await jobsQuery.modelQuery.exec();
-  console.log("jobs====>", jobs);
+
 
   const currentPage = Number(query?.page) || 1;
   const limit = Number(query.limit) || 10;
@@ -265,7 +265,7 @@ const viewApplicationsDB = async (
     };
   });
 
-  console.log("applications====> ahad", applications);
+
 
   if (applications.length === 0) {
     const jobs = await JobPostModel.findById(jobId);
@@ -384,7 +384,7 @@ const relatedJobsDB = async (jobId: string) => {
   const result = await JobPostModel.findById(jobId);
   const relatedResult = await JobPostModel.find({
     jobLevel: result?.jobLevel,
-  }).populate([{path: 'companyId', select: 'companyName'}]).limit(6);
+  }).populate([{ path: 'companyId', select: 'companyName' }]).limit(6);
   return relatedResult;
 };
 
