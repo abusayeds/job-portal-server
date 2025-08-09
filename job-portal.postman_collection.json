@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "9b2386e9-2853-49d0-8d4c-9ea5c33dc6cc",
+		"_postman_id": "3c254bc7-7668-4be1-a1e3-f61b7cedde94",
 		"name": "job-portal",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "35012738",
-		"_collection_link": "https://magy00.postman.co/workspace/sayed-server2~54932eba-394e-4ce8-ac07-9da2ee1a077e/collection/35012738-9b2386e9-2853-49d0-8d4c-9ea5c33dc6cc?action=share&source=collection_link&creator=35012738"
+		"_exporter_id": "43273326",
+		"_collection_link": "https://auto-revive-backend.postman.co/workspace/Roam-shina1990~d839f588-5641-443f-9661-d6f1a0855733/collection/43273326-3c254bc7-7668-4be1-a1e3-f61b7cedde94?action=share&source=collection_link&creator=43273326"
 	},
 	"item": [
 		{
@@ -222,7 +222,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "\r\n\r\n{\r\n    \"email\": \"candidate3@gmail.com\",\r\n    \"password\": \"1qazxsw21qaz\"\r\n}\r\n\r\n// empolyer\r\n// {\r\n//     \"email\": \"employer1@gmail.com\",\r\n//     \"password\": \"1qazxsw21qaz\"\r\n// }\r\n\r\n// employe\r\n// {\r\n//     \"email\": \"employe1@gmail.com\",\r\n//     \"password\": \"1qazxsw21qaz\"\r\n// }\r\n\r\n",
+									"raw": "\r\n\r\n// {\r\n//     \"email\": \"candidate2@gmail.com\",\r\n//     \"password\": \"1qazxsw21qaz\"\r\n// }\r\n\r\n// empolyer\r\n// {\r\n//     \"email\": \"employer1@gmail.com\",\r\n//     \"password\": \"1qazxsw21qaz\"\r\n// }\r\n\r\n// employe\r\n// {\r\n//     \"email\": \"employe1@gmail.com\",\r\n//     \"password\": \"1qazxsw21qaz\"\r\n// }\r\n\r\n// admin\r\n{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"1qazxsw21qaz\"\r\n}\r\n\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -253,7 +253,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{employer_token}}",
+											"value": "{{candidate_token}}",
 											"type": "string"
 										}
 									]
@@ -262,7 +262,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"candidate@gmail.com\",\r\n    \"password\": \"1qazxsw21qaz\"\r\n}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -270,9 +270,46 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/user/my-profile",
+									"raw": "{{urlDev}}/user/my-profile",
 									"host": [
-										"{{url}}"
+										"{{urlDev}}"
+									],
+									"path": [
+										"user",
+										"my-profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my-profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{urlDev}}/user/my-profile",
+									"host": [
+										"{{urlDev}}"
 									],
 									"path": [
 										"user",
@@ -475,7 +512,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"jobType\" :  [\"All\" , \"Internship\"] ,\r\n    \"jobLevel\" : [\"Entry-Level\"] \r\n}",
+									"raw": "{\r\n    \"jobType\" :  [\"All\" , \"Internship\"] , // ['All', 'Full-Time', 'Part-Time', 'Internship', 'Contract', 'Soft-Skill', 'Freelance', 'Vocational', 'Apprenticeship', 'Remote']\r\n    \"jobLevel\" : [\"Entry-Level\"]  // ['Entry-Level', 'Mid-Level', 'Expert-Level']\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -564,34 +601,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Access Employe",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{employer1}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/user/access-employe",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"user",
-										"access-employe"
-									]
-								}
-							},
-							"response": []
 						}
 					]
 				},
@@ -623,19 +632,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/plan/purchase/6868f8464973a3973c75f9c3?numberOfEmployees=1",
+									"raw": "{{url}}/plan/purchase/687a241903d7f8c39ea63b06",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"plan",
 										"purchase",
-										"6868f8464973a3973c75f9c3"
+										"687a241903d7f8c39ea63b06"
 									],
 									"query": [
 										{
 											"key": "numberOfEmployees",
-											"value": "1"
+											"value": "1",
+											"disabled": true
 										}
 									]
 								}
@@ -720,7 +730,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{employe1}}",
+											"value": "{{employer_token}}",
 											"type": "string"
 										}
 									]
@@ -729,7 +739,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"jobTitle\": \"Backend dev test access post \",\r\n    \"tags\": [\r\n        // \"Dashboard developer\" ,\r\n        \"Sr. Backend developer\"\r\n        // \"Jr. Front end developer\" \r\n        // \"Dashboard developer\" ,\r\n        // \"UI UX\"\r\n    ],\r\n    \"location\" : \"Dhaka , mohakhali \" ,\r\n    \"minSalary\": 55000.75,\r\n    \"currency\": \"USD\",\r\n    \"maxSalary\": 85000.50,\r\n    \"salaryType\": \"Monthly\",\r\n    \"educations\": [\r\n        \"All\",\r\n        // \"High-School\",\r\n        \"Master-Degree\"\r\n    ],\r\n    //  'All', 'High-School', 'Intermediate',  'Graduation','Associate-Degree', 'Bachelor-Degree',  'Master-Degree', 'Phd',\r\n    \"experience\": \"8-10\",\r\n    // Freshers', '1-2', '2-4',  '4-6',  '8-10',  '10-15',  '15+'\r\n    \"expirationDate\": \"2025-12-31\",\r\n    // \"scheduleDate\": \"2025-12-31\",     // when unlimited plan in puarchse then this field is add (optional )\r\n    \"jobType\": \"Vocational\",\r\n    // All', 'Full-Time', 'Part-Time', 'Internship', 'Contract', 'Soft-Skill', 'Freelance', 'Vocational', 'Apprenticeship', 'Remote',\r\n    \"jobBenefits\": [\r\n        \"when unlimited\",\r\n        \"when unlimited plan in puarchse then this field is add (optional )\"\r\n    ],\r\n    \"organizationType\": \"County Government\",\r\n    \"jobLevel\": \"Mid-Level\",\r\n    //  enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],\r\n    \"description\": \"We are looking for an experienced software developer to join our team.\",\r\n    \"responsibilities\": \"Develop and maintain web applications, collaborate with cross-functional teams, and write clean, scalable code.\"\r\n}",
+									"raw": "{\r\n    \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"jobTitle\": \"Backend dev test access post \",\r\n    \"tags\": [\r\n        \"Dashboard developer\" \r\n        // \"Sr. Backend developer\"\r\n        // \"Jr. Front end developer\" \r\n        // \"Dashboard developer\" ,\r\n        // \"UI UX\"\r\n    ],\r\n    \"location\" : \"Dhaka , mohakhali \" ,\r\n    \"minSalary\": 55000.75,\r\n    \"currency\": \"USD\",\r\n    \"maxSalary\": 85000.50,\r\n    \"salaryType\": \"Monthly\",\r\n    \"educations\": [\r\n        \"All\",\r\n        // \"High-School\",\r\n        \"Master-Degree\"\r\n    ],\r\n    //  'All', 'High-School', 'Intermediate',  'Graduation','Associate-Degree', 'Bachelor-Degree',  'Master-Degree', 'Phd',\r\n    \"experience\": \"8-10\",\r\n    // Freshers', '1-2', '2-4',  '4-6',  '8-10',  '10-15',  '15+'\r\n    \"expirationDate\": \"2025-12-31\",\r\n    // \"scheduleDate\": \"2025-12-31\",     // when unlimited plan in puarchse then this field is add (optional )\r\n    \"jobType\": \"Vocational\",\r\n    // All', 'Full-Time', 'Part-Time', 'Internship', 'Contract', 'Soft-Skill', 'Freelance', 'Vocational', 'Apprenticeship', 'Remote',\r\n    \"jobBenefits\": [\r\n        \"when unlimited\",\r\n        \"when unlimited plan in puarchse then this field is add (optional )\"\r\n    ],\r\n    \"organizationType\": \"County Government\",\r\n    \"jobLevel\": \"Mid-Level\",\r\n    //  enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],\r\n    \"description\": \"We are looking for an experienced software developer to join our team.\",\r\n    \"responsibilities\": \"Develop and maintain web applications, collaborate with cross-functional teams, and write clean, scalable code.\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -750,6 +760,43 @@
 							"response": []
 						},
 						{
+							"name": "update job",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\r\n    \"jobTitle\": \"Backend dev test access post \",\r\n    \"tags\": [\r\n        \"Dashboard developer\" \r\n        // \"Sr. Backend developer\"\r\n        // \"Jr. Front end developer\" \r\n        // \"Dashboard developer\" ,\r\n        // \"UI UX\"\r\n    ],\r\n    \"location\" : \"Dhaka , mohakhali \" ,\r\n    \"minSalary\": 55000.75,\r\n    \"currency\": \"USD\",\r\n    \"maxSalary\": 85000.50,\r\n    \"salaryType\": \"Monthly\",\r\n    \"educations\": [\r\n        \"All\",\r\n        // \"High-School\",\r\n        \"Master-Degree\"\r\n    ],\r\n    //  'All', 'High-School', 'Intermediate',  'Graduation','Associate-Degree', 'Bachelor-Degree',  'Master-Degree', 'Phd',\r\n    \"experience\": \"8-10\",\r\n    // Freshers', '1-2', '2-4',  '4-6',  '8-10',  '10-15',  '15+'\r\n    \"expirationDate\": \"2025-12-31\",\r\n    // \"scheduleDate\": \"2025-12-31\",     // when unlimited plan in puarchse then this field is add (optional )\r\n    \"jobType\": \"Vocational\",\r\n    // All', 'Full-Time', 'Part-Time', 'Internship', 'Contract', 'Soft-Skill', 'Freelance', 'Vocational', 'Apprenticeship', 'Remote',\r\n    \"jobBenefits\": [\r\n        \"when unlimited\",\r\n        \"when unlimited plan in puarchse then this field is add (optional )\"\r\n    ],\r\n    \"organizationType\": \"County Government\",\r\n    \"jobLevel\": \"Mid-Level\",\r\n    //  enum: ['Entry-Level', 'Mid-Level', 'Expert-Level'],\r\n    \"description\": \"We are looking for an experienced software developer to join our team.\",\r\n    \"responsibilities\": \"Develop and maintain web applications, collaborate with cross-functional teams, and write clean, scalable code.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/job/68884ee683506507db42c6b3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"68884ee683506507db42c6b3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Single job",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -760,7 +807,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{candidate_token}}",
+											"value": "{{employer_token}}",
 											"type": "string"
 										}
 									]
@@ -772,21 +819,21 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/job/single/68736a7b5c4bbdb5437dc284",
+									"raw": "{{url}}/job/single/687a31dd8f3d444ddfe570ac",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"job",
 										"single",
-										"68736a7b5c4bbdb5437dc284"
+										"687a31dd8f3d444ddfe570ac"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "My posted all jobs",
+							"name": "all jobs",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -796,7 +843,54 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{employe1}}",
+											"value": "{{employe_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/job/my-jobs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"job",
+										"my-jobs"
+									],
+									"query": [
+										{
+											"key": "searchTerm",
+											"value": "d",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all jobs by employer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employe_token}}",
 											"type": "string"
 										}
 									]
@@ -808,13 +902,13 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/job/my-jobs",
+									"raw": "{{url}}/job/all",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"job",
-										"my-jobs"
+										"all"
 									],
 									"query": [
 										{
@@ -902,16 +996,6 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{candidate_token}}",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -919,14 +1003,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/job/related-jobs/68788d8a9feeb0e491c402d9",
+									"raw": "{{urlDev}}/job/related-jobs/68884ee683506507db42c6b3",
 									"host": [
-										"{{url}}"
+										"{{urlDev}}"
 									],
 									"path": [
 										"job",
 										"related-jobs",
-										"68788d8a9feeb0e491c402d9"
+										"68884ee683506507db42c6b3"
 									],
 									"query": [
 										{
@@ -1030,7 +1114,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/job/all?jobLevel=Mid-Level",
+									"raw": "{{url}}/job/all",
 									"host": [
 										"{{url}}"
 									],
@@ -1061,131 +1145,61 @@
 											"disabled": true
 										},
 										{
-											"key": "jobTypes",
-											"value": "All,Full-Time",
+											"key": "jobType",
+											"value": "All,Full-Time,Vocational,Internship",
 											"description": "\"Full-Time\" | \"Part-Time\" | \"Internship\" | \"Contract\" | \"Soft-Skill\" | \"Freelance\" | \"Vocational\" | \"Apprenticeship\" | \"Remote\"",
 											"disabled": true
 										},
 										{
-											"key": "education",
-											"value": "",
+											"key": "educations",
+											"value": "High-School,Graduation",
 											"description": "\"High-School\" | \"Intermediate\" | \"Graduation\" | \"Associate-Degree\" | \"Bachelor-Degree\" | \"Master-Degree\" | \"Phd\";",
 											"disabled": true
 										},
 										{
 											"key": "jobLevel",
 											"value": "Mid-Level",
-											"description": " 'Entry-Level' | 'Mid-Level' | 'Expert-Level'"
+											"description": " 'Entry-Level' | 'Mid-Level' | 'Expert-Level'",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "-createdAt",
+											"description": "-createdAt | createdAt",
+											"disabled": true
 										}
 									]
 								}
 							},
-							"response": [
-								{
-									"name": "all jobs",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
-										"url": {
-											"raw": "{{url}}/job/all?jobLevel=Mid-Level",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"job",
-												"all"
-											],
-											"query": [
-												{
-													"key": "searchTerm",
-													"value": "back",
-													"disabled": true
-												},
-												{
-													"key": "experience",
-													"value": "8-10",
-													"description": "Freshers\" | \"1 - 2\" | \"2 - 4\" | \"4 - 6\" | \"8 - 10\" | \"10 - 15\" | \"15 +",
-													"disabled": true
-												},
-												{
-													"key": "minSalary",
-													"value": "44444",
-													"disabled": true
-												},
-												{
-													"key": "maxSalary",
-													"value": "88880",
-													"disabled": true
-												},
-												{
-													"key": "jobTypes",
-													"value": "All,Full-Time",
-													"description": "\"Full-Time\" | \"Part-Time\" | \"Internship\" | \"Contract\" | \"Soft-Skill\" | \"Freelance\" | \"Vocational\" | \"Apprenticeship\" | \"Remote\"",
-													"disabled": true
-												},
-												{
-													"key": "education",
-													"value": "",
-													"description": "\"High-School\" | \"Intermediate\" | \"Graduation\" | \"Associate-Degree\" | \"Bachelor-Degree\" | \"Master-Degree\" | \"Phd\";",
-													"disabled": true
-												},
-												{
-													"key": "jobLevel",
-													"value": "Mid-Level",
-													"description": " 'Entry-Level' | 'Mid-Level' | 'Expert-Level'"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "X-Powered-By",
-											"value": "Express"
-										},
-										{
-											"key": "Vary",
-											"value": "Origin"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "1895"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"767-ehBDbVLdin+rf3G0HuFHTiastvQ\""
-										},
-										{
-											"key": "Date",
-											"value": "Sat, 26 Jul 2025 04:04:46 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
+							"response": []
+						},
+						{
+							"name": "statistics",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/statistics",
+									"host": [
+										"{{url}}"
 									],
-									"cookie": [],
-									"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"All jobs fetched successfully\",\n    \"data\": {\n        \"pagination\": {\n            \"totalPage\": 1,\n            \"currentPage\": 1,\n            \"prevPage\": 1,\n            \"nextPage\": 1,\n            \"totalData\": 6\n        },\n        \"allJobs\": [\n            {\n                \"_id\": \"687b0cc633646c2edb0a2f5d\",\n                \"jobTitle\": \"Js Developer\",\n                \"logo\": \"/images/c376a9aaa1da4e8-507211778_1270074427848327_4327946230780989407_n.jpg\",\n                \"banner\": \"/images/9e7e35fd1ea24bb-f062056c-a340-4955-90d1-84ddbd3bc3fa.jpg\",\n                \"jobType\": \"Full-Time\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"2d 13h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a31dd8f3d444ddfe570ac\",\n                \"jobTitle\": \"Backend dev test  \",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a30b6332c4e6a921643d2\",\n                \"jobTitle\": \"Backend dev test  \",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a293f27657fdf3e8abd34\",\n                \"jobTitle\": \"Backend dev test access post \",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a28f227657fdf3e8abd26\",\n                \"jobTitle\": \"Backend dev employe\",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            },\n            {\n                \"_id\": \"687a2846f4bc4b239099a5e2\",\n                \"jobTitle\": \"Backend dev employe job post   \",\n                \"logo\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"banner\": \"/images/06d2232a938640d-images(3).jpg\",\n                \"jobType\": \"Vocational\",\n                \"jobLevel\": \"Mid-Level\",\n                \"expirationDate\": \"157d 19h 55m remaining\",\n                \"totalApplication\": 0\n            }\n        ]\n    }\n}"
+									"path": [
+										"user",
+										"statistics"
+									]
 								}
-							]
+							},
+							"response": []
 						},
 						{
 							"name": "top companies/employer",
@@ -1236,6 +1250,222 @@
 											"value": "8-10",
 											"disabled": true
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all companies",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/companies?industry=Business %26 Finance&organizationType=Private Company",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"companies"
+									],
+									"query": [
+										{
+											"key": "industry",
+											"value": "Business %26 Finance",
+											"description": "'Technical & Engineering', \"Business & Finance\", \"Sales, Marketing & Customer Service\", \"Education & Training\", \"Legal & Government\""
+										},
+										{
+											"key": "organizationType",
+											"value": "Private Company",
+											"description": "\"All\", \"Federal Government\", \"County Government\", \"City Government\", \"State Government\", \"Local Government\", \"NGO\", \"Private Company\", \"International Agencies\", \"Airport Authority\""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all  seekers",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/seekers?sort=createdAt",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"seekers"
+									],
+									"query": [
+										{
+											"key": "experience",
+											"value": "8-10",
+											"disabled": true
+										},
+										{
+											"key": "educations",
+											"value": "Associate-Degree",
+											"disabled": true
+										},
+										{
+											"key": "gender",
+											"value": "Female",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "createdAt"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single seeker",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/seeker/68734b4dba6d90ec35edd0ea",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"seeker",
+										"68734b4dba6d90ec35edd0ea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all employers",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/employers?searchTerm=abudsdsd&address=123 Main Street&sort=createdAt",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"employers"
+									],
+									"query": [
+										{
+											"key": "searchTerm",
+											"value": "abudsdsd"
+										},
+										{
+											"key": "address",
+											"value": "123 Main Street"
+										},
+										{
+											"key": "sort",
+											"value": "createdAt"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single employer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/single-employer/68734c76ba6d90ec35edd10c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"single-employer",
+										"68734c76ba6d90ec35edd10c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "send email",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"User Name here\",\r\n    \"email\": \"example@gmail.com\",\r\n    \"subject\": \"Here Email subject\",\r\n    \"body\": \"Mail content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/send-mail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"send-mail"
 									]
 								}
 							},
@@ -1304,13 +1534,19 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/plan/latest-invoice",
+									"raw": "{{urlDev}}/plan/latest-invoice?sort=-createdAt",
 									"host": [
-										"{{url}}"
+										"{{urlDev}}"
 									],
 									"path": [
 										"plan",
 										"latest-invoice"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "-createdAt"
+										}
 									]
 								}
 							},
@@ -1489,7 +1725,42 @@
 					"name": "favorite info",
 					"item": [
 						{
-							"name": "my favorite info",
+							"name": "my fav jobs for candidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/saved/my-favorites",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"saved",
+										"my-favorites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my fav candidates for employer",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1511,13 +1782,77 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/saved/my-favorites",
+									"raw": "{{urlDev}}/saved/my-favorites",
+									"host": [
+										"{{urlDev}}"
+									],
+									"path": [
+										"saved",
+										"my-favorites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "make fav job by candidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{candidate_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/saved/687a31dd8f3d444ddfe570ac",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"saved",
-										"my-favorites"
+										"687a31dd8f3d444ddfe570ac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "make fav candidate by empoyeer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{employer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/saved/687888d9a36b678b3da700f1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"saved",
+										"687888d9a36b678b3da700f1"
 									]
 								}
 							},
@@ -1557,6 +1892,186 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "employe by employer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{employer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Md. Al Mamun\",\r\n    \"email\": \"mamun@gmail.com\",\r\n    \"password\": \"1qazxs2\",\r\n    \"confirmPassword\": \"1qazxsw2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/access-employe",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"access-employe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add employe by employer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{employer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Md. Al Mamun\",\r\n    \"email\": \"mamun@gmail.com\",\r\n    \"password\": \"1qazxs2\",\r\n    \"confirmPassword\": \"1qazxsw2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/access-employe",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"access-employe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete employe by employer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{employer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/employe/68884b7382542d4003e6c920",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"employe",
+								"68884b7382542d4003e6c920"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notification",
+			"item": [
+				{
+					"name": "all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{employer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/notification",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{employer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/notification/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notification",
+								"count"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -2045,6 +2560,82 @@
 							"response": []
 						},
 						{
+							"name": "approve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isApprove\" : true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/handle-status/68734b4dba6d90ec35edd0ec",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"handle-status",
+										"68734b4dba6d90ec35edd0ec"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reject",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isApprove\" : false,\r\n    \"title\" : \"hi test \" ,\r\n    \"description\" :  \" hi how \"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/handle-status/68734b4dba6d90ec35edd0ec",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"handle-status",
+										"68734b4dba6d90ec35edd0ec"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "users",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2067,9 +2658,9 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/user/all-user?role=candidate",
+									"raw": "{{urlDev}}/user/all-user?role=employer&searchTerm=jeciga5987",
 									"host": [
-										"{{url}}"
+										"{{urlDev}}"
 									],
 									"path": [
 										"user",
@@ -2078,8 +2669,12 @@
 									"query": [
 										{
 											"key": "role",
-											"value": "candidate",
+											"value": "employer",
 											"description": "candidate, employer"
+										},
+										{
+											"key": "searchTerm",
+											"value": "jeciga5987"
 										}
 									]
 								}
@@ -2109,14 +2704,14 @@
 									"raw": "{\r\n    \"catagoryType\": \" jr frontend dev \",\r\n    \"logo\": \"/images/14faf3b33f584e8-download(2).jpg\"\r\n}"
 								},
 								"url": {
-									"raw": "{{url}}/user/single-user/6868af413db99908822128d4",
+									"raw": "{{url}}/user/single-user/68734b4dba6d90ec35edd0ea",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"user",
 										"single-user",
-										"6868af413db99908822128d4"
+										"68734b4dba6d90ec35edd0ea"
 									]
 								}
 							},
@@ -2502,6 +3097,65 @@
 					]
 				},
 				{
+					"name": "refund",
+					"item": [
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/refund/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"refund",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlDev}}/refund",
+									"host": [
+										"{{urlDev}}"
+									],
+									"path": [
+										"refund"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "About",
 					"item": [
 						{
@@ -2521,7 +3175,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"description\": \"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum\"\r\n}",
+									"raw": "{\r\n    \"description\": \"About\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2580,7 +3234,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"description\": \"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum\"\r\n}",
+									"raw": "{\r\n    \"description\": \"disclaimer\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2681,6 +3335,69 @@
 			]
 		},
 		{
+			"name": "Settings",
+			"item": [
+				{
+					"name": "support",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/setting/support",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setting",
+								"support"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "support",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": {\r\n        \"details\": \"details data is here..........\",\r\n        \"phone\": \"5246543254145\",\r\n        \"email\": \"support@autorevive.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/setting/support",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setting",
+								"support"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "file_uploader",
 			"item": [
 				{
@@ -2733,7 +3450,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/Users/sayed/Downloads/images (4).png"
+							"src": "postman-cloud:///1f06458d-837f-4190-a7a7-f2601a2e6018"
 						}
 					]
 				},
@@ -2812,11 +3529,10 @@
 		{
 			"key": "url",
 			"value": "https://job-portal-mamun.sarv.live/api/v1",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
-			"key": "url",
+			"key": "urlDev",
 			"value": "http://localhost:7001/api/v1",
 			"type": "string"
 		},
