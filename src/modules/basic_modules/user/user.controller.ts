@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prefer-const */
 import { Types } from 'mongoose';
 import { IUser } from './user.interface';
 /* eslint-disable @typescript-eslint/no-explicit-any */

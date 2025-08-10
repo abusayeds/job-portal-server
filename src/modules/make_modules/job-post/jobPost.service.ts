@@ -10,7 +10,6 @@ import { TPurchasePlan } from "../purchasePlan/purchasePlan.interface";
 import { purchasePlanModel } from "../purchasePlan/purchasePlan.model";
 import { searchJobs } from "./jobPost-constant";
 import { TJobPost } from "./jobPost.interface";
-import { ObjectId } from "mongoose";
 
 const crateJobDB = async (
   userId: string,
@@ -37,7 +36,6 @@ const crateJobDB = async (
         "Your subscription limit has ended."
       );
     }
-    console.log(subs_palan.expiryDateTimestamp);
   }
 
   if (
@@ -141,7 +139,7 @@ const employerAllPostedJobs = async (
 };
 const candidateAllJobsDB = async (query: Record<string, unknown>, employerId: string | null) => {
 
-  const { minSalary, maxSalary, educations, jobType, _rsc, ...restQuery } = query;
+  const { minSalary, maxSalary, educations, jobType, ...restQuery } = query;
   if (minSalary) restQuery.minSalary = { $gte: minSalary };
   if (maxSalary) restQuery.maxSalary = { $lte: maxSalary };
   if (jobType && typeof jobType === "string") {
