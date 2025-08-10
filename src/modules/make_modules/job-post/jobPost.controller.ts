@@ -132,9 +132,9 @@ const updateJob = catchAsync(async (req, res) => {
     );
   }
   await subscriptionHandle(user, req.body);
-  const {id} = req.params;
+  const { id } = req.params;
   const result = await JobPostModel.findByIdAndUpdate(id, req.body);
-  if(!result) throw new AppError(httpStatus.NOT_FOUND, 'Job not found');
+  if (!result) throw new AppError(httpStatus.NOT_FOUND, 'Job not found');
   for (const tag of result.tags) {
     await categoryModel.findOneAndUpdate(
       { catagoryType: tag },
@@ -143,13 +143,13 @@ const updateJob = catchAsync(async (req, res) => {
     );
   }
 
-  sendResponse(res, {statusCode: httpStatus.OK, success: true, message: "Job post updated successfully", data: result});
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: "Job post updated successfully", data: result });
 });
 
 
 
 const getAllJobs = catchAsync(async (req, res) => {
-const employerId = req.params.employerId;
+  const employerId = req.params.employerId;
 
   const jobs = await jobService.candidateAllJobsDB(req.query, employerId);
   sendResponse(res, {
@@ -167,7 +167,7 @@ const singleJobs = catchAsync(async (req, res) => {
     path: "companyId",
     // select: "address phone contactEmail",
   },
-);
+  );
   if (!job) {
     throw new AppError(httpStatus.NOT_FOUND, "Job not found");
   }
@@ -187,9 +187,6 @@ const viewApplications = catchAsync(async (req, res) => {
     throw new AppError(httpStatus.NOT_FOUND, "Job not found");
   }
   const application = await jobService.viewApplicationsDB(jobId, req.query);
-
-  console.log("application", application);
-
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
