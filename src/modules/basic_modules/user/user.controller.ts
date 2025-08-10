@@ -758,6 +758,18 @@ const profileDelete = catchAsync(async (req, res) => {
 
   sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Profile deleted ! ', data: undefined });
 });
+const deleteAccount = catchAsync(async (req, res) => {
+  const { userId }: any = req.params
+  const user: IUser | null = await UserModel.findById(userId)
+  if (!user) { throw new AppError(httpStatus.NOT_FOUND, 'User not found'); }
+  if (user?.isDeleted === false) {
+    throw new AppError(httpStatus.BAD_REQUEST, "this user alredy deleted")
+  }
+  await UserModel.findByIdAndUpdate(userId, { isDeleted: true });
+  sendResponse(res, { statusCode: httpStatus.OK, success: true, message: 'Account deleted ! ', data: undefined });
+});
+
+
 
 export const userController = {
   registerUser,
@@ -789,6 +801,7 @@ export const userController = {
   getEmployerById,
   sendEmailToSupport,
   profileDelete,
+  deleteAccount
 }
 
 

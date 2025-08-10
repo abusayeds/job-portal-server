@@ -50,6 +50,6 @@ router.get('/statistics', userController.statistics)
 router.get('/single-employer/:id', userController.getEmployerById)
 router.post('/send-mail', userController.sendEmailToSupport)
 
-// router.delete("/delete",)
+router.delete("/delete/:userId", authMiddleware(role.admin), userController.deleteAccount)
 
 export const UserRoutes = router;
