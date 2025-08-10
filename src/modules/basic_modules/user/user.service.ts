@@ -25,7 +25,6 @@ export const getStoredOTP = async (email: string): Promise<string | null> => {
 };
 export const generateOTP = (): string => {
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
-  console.log(otp);
   return otp
 };
 export const findUserByEmail = async (email: string): Promise<IUser | null> => {
@@ -259,7 +258,7 @@ const updateUserDB = async (payload: IUser, userId: string) => {
 }
 
 const myProfileDB = async (userId: string) => {
-  const user: IUser | null = await UserModel.findOne({_id: userId, isDeleted: false})
+  const user: IUser | null = await UserModel.findOne({ _id: userId, isDeleted: false })
     .select("-password -createdAt -updatedAt -__v -isDeleted")
     .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" }).populate({
       path: "candidateInfo",
@@ -296,10 +295,10 @@ const myProfileDB = async (userId: string) => {
 
 
 }
-const allUserDB = async (query: Record<string, unknown>, role: string) => { 
+const allUserDB = async (query: Record<string, unknown>, role: string) => {
   const userQuery = new queryBuilder(UserModel.find({ role: role, }).populate('candidateInfo').select('-password -isVerify'), query)
-  .search(['fullName', 'email', 'phone', 'userName'])
-  .fields().filter().sort()
+    .search(['fullName', 'email', 'phone', 'userName'])
+    .fields().filter().sort()
   const { totalData } = await userQuery.paginate(UserModel.find({ role: role, }))
   const user: any = await userQuery.modelQuery.exec()
 
