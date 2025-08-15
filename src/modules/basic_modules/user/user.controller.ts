@@ -30,7 +30,14 @@ import {
   userService,
 } from "./user.service";
 const registerUser = catchAsync(async (req, res) => {
-  const { email } = req.body;
+  const { email, userName } = req.body;
+  const isExistingUserName = await UserModel.findOne({ userName: userName })
+  if (isExistingUserName) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      `The username "${userName}" is already taken. Please choose another one.`
+    );
+  }
   const isUserRegistered: IUser | null = await UserModel.findOne({ email: email, isVerify: false });
   if (isUserRegistered) {
     await UserModel.findOneAndUpdate(
@@ -358,15 +365,18 @@ const IdentityVerification = catchAsync(async (req, res) => {
 
   conditionalStepValidation
   const result: IUser = await userService.IdentityVerificationDB(userId, req.body, step as string)
-  if (!result.isCompleted) {
+  if (!result.isCompleted && result.step !== 4) {
     await UserModel.findByIdAndUpdate(userId, { step: step }, { new: true })
   }
+
+
   let message
   if (result.isCompleted) {
     message = "Profile updated successfully";
   } else if (step === "4") {
     message = "Profile completed, please wait for admin approval";
-    const result = await UserModel.findByIdAndUpdate(userId, {
+    const userUpdate = await UserModel.findById(userId)
+    await UserModel.findByIdAndUpdate(userId, {
       isCompleted: true,
       step: step
     })
@@ -374,17 +384,18 @@ const IdentityVerification = catchAsync(async (req, res) => {
       statusCode: httpStatus.OK,
       success: true,
       message: message,
-      data: result
+      data: userUpdate
     });
     return
   } else {
     message = `Step ${step} Verified`;
   }
+  const userUpdate = await UserModel.findById(userId)
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: message,
-    data: result
+    data: userUpdate
   });
 
 
@@ -396,11 +407,7 @@ const IdentityVerification = catchAsync(async (req, res) => {
 const handleStatus = catchAsync(async (req, res) => {
   const payload: IUser = req.body;
   const { userId } = req.params
-
-
   const isUserExist: IUser | null = await UserModel.findById(userId)
-
-
   if (!isUserExist) {
     throw new AppError(httpStatus.NOT_FOUND, 'user not found ')
   }
@@ -408,7 +415,7 @@ const handleStatus = catchAsync(async (req, res) => {
     if (!req.body.description) {
       throw new AppError(httpStatus.BAD_REQUEST, "Please provide a reason for rejection.")
     }
-    payload.isActive = false;
+    // payload.isActive = false;
     await employerRejectEmail(req.body.title, req.body.description, isUserExist.fullName, isUserExist.email)
   }
 
@@ -762,7 +769,7 @@ const deleteAccount = catchAsync(async (req, res) => {
   const { userId }: any = req.params
   const user: IUser | null = await UserModel.findById(userId)
   if (!user) { throw new AppError(httpStatus.NOT_FOUND, 'User not found'); }
-  if (user?.isDeleted === false) {
+  if (user?.isDeleted === true) {
     throw new AppError(httpStatus.BAD_REQUEST, "this user alredy deleted")
   }
   await UserModel.findByIdAndUpdate(userId, { isDeleted: true });
