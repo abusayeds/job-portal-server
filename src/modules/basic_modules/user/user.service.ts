@@ -296,10 +296,10 @@ const myProfileDB = async (userId: string) => {
 
 }
 const allUserDB = async (query: Record<string, unknown>, role: string) => {
-  const userQuery = new queryBuilder(UserModel.find({ role: role, }).populate('candidateInfo').select('-password -isVerify'), query)
+  const userQuery = new queryBuilder(UserModel.find({ role: role, isDeleted: false }).populate('candidateInfo').select('-password -isVerify'), query)
     .search(['fullName', 'email', 'phone', 'userName'])
     .fields().filter().sort()
-  const { totalData } = await userQuery.paginate(UserModel.find({ role: role, }))
+  const { totalData } = await userQuery.paginate(UserModel.find({ role: role, isDeleted: false }))
   const user: any = await userQuery.modelQuery.exec()
 
   const currentPage = Number(query?.page) || 1;
