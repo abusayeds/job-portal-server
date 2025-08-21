@@ -3,7 +3,6 @@ import { JobPostModel } from "./jobPost.model";
 import httpStatus from "http-status";
 import queryBuilder from "../../../builder/queryBuilder";
 import AppError from "../../../errors/AppError";
-import { IUser } from "../../basic_modules/user/user.interface";
 import { UserModel } from "../../basic_modules/user/user.model";
 import { AppliedJobModel } from "../applied-jobs/applied.jobs.model";
 import { TPurchasePlan } from "../purchasePlan/purchasePlan.interface";
@@ -17,7 +16,7 @@ const crateJobDB = async (
   palan: string,
   payload: TJobPost
 ) => {
-  const employe: IUser | null = await UserModel.findById(userId);
+  const employe = await UserModel.findById(userId);
   const subs_palan: TPurchasePlan | null = await purchasePlanModel.findOne({
     _id: palan,
     subscriptionId: subscriptionId,
@@ -29,7 +28,6 @@ const crateJobDB = async (
   ) {
     const expiryDate = new Date(subs_palan.expiryDateTimestamp);
     const currentDate = new Date();
-
     if (expiryDate < currentDate) {
       throw new AppError(
         httpStatus.BAD_REQUEST,
