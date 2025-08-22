@@ -12,14 +12,11 @@ import catchAsync from "../../../utils/catchAsync";
 import sendResponse from "../../../utils/sendResponse";
 
 import queryBuilder from '../../../builder/queryBuilder';
-import { admin } from "../../../DB";
 import { TRole } from '../../../utils/role';
 import { JobPostModel } from "../../make_modules/job-post/jobPost.model";
 import { savedCandidateAndJobService } from '../../make_modules/savedCandidateAndJobs/saved.service';
 import { CVItem, TCandidate } from '../candidate/candidate.interface';
 import { candidateModel } from '../candidate/candidate.model';
-import { INotification } from '../notifications/notification.interface';
-import { createNotification } from "../notifications/notification.service";
 import { conditionalStepValidation } from "./constant";
 import { employerRejectEmail, sendRegistationOtpEmail, sendSupportEmail } from "./sendEmail";
 import { UserModel } from "./user.model";
@@ -93,15 +90,7 @@ const verifyOTP = catchAsync(async (req, res) => {
     );
   }
   const result: any = await userService.verifyOtpDB(email)
-  const adminId: IUser | null = await UserModel.findOne({ email: admin.email, role: "admin" });
-  const adminObjectId = adminId?._id as Types.ObjectId;
-  if (result) {
-    const payload = {
-      userId: new Types.ObjectId(adminObjectId),
-      notification: 'Your account has been successfully created.',
-    }
-    await createNotification(payload as INotification);
-  } else {
+  if (!result) {
     throw new AppError(httpStatus.BAD_REQUEST, "Failed to varification");
   }
   sendResponse(res, {

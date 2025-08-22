@@ -78,7 +78,10 @@ const UserSchema = new Schema<IUser>(
     companyId: {
       type: Schema.Types.ObjectId,
       ref: "User"
-
+    },
+    employmentId: {
+      type: Schema.Types.ObjectId,
+      ref: "Employeement"
     },
     step: {
       type: Number, default: 0
