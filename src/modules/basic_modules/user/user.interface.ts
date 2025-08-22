@@ -101,6 +101,7 @@ export type IUser = {
   isApprove: boolean
   purchasePlan: Types.ObjectId
   companyId?: Types.ObjectId
+  employmentId?: Types.ObjectId
   step: number
   createdAt?: string
 } & Document;
