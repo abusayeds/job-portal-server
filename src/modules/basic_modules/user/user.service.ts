@@ -260,6 +260,7 @@ const updateUserDB = async (payload: IUser, userId: string) => {
 const myProfileDB = async (userId: string) => {
   const user: IUser | null = await UserModel.findOne({ _id: userId, isDeleted: false })
     .select("-password -createdAt -updatedAt -__v -isDeleted")
+    .populate({ path: "employmentId", select: "references professional_skills employments  -_id " })
     .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" }).populate({
       path: "candidateInfo",
       // select: "title parsonalWebsite image experience cv educations  maritalStatus gender dateOfBrith biography  nationality  address facebook twitter instagram youtube linkedin  phone jobLevel jobType contactEmail  "
