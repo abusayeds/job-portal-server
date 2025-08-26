@@ -50,10 +50,11 @@ export const deleteRecord = catchAsync(async (req, res) => {
         type as any,
         recordId as string
     );
+    const sms = type === "employment" ? "Employment" : "Reference"
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: `${type} deleted successfully`,
+        message: `${sms} deleted successfully`,
         data: result,
     });
 })
