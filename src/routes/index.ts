@@ -16,6 +16,9 @@ import { jobRoute } from "../modules/make_modules/job-post/jobPost.route";
 import { purchaseRoute } from "../modules/make_modules/purchasePlan/purchasePlan.route";
 import { savedJobRoute } from "../modules/make_modules/savedCandidateAndJobs/saved.route";
 import { SubscriptionRoute } from "../modules/make_modules/subscription/subscription.route";
+import { trainingRoutes } from "../modules/make_modules/training/training.route";
+
+
 
 
 const router = express.Router();
@@ -47,6 +50,8 @@ router.use("/api/v1/saved", savedJobRoute);
 router.use("/api/v1/setting", SettingsRoutes);
 
 router.use("/api/v1/employment", employmentRoutes);
+
+router.use("/api/v1/training", trainingRoutes);
 
 
 
