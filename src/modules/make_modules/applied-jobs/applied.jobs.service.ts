@@ -1,6 +1,8 @@
 import httpStatus from "http-status";
 import queryBuilder from "../../../builder/queryBuilder";
 import AppError from "../../../errors/AppError";
+import { IUser } from "../../basic_modules/user/user.interface";
+import { UserModel } from "../../basic_modules/user/user.model";
 import { JobPostModel } from "../job-post/jobPost.model";
 import { SavedModel } from "../savedCandidateAndJobs/saved.model";
 import { TAppliedJob } from "./applied.jobs.interface";
@@ -51,8 +53,6 @@ const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>
             }
         }
 
-
-
         return {
             _id: job._id,
             jobId: job?.jobId?._id,
@@ -69,7 +69,6 @@ const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>
             currency: job?.jobId?.currency,
             location: job?.jobId?.location,
             appliedDate: job?.createdAt,
-
         }
     })
     return {
@@ -80,12 +79,27 @@ const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>
 const overviewDB = async (userId: string, role: string) => {
     let overviewData;
     if (role === "candidate") {
+        const user: IUser | null =
+            await UserModel.findById(userId).populate("candidateInfo");
+        if (!user) {
+            throw new AppError(httpStatus.NOT_FOUND, "User not found");
+        }
+        const info = {
+            jobType: user.candidateInfo.jobType,
+            jobLevel: user.candidateInfo.jobLevel,
+        };
+        const totalDataCount = await JobPostModel.countDocuments({
+            $or: [
+                { jobType: { $in: info.jobType || [] } },
+                { jobLevel: { $in: info.jobLevel || [] } },
+            ],
+        });
         const appliedJobs = await AppliedJobModel.find({ userId }).countDocuments();
         const favoritesjobs = await SavedModel.find({ userId }).countDocuments();
         overviewData = {
             appliedJobs,
             favoritesjobs,
-            jobAlerts: 0,
+            jobAlerts: totalDataCount,
         };
         return overviewData;
     } else if (role === 'employe') {
