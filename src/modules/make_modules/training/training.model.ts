@@ -16,7 +16,10 @@ const trainingSchema = new Schema<Ttraining>({
             return date instanceof Date && !isNaN(date.getTime()) ? date.toISOString().split('T')[0] : val;
         }
     },
-    category: { type: String, required: true, trim: true },
+    category: {
+        type: String, required: true, trim: true,
+        enum: ["Job Training", "Professional Development", "Job Fair"]
+    },
     format: {
         type: String,
         required: true,

@@ -25,6 +25,8 @@ export const getStoredOTP = async (email: string): Promise<string | null> => {
 };
 export const generateOTP = (): string => {
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  console.log(otp);
+
   return otp
 };
 export const findUserByEmail = async (email: string): Promise<IUser | null> => {

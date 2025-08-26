@@ -11,8 +11,9 @@ router.get("/my-training", authMiddleware(role.employer), trainingController.get
 router.get("/single/:id", trainingController.getSingletraining);
 router.patch("/:id", trainingController.updatetraining);
 router.delete("/:id", trainingController.deletetraining);
+router.get("/applied-traning")
 
 router.post('/ragistration', authMiddleware(role.candidate), trainingController.createTraningRagistration)
 router.get('/ragistration-list', authMiddleware(role.employer), trainingController.traningRagistrationList)
-
+router.get('/specific/:trainingId', authMiddleware(role.employer), trainingController.traningSpecificList)
 export const trainingRoutes = router;
