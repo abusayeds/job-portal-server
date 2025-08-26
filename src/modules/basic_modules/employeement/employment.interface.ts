@@ -9,7 +9,7 @@ export interface EmploymentRecord {
     jobLocation: string;
     startDate: string;
     endDate: string | null;
-    resignation: boolean;
+    currentlyWorking: boolean;
     jobDuties: string;
 }
 

@@ -280,8 +280,8 @@ const myProfileDB = async (userId: string) => {
   }
 
   if (user.role === "candidate") {
-    const { candidateInfo, ...userWithoutCandidateInfo } = user.toObject();
-    const flattenedUser = { ...userWithoutCandidateInfo, ...candidateInfo, _id: user._id };
+    const { candidateInfo, employmentId, ...userWithoutCandidateInfo } = user.toObject();
+    const flattenedUser = { ...userWithoutCandidateInfo, ...candidateInfo, _id: user._id, ...employmentId };
 
     // console.log(flattenedUser);
 
