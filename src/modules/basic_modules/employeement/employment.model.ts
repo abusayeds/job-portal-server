@@ -7,7 +7,7 @@ const employmentRecordSchema = new Schema<EmploymentRecord>({
     jobLocation: { type: String, required: true },
     startDate: { type: String, required: true },
     endDate: { type: String, default: null },
-    resignation: { type: Boolean, required: true },
+    currentlyWorking: { type: Boolean, required: true },
     jobDuties: { type: String, required: true },
 });
 
