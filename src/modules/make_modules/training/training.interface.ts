@@ -7,7 +7,8 @@ export type Ttraining = {
     title: string,
     image: string,
     date: Date | any
-    category: string,
+    category: "Job Training" | "Professional Development" | "Job Fair"
+
     format: "online" | "in_person",
     duration: string,
     learning_credits: string

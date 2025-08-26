@@ -110,6 +110,13 @@ const createTraningRagistration = catchAsync(async (req, res) => {
         throw new AppError(httpStatus.BAD_REQUEST, "employeeId id is required ")
     }
     const candidateId = decoded.user._id;
+    const isExist = await trainingRagistrationModel.findOne({
+        userId: candidateId,
+        trainingId: trainingId,
+    })
+    if (isExist) {
+        throw new AppError(httpStatus.BAD_REQUEST, "You are already registered for this training.");
+    }
     const result = await trainingRagistrationModel.create({
         userId: candidateId,
         trainingId: trainingId,
@@ -144,6 +151,55 @@ const traningRagistrationList = catchAsync(async (req, res) => {
         }
     });
 })
+const traningSpecificList = catchAsync(async (req, res) => {
+    const { trainingId } = req.params;
+    const isExist = await trainingModel.findById(trainingId);
+    if (!isExist) {
+        throw new AppError(httpStatus.BAD_REQUEST, "Training not found!");
+    }
+
+    const listQuery = new queryBuilder(trainingRagistrationModel.find({ trainingId: trainingId }).populate([
+        {
+            path: "userId",
+            select: "fullName email logo addess",
+            populate: {
+                path: "candidateInfo",
+                select: "contactEmail logo phone address ",
+            }
+        }
+    ]).populate("trainingId"), req.query);
+
+    const { totalData } = await listQuery.paginate(trainingRagistrationModel.find({ trainingId: trainingId }));
+    const ragistrationList = await listQuery.modelQuery.exec();
+
+    ragistrationList.forEach((ragistration: any) => {
+        if (ragistration.userId && ragistration.userId.candidateInfo) {
+            ragistration.userId.contactEmail = ragistration.userId.candidateInfo.contactEmail;
+            delete ragistration.userId.candidateInfo;
+        }
+    });
+
+    const currentPage = Number(req.query?.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const pagination = listQuery.calculatePagination({
+        totalData,
+        currentPage,
+        limit,
+    });
+
+    sendResponse(res, {
+        statusCode: httpStatus.CREATED,
+        success: true,
+        message: "Get training-specific list",
+        data: {
+            pagination,
+            trainingName: isExist.title,
+            ragistrationList
+        }
+    });
+});
+
+
 
 
 
@@ -156,5 +212,6 @@ export const trainingController = {
     updatetraining,
     deletetraining,
     createTraningRagistration,
-    traningRagistrationList
+    traningRagistrationList,
+    traningSpecificList
 };
