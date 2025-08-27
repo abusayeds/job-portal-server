@@ -112,7 +112,7 @@ const verifyOtpDB = async (email: string) => {
 
 const loginDB = async (email: string, password: string) => {
   const user: IUser | null = await UserModel.findOne({ email: email })
-    .select("+password -createdAt -updatedAt -__v -isDeleted")
+    .select("+password ")
     .populate({ path: "purchasePlan", select: "-createdAt -updatedAt -__v -isVisible" });
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND,

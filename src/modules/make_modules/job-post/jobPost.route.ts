@@ -12,7 +12,6 @@ router.get("/single/:jobId", jobController.singleJobs);
 router.get("/all", jobController.getAllJobs);
 router.get("/view-applications/:jobId", authMiddleware(role.employer, role.employe), jobController.viewApplications);
 router.get("/single-apply/:appliedId", authMiddleware(role.candidate, role.employer, role.employe), jobController.singleApplyJob);
-
 router.get("/all/:employerId", jobController.getAllJobs);
 router.get("/my-job-alerts", authMiddleware(role.candidate), jobController.candidateJobAlert);
 router.get('/related-jobs/:jobId', jobController.relatedJobs)

@@ -32,7 +32,10 @@ const trainingSchema = new Schema<Ttraining>({
     learning_credits: { type: String },
     time: [{ type: String, required: true }],
     description: { type: String, required: true }
-});
+}, {
+    timestamps: true
+}
+);
 
 export const trainingModel = model<Ttraining>("Training", trainingSchema);
 

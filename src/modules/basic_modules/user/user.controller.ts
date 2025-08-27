@@ -17,7 +17,8 @@ import { JobPostModel } from "../../make_modules/job-post/jobPost.model";
 import { savedCandidateAndJobService } from '../../make_modules/savedCandidateAndJobs/saved.service';
 import { CVItem, TCandidate } from '../candidate/candidate.interface';
 import { candidateModel } from '../candidate/candidate.model';
-import { conditionalStepValidation } from "./constant";
+import { NotificationModel } from '../notifications/notification.model';
+import { conditionalStepValidation, searchUser } from "./constant";
 import { employerRejectEmail, sendRegistationOtpEmail, sendSupportEmail } from "./sendEmail";
 import { UserModel } from "./user.model";
 import {
@@ -121,6 +122,8 @@ const loginUser = catchAsync(async (req, res) => {
     return
   }
   const user = await userService.loginDB(email, password)
+
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -408,18 +411,31 @@ const handleStatus = catchAsync(async (req, res) => {
     await employerRejectEmail(req.body.title, req.body.description, isUserExist.fullName, isUserExist.email)
   }
 
-  const result = await UserModel.findByIdAndUpdate(
-    userId, { ...payload }, { new: true }
-  )
-
+  const result = await UserModel.findByIdAndUpdate(userId, { ...payload }, { new: true })
   let message
   if (payload.isApprove === false) {
     message = "The user is rejected.";
+    await NotificationModel.create({
+      userId: userId,
+      notification: "Admin rejected your account."
+    });
   } else if (payload.isActive === false) {
     message = "The user is deactivated.";
+    await NotificationModel.create({
+      userId: userId,
+      notification: "Admin deactivated your account."
+    });
   } else if (payload.isApprove) {
     message = "The user is approved.";
+    await NotificationModel.create({
+      userId: userId,
+      notification: "Admin rejected your account."
+    });
   } else if (payload.isActive) {
+    await NotificationModel.create({
+      userId: userId,
+      notification: "Admin  activated  your account."
+    });
     message = "The user is activated.";
   }
   sendResponse(res, {
@@ -654,6 +670,7 @@ const getSeekers = catchAsync(async (req, res) => {
     UserModel.find({ role: "candidate" as TRole }).populate('candidateInfo'),
     restQuery
   )
+    .search(searchUser)
     .filter()
     .sort();
   const paginationResult = await myQuery.paginate(
@@ -701,6 +718,7 @@ const getEmployers = catchAsync(async (req, res) => {
     UserModel.find({ role: "employer" as TRole }),
     restQuery
   )
+    .search(searchUser)
     .filter()
     .sort();
   const paginationResult = await myQuery.paginate(

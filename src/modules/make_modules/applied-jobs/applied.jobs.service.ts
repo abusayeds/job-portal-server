@@ -1,15 +1,21 @@
 import httpStatus from "http-status";
 import queryBuilder from "../../../builder/queryBuilder";
 import AppError from "../../../errors/AppError";
+import { NotificationModel } from "../../basic_modules/notifications/notification.model";
 import { IUser } from "../../basic_modules/user/user.interface";
 import { UserModel } from "../../basic_modules/user/user.model";
+import { TJobPost } from "../job-post/jobPost.interface";
 import { JobPostModel } from "../job-post/jobPost.model";
 import { SavedModel } from "../savedCandidateAndJobs/saved.model";
 import { TAppliedJob } from "./applied.jobs.interface";
 import { AppliedJobModel } from "./applied.jobs.model";
 
 const createAppliedJobDB = async (payload: TAppliedJob, userId: string, jobId: string) => {
-    const jobs = await JobPostModel.findById(jobId);
+    const jobs: TJobPost | null = await JobPostModel.findById(jobId);
+    const user: IUser | null = await UserModel.findById(userId)
+    if (!user?.isCompleted) {
+        throw new AppError(httpStatus.BAD_REQUEST, "Please complete your profile. ")
+    }
     if (!jobs) {
         throw new AppError(httpStatus.NOT_FOUND, "Job not found");
     }
@@ -22,6 +28,12 @@ const createAppliedJobDB = async (payload: TAppliedJob, userId: string, jobId: s
         jobId,
         userId
     });
+    if (appliedJob) {
+        await NotificationModel.create({
+            userId: jobs?.companyId,
+            notification: `${user.fullName} applied for your ${jobs.jobTitle}`
+        })
+    }
     return appliedJob
 }
 const getMyAppliedJobsDB = async (userId: string, query: Record<string, unknown>) => {
@@ -93,6 +105,8 @@ const overviewDB = async (userId: string, role: string) => {
                 { jobType: { $in: info.jobType || [] } },
                 { jobLevel: { $in: info.jobLevel || [] } },
             ],
+            createdAt: { $gt: user.createdAt },
+            expirationDate: { $gt: new Date() }
         });
         const appliedJobs = await AppliedJobModel.find({ userId }).countDocuments();
         const favoritesjobs = await SavedModel.find({ userId }).countDocuments();

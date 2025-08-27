@@ -28,20 +28,14 @@ const createJob = catchAsync(async (req, res) => {
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, "User not Found ");
   }
-  if (!user.isApprove) {
-    throw new AppError(
-      httpStatus.FORBIDDEN,
-      "Your account is not approved by admin."
-    );
-  }
-  if (!user.isActive) {
-    throw new AppError(httpStatus.UNAUTHORIZED, "The admin has blocked you.");
-  }
   if (!user.purchasePlan) {
     throw new AppError(
       httpStatus.FORBIDDEN,
       "Please purchase subscription plan  "
     );
+  }
+  if (!user.isActive) {
+    throw new AppError(httpStatus.UNAUTHORIZED, "The admin has blocked you.");
   }
   if (!user.isVerify) {
     throw new AppError(httpStatus.UNAUTHORIZED, "This Account is not verify");
@@ -97,20 +91,15 @@ const updateJob = catchAsync(async (req, res) => {
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, "User not Found ");
   }
-  if (!user.isApprove) {
-    throw new AppError(
-      httpStatus.FORBIDDEN,
-      "Your account is not approved by admin."
-    );
-  }
-  if (!user.isActive) {
-    throw new AppError(httpStatus.UNAUTHORIZED, "The admin has blocked you.");
-  }
   if (!user.purchasePlan) {
     throw new AppError(
       httpStatus.FORBIDDEN,
       "Please purchase subscription plan  "
     );
+  }
+
+  if (!user.isActive) {
+    throw new AppError(httpStatus.UNAUTHORIZED, "The admin has blocked you.");
   }
   if (!user.isVerify) {
     throw new AppError(httpStatus.UNAUTHORIZED, "This Account is not verify");
@@ -150,7 +139,6 @@ const updateJob = catchAsync(async (req, res) => {
 
 const getAllJobs = catchAsync(async (req, res) => {
   const employerId = req.params.employerId;
-
   const jobs = await jobService.candidateAllJobsDB(req.query, employerId);
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -239,7 +227,8 @@ const candidateJobAlert = catchAsync(async (req, res) => {
   const result = await jobService.candidateJobAlertDB(
     info,
     parseInt(page as string),
-    parseInt(limit as string)
+    parseInt(limit as string),
+    user
   );
   sendResponse(res, {
     statusCode: httpStatus.OK,
