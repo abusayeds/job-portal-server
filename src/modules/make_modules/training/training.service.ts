@@ -39,7 +39,6 @@ const getAlltrainingsDB = async (query: any) => {
         trainings,
     };
 };
-
 const getEmployeetrainingsDB = async (employeeId: string, query: any) => {
     const trainingQuery = new queryBuilder(trainingModel.find({ employeId: employeeId }).populate({ path: "employeId", select: "companyName companyWebsite contactEmail address logo " }), query)
         .search(searchtraining)

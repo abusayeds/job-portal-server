@@ -3,6 +3,7 @@ import httpStatus from "http-status";
 import AppError from "../../../errors/AppError";
 import zodValidation from "../../../middlewares/zodValidationHandler";
 import { userValidation } from "./user.validation";
+import { IUser } from "./user.interface";
 export const conditionalStepValidation = (req: Request, res: Response, next: NextFunction) => {
     const step = req.query.step;
     let schema;
@@ -27,11 +28,11 @@ export const conditionalStepValidation = (req: Request, res: Response, next: Nex
 
 export const freeJobPostEmails = [
     "info@aplusbuz.com",  //   A Plus Business Consulting Ltd 
-    "info@remotisjobs.com",  //  RemotisJobs 
     "ontimetutor.info@gmail.com",  //  OntimeTutor 
     "koboservices.info@gmail.com",  //  KOBOServices
 ]
 
+export const searchUser: Array<keyof IUser> = ["userName", "companyVision", "industry", "address", "companyName", "fullName",]
 
 
 

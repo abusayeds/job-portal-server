@@ -51,43 +51,83 @@ const makeAutoRenewalDB = async (userId: string, subscriptionId: string, payload
 }
 
 
-const latestInvoiceDB = async (userId: string, query: Record<string, unknown>,) => {
-    const subs_query = new queryBuilder(purchasePlanModel.find({ userId: userId }).populate({path: 'userId', select: 'companyName address'}), query)
+const latestInvoiceDB = async (userId: string, query: Record<string, unknown>) => {
+    const subs_query = new queryBuilder(purchasePlanModel.find({ userId: userId })
+        .select("-unlimited_text -add_logo_images -avg_viewed_1000 -multi_categories -schedule_dates -unlimited_postings -fill_multiple_positions -continuous_posting -multi_user_access -popular_choice -cost_effective -no_time_limit -expiryDateTimestamp -isVisible -unlimitedPlanIndex ")
+        .lean()
+        .populate({ path: 'userId', select: 'companyName address' }), query);
+
     subs_query.sort();
 
-    const { totalData } = await subs_query.paginate(purchasePlanModel.find({ userId: userId }))
-    const subs: any = await subs_query.modelQuery.exec()
+    const { totalData } = await subs_query.paginate(purchasePlanModel.find({ userId: userId }));
+    const subs: any = await subs_query.modelQuery.exec();
+
     const currentPage = Number(query?.page) || 1;
     const limit = Number(query.limit) || 10;
+
+    // Fetching the payment info for each subscription
+    const subscriptionsWithPaymentInfo = await Promise.all(
+        subs.map(async (subscription: any) => {
+            let paymentInfo = null;
+
+            try {
+                // Retrieve the Stripe subscription to get the default payment method
+                const stripeSubscription = await stripe.subscriptions.retrieve(subscription.subscriptionId);
+
+                if (stripeSubscription.default_payment_method) {
+                    const paymentMethodId = stripeSubscription.default_payment_method;
+
+                    // Retrieve payment method details
+                    const paymentMethod = await stripe.paymentMethods.retrieve(paymentMethodId);
+
+                    // Construct the payment info object
+                    paymentInfo = {
+                        bankName: paymentMethod?.us_bank_account?.bank_name || null,
+                        cardNumber: paymentMethod?.card?.last4 || null,
+                        address: paymentMethod?.billing_details?.address || null,
+                        cardType: paymentMethod?.card?.brand || null,
+                    };
+                }
+            } catch (error) {
+                console.error(`Error retrieving payment info for subscription ${subscription._id}:`, error);
+
+            }
+
+            return {
+                ...subscription,
+                paymentInfo
+            };
+        })
+    );
+
     const pagination = subs_query.calculatePagination({
         totalData,
         currentPage,
         limit,
     });
 
-
     return {
-        pagination, latest_invoice: subs
-    }
-}
+        pagination,
+        latest_invoice: subscriptionsWithPaymentInfo // Include the subscription with payment info in the response
+    };
+};
+
+
+
 
 const myPlanDB = async (userId: string) => {
     const user = await UserModel.findById(userId).populate("purchasePlan")
-
     const subs_palan: TPurchasePlan | null = await purchasePlanModel.findOne({ _id: user.purchasePlan._id, subscriptionId: user.purchasePlan.subscriptionId })
-
     if (!subs_palan) {
         throw new AppError(404, "Subscription plan not found ")
     }
     const jobs = (await JobPostModel.find({ subscriptionId: user.purchasePlan.subscriptionId }))
-
     const expiryDate = new Date(subs_palan.expiryDateTimestamp);
-
-
     const nextInvoiceDate = new Date(expiryDate);
     nextInvoiceDate.setDate(expiryDate.getDate() + 1);
 
-    const nextInvoiceFormatted = nextInvoiceDate.toLocaleDateString('en-GB');
+    const nextInvoiceFormatted = new Date(nextInvoiceDate)
+
 
     const subscription: TSubscription | null = await subscriptionModel.findOne({ planName: subs_palan?.planName })
     if (!subscription) {

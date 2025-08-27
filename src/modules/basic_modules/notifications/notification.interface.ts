@@ -1,10 +1,9 @@
 
 import { Types } from "mongoose";
 
-// Define the INotification type
-export type INotification = {
-  userId: Types.ObjectId;
+export type TNotification = {
+  userId: Types.ObjectId | string;
   jobId?: Types.ObjectId;
   notification: string;
-  isRead: boolean; 
+  isRead?: boolean;
 } 

@@ -6,6 +6,7 @@ import AppError from "../../../errors/AppError";
 import { tokenDecoded } from "../../../middlewares/decoded";
 import catchAsync from "../../../utils/catchAsync";
 import sendResponse from "../../../utils/sendResponse";
+import { IUser } from "../../basic_modules/user/user.interface";
 import { UserModel } from "../../basic_modules/user/user.model";
 import { trainingModel, trainingRagistrationModel } from "./training.model";
 import { trainingService } from "./training.service";
@@ -14,12 +15,33 @@ import { trainingService } from "./training.service";
 const createtraining = catchAsync(async (req, res) => {
     const trainingData = req.body;
     const { decoded, }: any = await tokenDecoded(req, res)
-    const employeeId = decoded.user._id;
-    const company = await UserModel.findById(employeeId)
+    const userId = decoded.user._id;
+    const user: IUser | any = await UserModel.findById(userId)
+        .select("+password -createdAt -updatedAt -__v -isDeleted")
+        .populate({
+            path: "purchasePlan",
+            select: "-createdAt -updatedAt -__v -isVisible",
+        });
+    if (!user) {
+        throw new AppError(httpStatus.NOT_FOUND, "User not Found ");
+    }
+
+    if (!user.isActive) {
+        throw new AppError(httpStatus.UNAUTHORIZED, "The admin has blocked you.");
+    }
+    if (!user.purchasePlan) {
+        throw new AppError(
+            httpStatus.FORBIDDEN,
+            "Please purchase subscription plan  "
+        );
+    }
+    if (!user.isVerify) {
+        throw new AppError(httpStatus.UNAUTHORIZED, "This Account is not verify");
+    }
     const payload = {
         ...trainingData,
-        employeId: employeeId,
-        companyName: company.companyName,
+        employeId: userId,
+        companyName: user.companyName,
     }
     const training = await trainingService.createtrainingDB(payload);
     sendResponse(res, {
@@ -198,10 +220,6 @@ const traningSpecificList = catchAsync(async (req, res) => {
         }
     });
 });
-
-
-
-
 
 
 export const trainingController = {
