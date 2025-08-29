@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/create", authMiddleware(role.employer, role.employe), trainingController.createtraining);
 router.get("/all", trainingController.getAlltrainings);
 router.get("/my-training", authMiddleware(role.employer), trainingController.getEmployeetrainings);
+router.get("/my-appliedTraining", authMiddleware(role.candidate), trainingController.myAppliedTraining);
 router.get("/single/:id", trainingController.getSingletraining);
 router.patch("/:id", trainingController.updatetraining);
 router.delete("/:id", trainingController.deletetraining);

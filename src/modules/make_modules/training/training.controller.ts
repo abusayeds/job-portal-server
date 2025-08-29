@@ -78,6 +78,17 @@ const getEmployeetrainings = catchAsync(async (req, res) => {
         data: training
     });
 });
+const myAppliedTraining = catchAsync(async (req, res) => {
+    const { decoded, }: any = await tokenDecoded(req, res)
+    const userId = decoded.user._id;
+    const training = await trainingService.myAppliedTrainingDB(userId, req.query);
+    sendResponse(res, {
+        statusCode: training ? httpStatus.OK : httpStatus.NOT_FOUND,
+        success: !!training,
+        message: training ? "Training fetched successfully" : "Training not found",
+        data: training
+    });
+});
 
 
 
@@ -231,5 +242,6 @@ export const trainingController = {
     deletetraining,
     createTraningRagistration,
     traningRagistrationList,
-    traningSpecificList
+    traningSpecificList,
+    myAppliedTraining
 };
