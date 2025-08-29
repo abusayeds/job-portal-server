@@ -83,6 +83,7 @@ const UserSchema = new Schema<IUser>(
       type: Schema.Types.ObjectId,
       ref: "Employeement"
     },
+
     step: {
       type: Number, default: 0
     }
