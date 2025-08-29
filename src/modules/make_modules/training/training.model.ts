@@ -44,5 +44,9 @@ const trainingRagistration = new Schema({
     userId: { type: Schema.Types.ObjectId, ref: "User" },
     employeeId: { type: Schema.Types.ObjectId, ref: "User" },
     trainingId: { type: Schema.Types.ObjectId, ref: "Training" }
-})
+},
+    {
+        timestamps: true
+    })
+
 export const trainingRagistrationModel = model("Ragistration", trainingRagistration);
