@@ -3,7 +3,7 @@
 import mongoose from "mongoose";
 import seedSuperAdmin from "./DB";
 import app from "./app";
-import { DATABASE_URL, IP, PORT } from "./config";
+import { DATABASE_URL, IP, PORT,  } from "./config";
 import { initSocketIO } from "./utils/socket";
 
 import http from "http";
@@ -22,7 +22,7 @@ async function main() {
 
     // Create the HTTP server
     server.listen(PORT, IP, () => {
-      console.log(`Server is running on http://${IP}:${PORT}`);
+      console.log(`Server is running on ${PORT}`);
     });
   } catch (error) {
     console.error("Error in main function:", error);

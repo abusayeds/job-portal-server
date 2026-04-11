@@ -22,7 +22,7 @@ import { trainingRoutes } from "../modules/make_modules/training/training.route"
 
 
 const router = express.Router();
-
+router.use('/api/v1/uploded', uploadRouter)
 router.use("/api/v1/user", UserRoutes);
 router.use("/api/v1/terms", TermsRoutes);
 router.use("/api/v1/about", AboutRoutes);

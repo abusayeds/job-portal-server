@@ -13,3 +13,7 @@ export const NODE_ENV = process.env.NODE_ENV;
 
 export const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 export const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+
+export const cloud_name = process.env.CLOUDINARY_CLOUD_NAME
+export const api_key = process.env.CLOUDINARY_API_KEY
+export const api_secret = process.env.CLOUDINARY_API_SECRET

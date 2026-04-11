@@ -4,9 +4,8 @@ import { Request } from "express";
 import createHttpError from "http-errors";
 import multer, { FileFilterCallback } from "multer";
 import path from "path";
-import { v4 as uuidv4 } from 'uuid';
-import { max_file_size, UPLOAD_FOLDER } from "../config";
-const UPLOAD_PATH = UPLOAD_FOLDER || "public/images";
+import { max_file_size } from "../config";
+
 const MAX_FILE_SIZE = Number(max_file_size) || 5 * 1024 * 1024;
 
 const ALLOWED_FILE_TYPES = [
@@ -30,40 +29,23 @@ const ALLOWED_FILE_TYPES = [
   ".svg",
 ];
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, UPLOAD_PATH);
-  },
-
-
-  filename: function (
-    req: Request,
-    file: Express.Multer.File,
-    cb: (error: Error | null, filename: string) => void,
-  ) {
-    const shortUuid = uuidv4().replace(/-/g, "").slice(0, 15);
-    const fileName = shortUuid + '-' + file.originalname.replace(/\s+/g, "");
-    cb(null, fileName);
-  },
-
-});
+const storage = multer.memoryStorage();
 
 const fileFilter = (
   req: Request,
   file: Express.Multer.File,
-  cb: FileFilterCallback,
+  cb: FileFilterCallback
 ) => {
   const extName = path.extname(file.originalname).toLocaleLowerCase();
   const isAllowedFileType = ALLOWED_FILE_TYPES.includes(extName);
   if (!isAllowedFileType) {
     return cb(createHttpError(400, "File type not allowed"));
   }
-
   cb(null, true);
 };
 
 const upload = multer({
-  storage,
+  storage,   
   fileFilter,
   limits: {
     fileSize: MAX_FILE_SIZE,

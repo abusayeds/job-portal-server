@@ -42,7 +42,7 @@ app.use(router);
 app.get("/", (req: Request, res: Response) => {
   logger.info("Root endpoint hit");
   const template = `<h1 style="text-align:center">Hello</h1>
-    <h2 style="text-align:center">Welcome to the Server </h2>
+    <h2 style="text-align:center">Welcome to the job portal server  </h2>
  
     `;
   res.status(200).send(template);
