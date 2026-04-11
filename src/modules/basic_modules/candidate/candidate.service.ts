@@ -5,12 +5,7 @@ import { candidateModel } from "./candidate.model";
 
 const candidateIdentityVerificationDB = async (email: string, payload: TCandidate, step: string) => {
 
-    console.log(email);
-
-    if (payload.logo && !payload.logo.startsWith('/images/')) {
-        throw new AppError(httpStatus.BAD_REQUEST, "Invalid image path");
-    }
-
+   
     let result;
     switch (step) {
         case '1':

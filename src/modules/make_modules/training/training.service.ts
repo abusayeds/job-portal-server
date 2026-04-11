@@ -1,18 +1,14 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import httpStatus from "http-status";
 import queryBuilder from "../../../builder/queryBuilder";
-import AppError from "../../../errors/AppError";
 import { searchtraining } from "./training.constant";
 import { Ttraining } from "./training.interface";
 import { trainingModel, trainingRagistrationModel } from "./training.model";
 
 
 const createtrainingDB = async (payload: Ttraining) => {
-    if (payload.image && !payload.image.startsWith("/images/")) {
-        throw new AppError(httpStatus.BAD_REQUEST, "Invalid image path");
-    }
+   
     const training = await trainingModel.create(payload);
     return training;
 };
