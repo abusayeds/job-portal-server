@@ -14,7 +14,11 @@ import { webhookController } from "./modules/make_modules/webhook/webhook.contro
 // Create an Express application
 const app: Application = express();
 
-app.use('/stripe/webhook', express.raw({ type: "application/json" }), webhookController.webhook);
+app.use(
+  "/stripe/webhook",
+  express.raw({ type: "application/json" }),
+  webhookController.webhook,
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -43,7 +47,13 @@ app.get("/", (req: Request, res: Response) => {
   logger.info("Root endpoint hit");
   const template = `<h1 style="text-align:center">Hello</h1>
     <h2 style="text-align:center">Welcome to the job portal server  </h2>
- 
+    `;
+  res.status(200).send(template);
+});
+app.get("/ping", (req: Request, res: Response) => {
+  logger.info("Root endpoint hit");
+  const template = `<h1 style="text-align:center">Hello</h1>
+    <h2 style="text-align:center">Welcome to the ping server  </h2>
     `;
   res.status(200).send(template);
 });
@@ -58,7 +68,3 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 });
 
 export default app;
-
-
-
-
