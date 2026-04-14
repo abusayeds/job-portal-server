@@ -16,7 +16,7 @@ const crateJobDB = async (
   userId: string,
   subscriptionId: string,
   palan: string,
-  payload: TJobPost
+  payload: TJobPost,
 ) => {
   const employe = await UserModel.findById(userId);
   const subs_palan: TPurchasePlan | null = await purchasePlanModel.findOne({
@@ -30,10 +30,13 @@ const crateJobDB = async (
   ) {
     const expiryDate = new Date(subs_palan.expiryDateTimestamp);
     const currentDate = new Date();
-    if (expiryDate < currentDate && !freeJobPostEmails.includes(employe.email)) {
+    if (
+      expiryDate < currentDate &&
+      !freeJobPostEmails.includes(employe.email)
+    ) {
       throw new AppError(
         httpStatus.BAD_REQUEST,
-        "Your subscription has expired "
+        "Your subscription has expired ",
       );
     }
   }
@@ -45,22 +48,19 @@ const crateJobDB = async (
   ) {
     const jobpostCount = Number(subs_palan.jobpost);
 
-    if (jobpostCount <= jobs.length && !freeJobPostEmails.includes(employe.email)) {
+    if (
+      jobpostCount <= jobs.length &&
+      !freeJobPostEmails.includes(employe.email)
+    ) {
       throw new AppError(
         httpStatus.BAD_REQUEST,
-        "This subscription limit has ended."
+        "This subscription limit has ended.",
       );
     }
   }
 
   if (!subs_palan) {
     throw new AppError(httpStatus.NOT_FOUND, "Subscription not found ! ");
-  }
-  if (payload.logo && !payload.logo.startsWith("/images/")) {
-    throw new AppError(httpStatus.BAD_REQUEST, "Invalid logo path");
-  }
-  if (payload.banner && !payload.banner.startsWith("/images/")) {
-    throw new AppError(httpStatus.BAD_REQUEST, "Invalid banner path");
   }
   const jobData = {
     ...payload,
@@ -76,7 +76,7 @@ const crateJobDB = async (
 const employerAllPostedJobs = async (
   userId: string,
   query: Record<string, unknown>,
-  role: string
+  role: string,
 ) => {
   let myJobsQuery: any;
   let totalData: number;
@@ -86,19 +86,19 @@ const employerAllPostedJobs = async (
       .filter()
       .sort();
     const paginationResult = await myJobsQuery.paginate(
-      JobPostModel.find({ userId })
+      JobPostModel.find({ userId }),
     );
     totalData = paginationResult.totalData;
   } else {
     myJobsQuery = new queryBuilder(
       JobPostModel.find({ companyId: userId }),
-      query
+      query,
     )
       .search(searchJobs)
       .filter()
       .sort();
     const paginationResult = await myJobsQuery.paginate(
-      JobPostModel.find({ companyId: userId })
+      JobPostModel.find({ companyId: userId }),
     );
     totalData = paginationResult.totalData;
   }
@@ -134,31 +134,31 @@ const employerAllPostedJobs = async (
         expirationDate: remainingTime,
         allApplication: applyCount,
       };
-    })
+    }),
   );
   return { pagination, jobs: myJobs };
 };
-const candidateAllJobsDB = async (query: Record<string, unknown>, employerId: string | null) => {
-
+const candidateAllJobsDB = async (
+  query: Record<string, unknown>,
+  employerId: string | null,
+) => {
   const { minSalary, maxSalary, educations, jobType, ...restQuery } = query;
   if (minSalary) restQuery.minSalary = { $gte: minSalary };
   if (maxSalary) restQuery.maxSalary = { $lte: maxSalary };
   if (jobType && typeof jobType === "string") {
-    const jobTypeArr = jobType.split(',') || [];
+    const jobTypeArr = jobType.split(",") || [];
     restQuery.jobType = { $in: jobTypeArr };
   }
   if (educations && typeof educations === "string") {
-    const educationArr = educations.split(',') || [];
+    const educationArr = educations.split(",") || [];
     restQuery.educations = { $in: educationArr };
   }
-
-
 
   const filter: any = {};
   if (employerId) {
     filter.companyId = employerId;
   } else {
-    filter.expirationDate = { $gt: new Date() }
+    filter.expirationDate = { $gt: new Date() };
   }
 
   const myJobsQuery = new queryBuilder(JobPostModel.find(filter), restQuery)
@@ -199,7 +199,7 @@ const candidateAllJobsDB = async (query: Record<string, unknown>, employerId: st
       jobType: job?.jobType,
       jobLevel: job?.jobLevel,
       expiringIn: remainingTime,
-      totalApplication: 0
+      totalApplication: 0,
     };
   });
   const currentPage = Number(query?.page) || 1;
@@ -215,10 +215,8 @@ const candidateAllJobsDB = async (query: Record<string, unknown>, employerId: st
 
 const viewApplicationsDB = async (
   jobId: string,
-  query: Record<string, unknown>
+  query: Record<string, unknown>,
 ) => {
-
-
   const jobsQuery = new queryBuilder(
     AppliedJobModel.find({ jobId }).populate([
       {
@@ -234,16 +232,13 @@ const viewApplicationsDB = async (
         select: "jobTitle jobType",
       },
     ]),
-    query
+    query,
   ).sort();
 
-
-
   const { totalData } = await jobsQuery.paginate(
-    AppliedJobModel.find({ jobId })
+    AppliedJobModel.find({ jobId }),
   );
   const jobs = await jobsQuery.modelQuery.exec();
-
 
   const currentPage = Number(query?.page) || 1;
   const limit = Number(query.limit) || 10;
@@ -268,8 +263,6 @@ const viewApplicationsDB = async (
       appliedDate: application.createdAt,
     };
   });
-
-
 
   if (applications.length === 0) {
     const jobs = await JobPostModel.findById(jobId);
@@ -331,10 +324,8 @@ const candidateJobAlertDB = async (
   info: any,
   page: number = 1,
   pageSize: number = 10,
-  user: IUser
+  user: IUser,
 ) => {
-
-
   const result: any = [];
   const skip = (page - 1) * pageSize;
   const totalDataCount = await JobPostModel.countDocuments({
@@ -343,7 +334,7 @@ const candidateJobAlertDB = async (
       { jobLevel: { $in: info.jobLevel || [] } },
     ],
     createdAt: { $gt: user.createdAt },
-    expirationDate: { $gt: new Date() }
+    expirationDate: { $gt: new Date() },
   });
   const totalPage = Math.ceil(totalDataCount / pageSize);
   const prevPage = page > 1 ? page - 1 : 1;
@@ -352,12 +343,17 @@ const candidateJobAlertDB = async (
   if (info?.jobType && Array.isArray(info.jobType) && info.jobType.length > 0) {
     await Promise.all(
       info.jobType.map(async (type: any) => {
-        const jobs = await JobPostModel.find({ jobType: type, createdAt: { $gt: user.createdAt }, expirationDate: { $gt: new Date() } }).populate('companyId')
+        const jobs = await JobPostModel.find({
+          jobType: type,
+          createdAt: { $gt: user.createdAt },
+          expirationDate: { $gt: new Date() },
+        })
+          .populate("companyId")
           .skip(skip)
           .limit(pageSize)
           .exec();
         jobs.forEach((job: any) => result.push(job));
-      })
+      }),
     );
   }
 
@@ -368,12 +364,16 @@ const candidateJobAlertDB = async (
   ) {
     await Promise.all(
       info.jobLevel.map(async (level: any) => {
-        const jobs = await JobPostModel.find({ jobLevel: level, createdAt: { $gt: user.createdAt }, expirationDate: { $gt: new Date() } })
+        const jobs = await JobPostModel.find({
+          jobLevel: level,
+          createdAt: { $gt: user.createdAt },
+          expirationDate: { $gt: new Date() },
+        })
           .skip(skip)
           .limit(pageSize)
           .exec();
         jobs.forEach((job: any) => result.push(job));
-      })
+      }),
     );
   }
 
@@ -393,7 +393,9 @@ const relatedJobsDB = async (jobId: string) => {
   const result = await JobPostModel.findById(jobId);
   const relatedResult = await JobPostModel.find({
     jobLevel: result?.jobLevel,
-  }).populate([{ path: 'companyId', select: 'companyName' }]).limit(6);
+  })
+    .populate([{ path: "companyId", select: "companyName" }])
+    .limit(6);
   return relatedResult;
 };
 
