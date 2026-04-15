@@ -6,8 +6,17 @@ import AppError from "../../../errors/AppError";
 import httpStatus from "http-status";
 
 export const sendEmail = async (otp: any, email: string) => {
+  //   const transporter = nodemailer.createTransport({
+  //     service: "gmail",
+  //     secure: true,
+  //     auth: {
+  //       user: Nodemailer_GMAIL,
+  //       pass: Nodemailer_GMAIL_PASSWORD,
+  //     },
+  //   });
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
     secure: true,
     auth: {
       user: Nodemailer_GMAIL,
@@ -40,16 +49,29 @@ export const sendEmail = async (otp: any, email: string) => {
   };
 
   await transporter.sendMail(receiver);
-}
+};
 
-export const sendSupportEmail = async ({ email, subject, body, name }: { email: string; subject: string; body: string; name: string }) => {
+export const sendSupportEmail = async ({
+  email,
+  subject,
+  body,
+  name,
+}: {
+  email: string;
+  subject: string;
+  body: string;
+  name: string;
+}) => {
   const support = await Setting.findOne({ key: "support" });
   if (!support) throw new AppError(httpStatus.NOT_FOUND, "Support not found");
 
   const supportEmail = support.value?.email;
 
   if (!supportEmail) {
-    throw new AppError(httpStatus.BAD_REQUEST, "Support email is not configured");
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      "Support email is not configured",
+    );
   }
 
   console.log("Sending support email to:", supportEmail);
@@ -80,7 +102,7 @@ export const sendSupportEmail = async ({ email, subject, body, name }: { email: 
     subject,
     html,
   });
-}
+};
 
 export const forgotOtpEmail = async (otp: any, email: string) => {
   const transporter = nodemailer.createTransport({
@@ -123,7 +145,7 @@ export const forgotOtpEmail = async (otp: any, email: string) => {
   };
 
   await transporter.sendMail(receiver);
-}
+};
 export const resendOtpEmail = async (otp: any, email: string) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -162,8 +184,7 @@ export const resendOtpEmail = async (otp: any, email: string) => {
   };
 
   await transporter.sendMail(receiver);
-}
-
+};
 
 export const sendRegistationOtpEmail = async (otp: any, email: string) => {
   const transporter = nodemailer.createTransport({
@@ -207,8 +228,13 @@ export const sendRegistationOtpEmail = async (otp: any, email: string) => {
   };
 
   await transporter.sendMail(receiver);
-}
-export const employerRejectEmail = async (title: string, description: string, name: string, email: string) => {
+};
+export const employerRejectEmail = async (
+  title: string,
+  description: string,
+  name: string,
+  email: string,
+) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     secure: true,
@@ -220,8 +246,11 @@ export const employerRejectEmail = async (title: string, description: string, na
 
   const emailContent = `
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f0f0f0; padding: 20px;">
-${title ? `<h1 style="text-align: center; color: #452778; font-family: 'Times New Roman', Times, serif;">${title}</h1>` : ''
-    }
+${
+  title
+    ? `<h1 style="text-align: center; color: #452778; font-family: 'Times New Roman', Times, serif;">${title}</h1>`
+    : ""
+}
   <div style="background-color: white; padding: 20px; border-radius: 5px;">
     <h2 style="color:#d3b06c;">Dear ${name}</h2>
     <p>We regret to inform you that your employer registration has been rejected.</p>
@@ -248,27 +277,7 @@ ${title ? `<h1 style="text-align: center; color: #452778; font-family: 'Times Ne
   };
 
   await transporter.sendMail(receiver);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 // export const sendRegistationOtpEmail = async (otp: any, email: string) => {
 //   const transporter = nodemailer.createTransport({
@@ -280,8 +289,6 @@ ${title ? `<h1 style="text-align: center; color: #452778; font-family: 'Times Ne
 //     },
 //   });
 
-
-
 //   const receiver = {
 //     from: "khansourav58@gmail.com",
 //     to: email,
@@ -291,6 +298,3 @@ ${title ? `<h1 style="text-align: center; color: #452778; font-family: 'Times Ne
 
 //   await transporter.sendMail(receiver);
 // }
-
-
-
