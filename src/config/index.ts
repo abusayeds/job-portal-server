@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import path from "path";
-dotenv.config({ path: path.join((process.cwd(), ".env")) });
-export const PORT = process.env.PORT || 5000;
+dotenv.config({ path: path.join(process.cwd(), ".env") });
+export const PORT = process.env.PORT || process.env.BACKEND_ASSIGNED_PORT || 5000;
 export const IP = process.env.IP
 export const DATABASE_URL = process.env.DATABASE_URL;
 export const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
