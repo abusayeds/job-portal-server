@@ -21,7 +21,7 @@ export const authMiddleware = (...requiredRoles: TRole[]) => {
     }
     const token = authHeader.split(" ")[1];
     try {
-      const decoded: any = jwt.verify(token, process.env.JWT_SECRET_KEY as string);
+      const decoded: any = jwt.verify(token, process.env.JOB_PORTAL_JWT_SECRET_KEY as string);
       const role = decoded.user.role
       if (requiredRoles && !requiredRoles.includes(role)) {
         throw new AppError(httpStatus.UNAUTHORIZED,
@@ -62,7 +62,7 @@ export const authMiddleware = (...requiredRoles: TRole[]) => {
 //     }
 
 //     try {
-//       const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string);
+//       const decoded = jwt.verify(token, process.env.JOB_PORTAL_JWT_SECRET_KEY as string);
 //       req.user = decoded; // Attach user data to request object
 
 //       // Check if the user is admin
