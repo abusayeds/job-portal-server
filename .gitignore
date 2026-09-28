@@ -3,5 +3,10 @@ node_modules
 logs
 /dist
 /public
-/logs.env
+/logs
+
+# env files (never commit credentials)
 .env
+.env.*
+*.env
+!.env.example
